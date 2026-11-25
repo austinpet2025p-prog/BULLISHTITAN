@@ -254,7 +254,46 @@ export const SignalsPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-20 bg-[#000000]">
+    <div className="relative isolate bg-[#000000] overflow-x-clip">
+      {/* Spartan Vanguard Background Layer (100% of image preserved, 22% opacity, blended with site theme) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen w-full overflow-hidden"
+      >
+        {/* Atmospheric obsidian, sapphire & gold aura spanning 100% width */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 72% 78% at 50% 45%, rgba(201, 162, 75, 0.09), rgba(30, 58, 138, 0.1) 52%, rgba(0, 0, 0, 0.94) 92%)',
+          }}
+        />
+        <div className="relative flex h-full w-full items-center justify-center">
+          <img
+            src="/assets/aistudio/Screenshot_20261125-172343_3b4ec5b6.png"
+            alt=""
+            referrerPolicy="no-referrer"
+            className="h-full w-full object-contain object-center opacity-[0.22] mix-blend-lighten select-none"
+            style={{
+              maskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%)',
+              maskComposite: 'intersect',
+              WebkitMaskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%)',
+            }}
+          />
+        </div>
+        {/* Seamless obsidian & sapphire perimeter blend */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 68% 82% at 50% 48%, transparent 32%, rgba(2, 5, 13, 0.48) 70%, #000000 96%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 pt-20">
       {/* 1. Reference Signal Service Intro Section */}
       <section className="relative py-20 sm:py-28 border-b border-[#C9A24B]/18 overflow-hidden">
         <AmbientMeshCanvas />
@@ -267,12 +306,12 @@ export const SignalsPage: React.FC = () => {
             loop
             playsInline
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-28 mix-blend-screen"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18] mix-blend-screen"
           />
         )}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#000000]/94 via-[#02060D]/74 to-[#000000]/82"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#000000]/58 via-[#02060D]/32 to-[#000000]/46"
         />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12">
@@ -881,6 +920,7 @@ export const SignalsPage: React.FC = () => {
           </div>
         )}
       </Modal>
+      </div>
     </div>
   );
 };

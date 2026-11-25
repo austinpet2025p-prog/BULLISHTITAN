@@ -54,6 +54,7 @@ import {
 } from '../data/extendedData';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { cn } from '../lib/utils';
+import investmentSpartanBg from '../assets/images/investment_spartan_clean_1795625786726.jpg';
 
 const InvestmentScene3D = lazy(() => import('../components/three/InvestmentScene3D'));
 
@@ -268,13 +269,53 @@ export const InvestmentPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-20 bg-[#000000]">
+    <div className="relative isolate bg-[#000000] overflow-x-clip">
+      {/* Spartan Battle Background Layer (watermark removed, 100% image preserved, 22% opacity) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen w-full overflow-hidden"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 72% 78% at 50% 45%, rgba(201, 162, 75, 0.09), rgba(30, 58, 138, 0.1) 52%, rgba(0, 0, 0, 0.94) 92%)',
+          }}
+        />
+        <div className="relative flex h-full w-full items-center justify-center">
+          <img
+            src={investmentSpartanBg}
+            alt=""
+            referrerPolicy="no-referrer"
+            className="h-full w-full object-contain object-center opacity-[0.22] mix-blend-lighten select-none"
+            style={{
+              maskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%)',
+              maskComposite: 'intersect',
+              WebkitMaskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%)',
+            }}
+          />
+        </div>
+        {/* Seamless obsidian & sapphire perimeter blend */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 68% 82% at 50% 48%, transparent 32%, rgba(2, 5, 13, 0.48) 70%, #000000 96%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 pt-20">
       {/* 1. Reference Banner Section (#home) */}
       <section
         id="home"
         className="relative min-h-[560px] sm:min-h-[620px] flex items-center py-20 sm:py-28 border-b border-[#C9A24B]/18 overflow-hidden"
       >
-        <HeroVideoBackdrop />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-70 mix-blend-screen">
+          <HeroVideoBackdrop />
+        </div>
         <div className="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <motion.div
@@ -1221,6 +1262,7 @@ export const InvestmentPage: React.FC = () => {
           compact
         />
       </Modal>
+      </div>
     </div>
   );
 };
