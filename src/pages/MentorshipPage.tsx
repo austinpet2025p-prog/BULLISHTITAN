@@ -25,6 +25,7 @@ import {
 } from '../data/academyData';
 import { cn } from '../lib/utils';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import mentorshipSpartanBg from '../assets/images/mentorship_spartan_widescreen_1795618871053.jpg';
 
 const MentorshipScene3D = lazy(() => import('../components/three/MentorshipScene3D'));
 
@@ -74,7 +75,36 @@ export const MentorshipPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-20 bg-[#000000]">
+    <div className="relative isolate bg-[#000000] overflow-x-clip">
+      {/* Full-Bleed Recreated Spartan Commander Background Layer (100% figure preserved, 22% opacity) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen w-full overflow-hidden"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 68% 72% at 50% 46%, rgba(201, 162, 75, 0.08), rgba(30, 58, 138, 0.08) 56%, rgba(0, 0, 0, 0.92) 92%)',
+          }}
+        />
+        <img
+          src={mentorshipSpartanBg}
+          alt=""
+          referrerPolicy="no-referrer"
+          className="relative h-full w-full object-cover object-center opacity-[0.22] mix-blend-lighten select-none"
+        />
+        {/* Seamless obsidian & sapphire perimeter blend */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 78% 84% at 50% 48%, transparent 38%, rgba(2, 5, 13, 0.42) 74%, #000000 98%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 pt-20">
       {/* Hero */}
       <section className="relative py-20 sm:py-28 border-b border-[#C9A24B]/18 overflow-hidden">
         <AmbientMeshCanvas />
@@ -87,12 +117,12 @@ export const MentorshipPage: React.FC = () => {
             loop
             playsInline
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen"
           />
         )}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#000000]/92 via-[#02050D]/72 to-[#000000]/80"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#000000]/58 via-[#02050D]/28 to-[#000000]/45"
         />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12">
@@ -596,6 +626,7 @@ export const MentorshipPage: React.FC = () => {
           </Button>
         </div>
       </Modal>
+      </div>
     </div>
   );
 };

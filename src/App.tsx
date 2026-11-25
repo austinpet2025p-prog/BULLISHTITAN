@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import {
   BrowserRouter,
   Route,
@@ -17,23 +17,24 @@ import { ErrorBoundary } from './components/ui/ErrorBoundary';
 import { AuthProvider } from './lib/authContext';
 import { usePageMeta } from './hooks/usePageMeta';
 import { trackPageView } from './lib/analytics';
+import { lazyWithRetry } from './lib/lazyWithRetry';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const TrainingPage = lazy(() => import('./pages/TrainingPage'));
-const MentorshipPage = lazy(() => import('./pages/MentorshipPage'));
-const SignalsPage = lazy(() => import('./pages/SignalsPage'));
-const InvestmentPage = lazy(() => import('./pages/InvestmentPage'));
-const PricingPage = lazy(() => import('./pages/PricingPage'));
-const ResultsPage = lazy(() => import('./pages/ResultsPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const BlogPage = lazy(() => import('./pages/BlogPage'));
-const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
-const FaqPage = lazy(() => import('./pages/FaqPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const LegalPage = lazy(() => import('./pages/LegalPage'));
-const AuthPage = lazy(() => import('./pages/AuthPage'));
-const DashboardPage = lazy(() => import('./pages/DashboardPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const HomePage = lazyWithRetry(() => import('./pages/HomePage'));
+const TrainingPage = lazyWithRetry(() => import('./pages/TrainingPage'));
+const MentorshipPage = lazyWithRetry(() => import('./pages/MentorshipPage'));
+const SignalsPage = lazyWithRetry(() => import('./pages/SignalsPage'));
+const InvestmentPage = lazyWithRetry(() => import('./pages/InvestmentPage'));
+const PricingPage = lazyWithRetry(() => import('./pages/PricingPage'));
+const ResultsPage = lazyWithRetry(() => import('./pages/ResultsPage'));
+const AboutPage = lazyWithRetry(() => import('./pages/AboutPage'));
+const BlogPage = lazyWithRetry(() => import('./pages/BlogPage'));
+const BlogPostPage = lazyWithRetry(() => import('./pages/BlogPostPage'));
+const FaqPage = lazyWithRetry(() => import('./pages/FaqPage'));
+const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
+const LegalPage = lazyWithRetry(() => import('./pages/LegalPage'));
+const AuthPage = lazyWithRetry(() => import('./pages/AuthPage'));
+const DashboardPage = lazyWithRetry(() => import('./pages/DashboardPage'));
+const NotFoundPage = lazyWithRetry(() => import('./pages/NotFoundPage'));
 
 const RouteEffects: React.FC = () => {
   const { pathname, hash } = useLocation();

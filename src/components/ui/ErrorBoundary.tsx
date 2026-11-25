@@ -28,15 +28,22 @@ export class ErrorBoundary extends React.Component<
             <p className="mt-2 text-sm text-[#9A968C]">
               An unexpected display issue occurred. Reload the page to restore your session safely.
             </p>
-            <Button
-              className="mt-5"
-              onClick={() => {
-                this.setState({ hasError: false });
-                window.location.href = '/';
-              }}
-            >
-              Return Home
-            </Button>
+            <div className="mt-5 flex items-center justify-center gap-3">
+              <Button
+                variant="outline"
+                onClick={() => window.location.reload()}
+              >
+                Reload Page
+              </Button>
+              <Button
+                onClick={() => {
+                  this.setState({ hasError: false });
+                  window.location.href = '/';
+                }}
+              >
+                Return Home
+              </Button>
+            </div>
           </div>
         </div>
       );

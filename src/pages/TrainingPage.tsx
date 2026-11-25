@@ -33,6 +33,7 @@ import {
 import { COURSES, MENTORS, type CourseItem } from '../data/academyData';
 import { useAuth } from '../lib/authContext';
 import { formatCurrency } from '../lib/utils';
+import trainingSpartanBg from '../assets/images/training_spartan_widescreen_1795620108869.jpg';
 
 const TrainingScene3D = lazy(() => import('../components/three/TrainingScene3D'));
 
@@ -120,7 +121,36 @@ export const TrainingPage: React.FC = () => {
   const selectedCourse = COURSES.find((c) => c.id === selectedId) || COURSES[0];
 
   return (
-    <div className="pt-20 bg-[#000000]">
+    <div className="relative isolate bg-[#000000] overflow-x-clip">
+      {/* The Forge Spartan Warrior Background Layer (100% width, blended at 22% opacity) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen w-full overflow-hidden"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 68% 72% at 50% 44%, rgba(201, 162, 75, 0.08), rgba(30, 58, 138, 0.08) 56%, rgba(0, 0, 0, 0.92) 92%)',
+          }}
+        />
+        <img
+          src={trainingSpartanBg}
+          alt=""
+          referrerPolicy="no-referrer"
+          className="relative h-full w-full object-cover object-center opacity-[0.22] mix-blend-lighten select-none"
+        />
+        {/* Seamless obsidian & sapphire perimeter blend */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 78% 84% at 50% 46%, transparent 38%, rgba(2, 5, 13, 0.44) 74%, #000000 98%), linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 15%, transparent 80%, #000000 100%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 pt-20">
       {/* Hero */}
       <section className="relative py-20 sm:py-28 border-b border-[#C9A24B]/18 overflow-hidden">
         <AmbientMeshCanvas />
@@ -496,6 +526,7 @@ export const TrainingPage: React.FC = () => {
           </Button>
         </div>
       </Modal>
+      </div>
     </div>
   );
 };
