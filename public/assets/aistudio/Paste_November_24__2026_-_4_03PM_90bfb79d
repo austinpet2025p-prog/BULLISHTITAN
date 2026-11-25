@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bullish Titan | Trading Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root { --gold:#F5C542; --gold-light:#FFE9A6; --gold-dark:#8A5E12; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { background:#000; }
+body { font-family:'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif; color:#fff; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position:relative; width:100%; height:100vh; height:100svh; min-height:560px;
+  overflow:hidden; isolation:isolate;
+  background:radial-gradient(ellipse at 50% 65%, #0c1c38 0%, #060d1c 50%, #000 100%);
+}
+.stage { position:absolute; inset:0; transform-origin:50% 55%; will-change:transform; }
+#fx, #sparks { position:absolute; inset:0; width:100%; height:100%; display:block; }
+#fx { z-index:1; }
+#sparks { z-index:4; pointer-events:none; }
+
+/* ---------- Bull + titan ---------- */
+.bull {
+  position:absolute; left:50%; bottom:-2%; width:min(68vmin, 620px); z-index:2; opacity:0;
+  filter:drop-shadow(0 0 28px rgba(245,197,66,.45));
+  -webkit-mask-image:linear-gradient(to top, transparent 0%, #000 38%);
+          mask-image:linear-gradient(to top, transparent 0%, #000 38%);
+  will-change:transform, opacity;
+}
+
+/* ---------- Holographic panels ---------- */
+.holo-layer { position:absolute; inset:0; z-index:3; perspective:800px; pointer-events:none; }
+.holo-world { position:absolute; inset:0; transform-style:preserve-3d; will-change:transform; }
+.holo-panel { position:absolute; left:50%; top:50%; opacity:0; will-change:transform, opacity; }
+.holo-card {
+  position:relative; min-width:150px; padding:10px 14px; border-radius:10px;
+  font-family:'Courier New', ui-monospace, monospace; color:var(--gold-light);
+  background:linear-gradient(135deg, rgba(60,160,255,.16), rgba(245,197,66,.07));
+  border:1px solid rgba(245,197,66,.38);
+  box-shadow:0 0 26px rgba(245,197,66,.16), inset 0 0 18px rgba(80,170,255,.10);
+  backdrop-filter:blur(2px); animation:bob 5s ease-in-out infinite; overflow:hidden;
+}
+.holo-card::after {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.05) 0 1px, transparent 1px 3px);
+}
+.holo-card .row { display:flex; justify-content:space-between; gap:14px; font-size:12px; }
+.holo-card .sym { letter-spacing:.08em; opacity:.9; }
+.holo-card .px  { font-size:15px; margin-top:4px; }
+.holo-card svg  { display:block; width:100%; height:38px; margin-top:6px; }
+.holo-card svg polyline { fill:none; stroke:#FFE08A; stroke-width:1.6; filter:drop-shadow(0 0 4px rgba(245,197,66,.8)); }
+.holo-card.tick { display:flex; align-items:baseline; gap:12px; min-width:0; padding:8px 14px; font-size:13px; }
+.holo-card.tick .px { margin-top:0; }
+.up { color:#6dffb5; } .down { color:#ff7b7b; }
+@keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-9px); } }
+
+/* ---------- Overlays ---------- */
+.vignette {
+  position:absolute; inset:0; z-index:5; pointer-events:none;
+  background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.75) 100%);
+}
+.grain {
+  position:absolute; inset:-50%; z-index:5; pointer-events:none; opacity:.09; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.6'/></svg>");
+  animation:grain .7s steps(6) infinite;
+}
+@keyframes grain {
+  0% { transform:translate(0,0); } 20% { transform:translate(-4%,3%); } 40% { transform:translate(3%,-5%); }
+  60% { transform:translate(-5%,-2%); } 80% { transform:translate(4%,4%); } 100% { transform:translate(0,0); }
+}
+.flash {
+  position:absolute; inset:0; z-index:6; opacity:0; pointer-events:none; mix-blend-mode:screen;
+  background:radial-gradient(circle at 50% 40%, rgba(255,233,166,.95) 0%, rgba(245,197,66,.35) 30%, transparent 62%);
+}
+.bar { position:absolute; left:0; width:100%; height:9%; background:#000; z-index:9; pointer-events:none; }
+.bar.top { top:0; transform-origin:50% 0; }
+.bar.bottom { bottom:0; transform-origin:50% 100%; }
+
+/* ---------- Logo ---------- */
+.logo-wrap { position:absolute; left:50%; top:40%; z-index:7; opacity:0; will-change:transform, opacity, filter; }
+.logo-inner { position:relative; animation:glow 3.4s ease-in-out infinite; }
+#logo { display:block; width:min(46vw, 380px); height:auto; }
+.logo-shine {
+  position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen;
+  background:linear-gradient(115deg, transparent 35%, rgba(255,255,255,.95) 50%, transparent 65%);
+  background-size:250% 100%; background-position:180% 0;
+  -webkit-mask-size:100% 100%; mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+}
+.logo-fallback { display:none; text-align:center; font-family:'Cinzel', Georgia, serif; font-weight:800; letter-spacing:.12em; }
+.logo-fallback span {
+  display:block; font-size:clamp(2rem, 6.5vw, 4.4rem);
+  background:linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.logo-fallback small { display:block; margin-top:6px; font-size:clamp(.7rem, 1.6vw, 1rem); letter-spacing:.5em; color:var(--gold-light); opacity:.8; }
+@keyframes glow {
+  0%,100% { filter:drop-shadow(0 0 12px rgba(245,197,66,.55)) drop-shadow(0 0 38px rgba(245,197,66,.25)); }
+  50%     { filter:drop-shadow(0 0 20px rgba(245,197,66,.8))  drop-shadow(0 0 60px rgba(245,197,66,.38)); }
+}
+
+/* ---------- Headline ---------- */
+.hero-content {
+  position:absolute; left:50%; bottom:11%; z-index:8; width:min(90vw, 820px);
+  text-align:center; opacity:0; pointer-events:none;
+}
+.hero-content h1 {
+  font-family:'Cinzel', Georgia, serif; font-size:clamp(1.7rem, 4.6vw, 3.4rem); line-height:1.15;
+  color:var(--gold-light); text-shadow:0 0 26px rgba(245,197,66,.45); perspective:600px;
+}
+.word { display:inline-block; white-space:nowrap; }
+.char { display:inline-block; will-change:transform, opacity; }
+.hero-content p {
+  margin:14px auto 26px; max-width:560px; font-size:clamp(.9rem, 1.7vw, 1.1rem);
+  color:rgba(255,255,255,.78); line-height:1.6;
+}
+.cta {
+  display:inline-block; padding:14px 34px; border-radius:999px; font-weight:600; letter-spacing:.06em;
+  text-decoration:none; color:#1a1203; background:linear-gradient(180deg, var(--gold-light), var(--gold));
+  box-shadow:0 0 28px rgba(245,197,66,.45); will-change:transform;
+}
+
+/* ---------- Skip / Replay ---------- */
+.replay {
+  position:absolute; top:calc(9% + 12px); right:18px; z-index:10; padding:8px 16px; border-radius:999px;
+  border:1px solid rgba(245,197,66,.45); background:rgba(0,0,0,.35); color:var(--gold-light);
+  font:600 12px 'Montserrat', system-ui, sans-serif; letter-spacing:.08em; cursor:pointer; backdrop-filter:blur(4px);
+}
+.replay:hover { background:rgba(245,197,66,.18); }
+
+@media (prefers-reduced-motion: reduce) { .holo-card, .logo-inner, .grain { animation:none; } }
+</style>
+</head>
+
+<body>
+
+<section class="hero" id="hero" aria-label="Bullish Titan Trading Academy">
+
+  <div class="stage" id="stage">
+    <canvas id="fx"></canvas>
+
+    <svg class="bull" id="bull" viewBox="0 0 400 360" aria-hidden="true">
+      <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFE9A6"/><stop offset=".45" stop-color="#F5C542"/><stop offset="1" stop-color="#8A5E12"/>
+        </linearGradient>
+        <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#B8841E"/><stop offset="1" stop-color="#3a2606"/>
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="165" r="135" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity=".45"/>
+      <circle cx="200" cy="165" r="150" fill="none" stroke="url(#gold)" stroke-width=".8" opacity=".25"/>
+      <path d="M0 360 C25 290 95 262 150 256 L250 256 C305 262 375 290 400 360 Z" fill="url(#goldDark)"/>
+      <path d="M160 230 L240 230 L254 262 L146 262 Z" fill="#8A5E12"/>
+      <path d="M128 118 C70 112 38 70 52 14 C70 58 98 80 140 90 Z" fill="url(#gold)"/>
+      <path d="M272 118 C330 112 362 70 348 14 C330 58 302 80 260 90 Z" fill="url(#gold)"/>
+      <path d="M132 108 L84 112 L98 140 L134 134 Z" fill="url(#gold)"/>
+      <path d="M268 108 L316 112 L302 140 L266 134 Z" fill="url(#gold)"/>
+      <path d="M135 92 L265 92 C292 130 276 196 244 244 C228 270 216 286 200 290 C184 286 172 270 156 244 C124 196 108 130 135 92 Z" fill="url(#gold)"/>
+      <ellipse cx="200" cy="262" rx="34" ry="20" fill="#9a6d16" opacity=".55"/>
+      <ellipse cx="172" cy="150" rx="11" ry="3.2" fill="#fff7d1" transform="rotate(14 172 150)"/>
+      <ellipse cx="228" cy="150" rx="11" ry="3.2" fill="#fff7d1" transform="rotate(-14 228 150)"/>
+      <circle cx="200" cy="276" r="9" fill="none" stroke="#FFE9A6" stroke-width="3"/>
+    </svg>
+
+    <div class="holo-layer"><div class="holo-world" id="holoWorld"></div></div>
+  </div>
+
+  <canvas id="sparks"></canvas>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+  <div class="flash" id="flash"></div>
+
+  <div class="logo-wrap" id="logoWrap">
+    <div class="logo-inner">
+      <img id="logo" alt="Bullish Titan">
+      <div class="logo-shine" id="logoShine"></div>
+      <div id="logoFallback" class="logo-fallback"><span>BULLISH TITAN</span><small>TRADING ACADEMY</small></div>
+    </div>
+  </div>
+
+  <div class="hero-content" id="heroContent">
+    <h1 id="headline">Master the Markets. Trade Like a Titan.</h1>
+    <p id="sub">Mentorship, live signals and a proven strategy, built for serious traders.</p>
+    <a class="cta" id="cta" href="#join">Join the Academy</a>
+  </div>
+
+  <div class="bar top"></div>
+  <div class="bar bottom"></div>
+  <button class="replay" id="replay" type="button">Skip intro</button>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+/* =====================================================================
+   BULLISH TITAN HERO  (GSAP timeline + Canvas 2D + CSS 3D + SVG)
+
+   YOUR LOGO: put the transparent PNG next to this file, or paste its
+   path / URL / base64 data-URL here:
+   ===================================================================== */
+const LOGO_SRC = 'logo.png';
+
+/*  Timeline (seconds)
+ *   0.0  letterbox bars open, faint candlestick chart starts drawing
+ *   1.2  smoke rolls in
+ *   1.8  golden bull + titan rises through the smoke
+ *   3.0  gold sparks fly across the screen
+ *   5.5  camera pushes through floating holographic charts and tickers
+ *  10.0  impact: flash, camera shake, spark burst, logo lands, shine sweep
+ *  10.9  headline types in letter by letter, then text, then button
+ *  12.0  live mode: chart keeps ticking, mouse parallax, magnetic button
+ */
+(() => {
+  'use strict';
+  const DURATION = 12;
+  const $ = (id) => document.getElementById(id);
+
+  const hero = $('hero'), stage = $('stage');
+  const fx = $('fx'), ctx = fx.getContext('2d');
+  const sk = $('sparks'), sctx = sk.getContext('2d');
+  const bull = $('bull'), holo = $('holoWorld'), flash = $('flash');
+  const logoWrap = $('logoWrap'), logo = $('logo'), shine = $('logoShine'), fallback = $('logoFallback');
+  const content = $('heroContent'), headline = $('headline'), sub = $('sub'), cta = $('cta'), btn = $('replay');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- logo ---------- */
+  logo.addEventListener('error', () => {
+    logo.style.display = 'none'; shine.style.display = 'none'; fallback.style.display = 'block';
+  });
+  logo.src = LOGO_SRC;
+  shine.style.webkitMaskImage = shine.style.maskImage = `url("${LOGO_SRC}")`;
+
+  /* ---------- safety: if GSAP failed to load, just show the end state ---------- */
+  if (!window.gsap) {
+    bull.style.opacity = 1; bull.style.transform = 'translateX(-50%)';
+    logoWrap.style.opacity = 1; logoWrap.style.transform = 'translate(-50%,-50%)';
+    content.style.opacity = 1; content.style.transform = 'translateX(-50%)'; content.style.pointerEvents = 'auto';
+    btn.style.display = 'none';
+    return;
+  }
+
+  /* ---------- helpers ---------- */
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const seg = (t, a, b) => clamp((t - a) / (b - a));
+  const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const rand = (a = 0, b = 1) => a + Math.random() * (b - a);
+
+  /* ---------- split headline into letters ---------- */
+  (function split(el) {
+    const words = el.textContent.trim().split(' ');
+    el.textContent = '';
+    words.forEach((w, i) => {
+      const word = document.createElement('span'); word.className = 'word';
+      [...w].forEach((ch) => { const c = document.createElement('span'); c.className = 'char'; c.textContent = ch; word.appendChild(c); });
+      el.appendChild(word);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+  })(headline);
+  const chars = headline.querySelectorAll('.char');
+
+  /* ---------- sizing ---------- */
+  let W = 0, H = 0;
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = hero.getBoundingClientRect();
+    W = r.width; H = r.height;
+    [[fx, ctx], [sk, sctx]].forEach(([c, x]) => {
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+      x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    });
+  }
+
+  /* ---------- candlestick chart ---------- */
+  const N = 72;
+  let candles = [], shift = 0, pushAcc = 0, yMin = 94, yMax = 106;
+  const cwOf = () => (W * 0.94) / (N - 1);
+
+  function makeCandle(prev, surge) {
+    const open = prev ? prev.close : 100;
+    let close = open + rand(-2.2, 2.2) + 0.25;
+    if (surge) close += rand(0.6, 3.0);
+    return { open, close, high: Math.max(open, close) + rand(0.3, 2.0), low: Math.min(open, close) - rand(0.3, 2.0) };
+  }
+  function seedCandles() {
+    candles = []; let p = null;
+    for (let i = 0; i < N; i++) { p = makeCandle(p, i > N * 0.58); candles.push(p); }
+    shift = 0; pushAcc = 0; yMin = 94; yMax = 106;
+  }
+
+  function drawChart(t, dt, live) {
+    const reveal = live ? 1 : easeInOut(seg(t, 0.5, 6.8));
+    const alpha = 0.12 + 0.5 * easeOut(seg(t, 0.3, 6.5));
+    const n = N * reveal, full = Math.floor(n), frac = n - full;
+    const count = Math.min(N, full + (frac > 0 ? 1 : 0));
+    if (count < 2) return;
+
+    const top = H * 0.22, h = H * 0.62, left = W * 0.03, cw = cwOf();
+    let lo = Infinity, hi = -Infinity;
+    for (let i = 0; i < count; i++) { if (candles[i].low < lo) lo = candles[i].low; if (candles[i].high > hi) hi = candles[i].high; }
+    const pad = (hi - lo) * 0.1 + 0.5; lo -= pad; hi += pad;
+    const k = 1 - Math.exp(-dt * 4);
+    yMin += (lo - yMin) * k; yMax += (hi - yMax) * k;
+    const Y = (v) => top + h * (1 - (v - yMin) / (yMax - yMin));
+
+    ctx.save();
+    ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(245,197,66,0.10)'; ctx.lineWidth = 1;
+    for (let g = 0; g <= 5; g++) { const y = top + h * g / 5; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+    for (let i = 0; i < count; i++) {
+      const c = candles[i], x = left + i * cw + shift, up = c.close >= c.open;
+      ctx.globalAlpha = alpha * ((i === full && frac > 0) ? frac : 1);
+      const col = up ? '#F5C542' : '#8a6a2a';
+      ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1.5;
+      ctx.shadowColor = 'rgba(245,197,66,.7)'; ctx.shadowBlur = up ? 12 : 0;
+      ctx.beginPath(); ctx.moveTo(x, Y(c.high)); ctx.lineTo(x, Y(c.low)); ctx.stroke();
+      const y1 = Y(Math.max(c.open, c.close)), y2 = Y(Math.min(c.open, c.close));
+      ctx.fillRect(x - cw * 0.28, y1, cw * 0.56, Math.max(2, y2 - y1));
+    }
+
+    ctx.globalAlpha = Math.min(1, alpha * 1.4);
+    ctx.beginPath();
+    let lastX = 0, lastY = 0;
+    for (let i = 0; i < count; i++) {
+      lastX = left + i * cw + shift; lastY = Y(candles[i].close);
+      if (i) ctx.lineTo(lastX, lastY); else ctx.moveTo(lastX, lastY);
+    }
+    ctx.strokeStyle = '#FFE08A'; ctx.lineWidth = 2; ctx.shadowColor = 'rgba(245,197,66,.9)'; ctx.shadowBlur = 16; ctx.stroke();
+    ctx.shadowBlur = 0;
+    ctx.lineTo(lastX, top + h); ctx.lineTo(left + shift, top + h); ctx.closePath();
+    const gr = ctx.createLinearGradient(0, top, 0, top + h);
+    gr.addColorStop(0, 'rgba(245,197,66,.22)'); gr.addColorStop(1, 'rgba(245,197,66,0)');
+    ctx.fillStyle = gr; ctx.fill();
+
+    ctx.globalAlpha = Math.min(1, alpha * 1.6); ctx.shadowColor = '#F5C542'; ctx.shadowBlur = 20; ctx.fillStyle = '#fff3c4';
+    ctx.beginPath(); ctx.arc(lastX, lastY, 4 + 2 * Math.sin(t * 5), 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  /* ---------- smoke ---------- */
+  const smokeSprite = document.createElement('canvas');
+  smokeSprite.width = smokeSprite.height = 256;
+  {
+    const g = smokeSprite.getContext('2d');
+    const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+    gr.addColorStop(0, 'rgba(200,170,110,0.55)'); gr.addColorStop(0.5, 'rgba(120,100,70,0.22)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+  }
+  let smoke = [];
+  function seedSmoke() {
+    smoke = Array.from({ length: 34 }, () => ({
+      x: rand(-0.1, 1.1), y: rand(0.45, 1.15), r: rand(0.18, 0.42),
+      vx: rand(-0.012, 0.012), vy: rand(-0.03, -0.008), a: rand(0.5, 1), ph: rand(0, 6.28)
+    }));
+  }
+  function drawSmoke(t, dt) {
+    const amt = easeOut(seg(t, 1.2, 3.6)) * (1 - 0.65 * easeInOut(seg(t, 8, 11)));
+    if (amt <= 0.001) return;
+    ctx.save();
+    for (const p of smoke) {
+      p.x += p.vx * dt; p.y += p.vy * dt; p.ph += dt * 0.4;
+      if (p.y < 0.15) { p.y = 1.15; p.x = rand(-0.1, 1.1); }
+      ctx.globalAlpha = amt * 0.5 * p.a * clamp((p.y - 0.15) / 0.3);
+      const s = p.r * W * 2 * (1 + 0.08 * Math.sin(p.ph));
+      ctx.drawImage(smokeSprite, p.x * W - s / 2 + Math.sin(p.ph) * 10, p.y * H - s / 2, s, s);
+    }
+    ctx.restore();
+  }
+
+  /* ---------- sparks ---------- */
+  let sparks = [], streamAcc = 0, chartAcc = 0, ambAcc = 0, burst = false;
+  function emit(x, y, n, sMin, sMax, aMin, aMax) {
+    for (let i = 0; i < n && sparks.length < 900; i++) {
+      const a = rand(aMin, aMax), s = rand(sMin, sMax);
+      sparks.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 0, max: rand(0.7, 1.8), size: rand(1, 2.6), g: rand(170, 225) });
+    }
+  }
+  function emitters(t, dt, live) {
+    if (t >= 3.0 && t < 6.8) { streamAcc += dt * 95; while (streamAcc >= 1) { streamAcc--; emit(W * rand(0.3, 0.7), H * rand(0.5, 0.8), 1, 120, 520, -Math.PI * 0.95, -Math.PI * 0.05); } }
+    if (t >= 4.2 && t < 6.4) { chartAcc += dt * 70; while (chartAcc >= 1) { chartAcc--; emit(W * rand(0.7, 0.95), H * rand(0.45, 0.65), 1, 200, 650, -1.3, -0.35); } }
+    if (!burst && t >= 10 && t < 10.6) { burst = true; emit(W / 2, H * 0.4, 260, 150, 950, 0, Math.PI * 2); }
+    if (live) { ambAcc += dt * 8; while (ambAcc >= 1) { ambAcc--; emit(W * rand(), H * rand(0.6, 1), 1, 15, 70, -Math.PI * 0.8, -Math.PI * 0.2); } }
+  }
+  function drawSparks(dt) {
+    sctx.clearRect(0, 0, W, H);
+    sctx.globalCompositeOperation = 'lighter'; sctx.lineCap = 'round';
+    const drag = Math.pow(0.35, dt);
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i]; s.life += dt;
+      if (s.life >= s.max) { sparks.splice(i, 1); continue; }
+      s.vx *= drag; s.vy = s.vy * drag + 90 * dt; s.x += s.vx * dt; s.y += s.vy * dt;
+      const a = Math.pow(1 - s.life / s.max, 2);
+      sctx.strokeStyle = `rgba(255,${s.g | 0},90,${a})`; sctx.lineWidth = s.size;
+      sctx.beginPath(); sctx.moveTo(s.x - s.vx * 0.04, s.y - s.vy * 0.04); sctx.lineTo(s.x, s.y); sctx.stroke();
+      sctx.fillStyle = `rgba(255,220,130,${a * 0.35})`; sctx.beginPath(); sctx.arc(s.x, s.y, s.size * 1.4, 0, Math.PI * 2); sctx.fill();
+    }
+    sctx.globalCompositeOperation = 'source-over';
+  }
+
+  /* ---------- holographic panels (CSS 3D) ---------- */
+  const PAIRS = [['BTC/USD', 67420.5], ['ETH/USD', 3510.2], ['XAU/USD', 2384.7], ['EUR/USD', 1.0842],
+                 ['NAS100', 18420.3], ['US30', 39110.8], ['GBP/USD', 1.2731], ['SOL/USD', 172.44]];
+  const panels = [], ticks = [];
+  const fmt = (v) => (v < 10 ? v.toFixed(4) : v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+  const fmtPct = (v) => (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+  function sparkline() {
+    let v = 20; const pts = [];
+    for (let i = 0; i < 18; i++) { v = clamp(v + rand(-4, 5), 4, 36); pts.push(`${(i * 120 / 17).toFixed(1)},${(40 - v).toFixed(1)}`); }
+    return `<svg viewBox="0 0 120 40" preserveAspectRatio="none"><polyline points="${pts.join(' ')}"/></svg>`;
+  }
+  function paintTick(tk) { tk.px.textContent = fmt(tk.price); tk.chg.textContent = fmtPct(tk.pct); tk.chg.className = 'chg ' + (tk.pct >= 0 ? 'up' : 'down'); }
+  function buildPanels() {
+    holo.innerHTML = ''; panels.length = 0; ticks.length = 0;
+    const count = W < 700 ? 9 : 14;
+    for (let i = 0; i < count; i++) {
+      const z = rand(-1500, -300), fs = 800 / (800 - (z + 1000));
+      let sx, sy;
+      do { sx = rand(-0.48, 0.48) * W; sy = rand(-0.42, 0.42) * H; } while (Math.abs(sx) < W * 0.2 && Math.abs(sy) < H * 0.2);
+      const [sym, base] = PAIRS[i % PAIRS.length], isChart = i % 2 === 0;
+      const el = document.createElement('div');
+      el.className = 'holo-panel';
+      el.style.transform = `translate3d(${(sx / fs).toFixed(1)}px, ${(sy / fs).toFixed(1)}px, ${z.toFixed(1)}px) translate(-50%, -50%)`;
+      const card = document.createElement('div');
+      card.className = 'holo-card ' + (isChart ? 'chart' : 'tick');
+      card.style.animationDelay = (-rand(0, 5)).toFixed(2) + 's';
+      card.innerHTML = isChart
+        ? `<div class="row"><span class="sym">${sym}</span><span class="chg"></span></div>${sparkline()}<div class="px"></div>`
+        : `<span class="sym">${sym}</span><span class="px"></span><span class="chg"></span>`;
+      el.appendChild(card); holo.appendChild(el);
+      const tk = { px: card.querySelector('.px'), chg: card.querySelector('.chg'), price: base * rand(0.99, 1.01), pct: rand(-1.2, 3.4) };
+      ticks.push(tk); paintTick(tk); panels.push({ el, z });
+    }
+  }
+  setInterval(() => ticks.forEach((tk) => { tk.price *= 1 + rand(-0.0012, 0.0016); tk.pct += rand(-0.15, 0.2); paintTick(tk); }), 1200);
+
+  /* ---------- shared animation state (tweened by GSAP) ---------- */
+  const S = { cam: 0, reveal: 0, dim: 1 };
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0, amt: 0 };
+  window.addEventListener('pointermove', (e) => {
+    mouse.tx = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouse.ty = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  /* ---------- initial states ---------- */
+  gsap.set(bull, { xPercent: -50 });
+  gsap.set(logoWrap, { xPercent: -50, yPercent: -50 });
+  gsap.set(content, { xPercent: -50 });
+
+  /* ---------- the master GSAP timeline ---------- */
+  const tl = gsap.timeline({ paused: true, onComplete: goLive });
+
+  // cinematic letterbox opens
+  tl.fromTo('.bar', { scaleY: 1 }, { scaleY: 0, duration: 1.5, ease: 'expo.inOut' }, 0.2);
+
+  // bull + titan rises through the smoke, then recedes behind the logo
+  tl.fromTo(bull, { opacity: 0, yPercent: 24, scale: 0.94 }, { opacity: 1, yPercent: 0, scale: 1, duration: 3.6, ease: 'power3.out' }, 1.8);
+  tl.to(bull, { opacity: 0.15, scale: 1.12, duration: 2.4, ease: 'power2.inOut' }, 7.6);
+
+  // camera push on the whole scene
+  tl.to(stage, { scale: 1.12, duration: 5.5, ease: 'power2.inOut' }, 5.5);
+
+  // holographic panels: reveal, fly-through, dim
+  tl.fromTo(S, { reveal: 0 }, { reveal: 1, duration: 3, ease: 'none' }, 5.4);
+  tl.fromTo(S, { cam: 0 }, { cam: 1000, duration: 4.7, ease: 'power2.inOut' }, 5.5);
+  tl.fromTo(S, { dim: 1 }, { dim: 0.3, duration: 1, ease: 'power2.inOut' }, 9.6);
+
+  // 10.0 IMPACT: flash + shake + logo lands + shine sweep
+  tl.fromTo(flash, { opacity: 0 }, { opacity: 0.65, duration: 0.06, ease: 'none' }, 10);
+  tl.to(flash, { opacity: 0, duration: 0.7, ease: 'power2.out' }, 10.06);
+  tl.to(stage, { x: 'random(-10,10)', y: 'random(-8,8)', duration: 0.05, repeat: 7, yoyo: true, repeatRefresh: true, ease: 'none' }, 10);
+  tl.to(stage, { x: 0, y: 0, duration: 0.12, ease: 'power2.out' }, 10.42);
+  tl.fromTo(logoWrap, { opacity: 0, scale: 1.5, filter: 'blur(14px)' },
+            { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.95, ease: 'back.out(1.8)' }, 10);
+  tl.fromTo(shine, { backgroundPosition: '180% 0' }, { backgroundPosition: '-80% 0', duration: 1.2, ease: 'power2.inOut' }, 10.55);
+
+  // headline letters, sub text, button
+  tl.set(content, { opacity: 1 }, 10.85);
+  tl.from(chars, { opacity: 0, y: 40, rotationX: -80, transformOrigin: '50% 100%', filter: 'blur(8px)', duration: 0.8, stagger: 0.022, ease: 'power3.out' }, 10.9);
+  tl.from(sub, { opacity: 0, y: 20, duration: 0.8, ease: 'power2.out' }, 11.4);
+  tl.from(cta, { opacity: 0, scale: 0.8, y: 20, duration: 0.7, ease: 'back.out(2)' }, 11.65);
+  tl.set({}, {}, DURATION);   // pad the timeline to exactly 12s
+
+  /* ---------- live mode (after the intro) ---------- */
+  let ctaGlow = null;
+  function goLive() {
+    btn.textContent = '↻ Replay';
+    content.style.pointerEvents = 'auto';
+    if (reduce) return;
+    gsap.to(mouse, { amt: 1, duration: 2, ease: 'power2.out' });
+    ctaGlow = gsap.to(cta, { boxShadow: '0 0 54px rgba(245,197,66,.8)', duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  }
+  function leaveLive() {
+    if (ctaGlow) { ctaGlow.kill(); ctaGlow = null; gsap.set(cta, { clearProps: 'boxShadow' }); }
+    gsap.killTweensOf(mouse); mouse.amt = 0;
+    content.style.pointerEvents = 'none';
+    btn.textContent = 'Skip intro';
+  }
+
+  // magnetic button
+  cta.addEventListener('pointermove', (e) => {
+    const r = cta.getBoundingClientRect();
+    gsap.to(cta, { x: (e.clientX - (r.left + r.width / 2)) * 0.28, y: (e.clientY - (r.top + r.height / 2)) * 0.4, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+  });
+  cta.addEventListener('pointerleave', () => gsap.to(cta, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1,0.4)', overwrite: 'auto' }));
+
+  /* ---------- controls ---------- */
+  function restart() {
+    leaveLive();
+    burst = false; sparks.length = 0; streamAcc = chartAcc = ambAcc = 0;
+    seedCandles(); seedSmoke();
+    tl.restart();
+  }
+  btn.addEventListener('click', () => { if (tl.progress() < 1) tl.progress(1, false); else restart(); });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { resize(); buildPanels(); }, 150); });
+
+  /* ---------- render loop ---------- */
+  gsap.ticker.add((_, deltaTime) => {
+    const dt = Math.min(0.05, (deltaTime || 16) / 1000);
+    const t = tl.time();
+    const live = tl.progress() >= 1 && !reduce;
+
+    if (live) {
+      pushAcc += dt;
+      if (pushAcc >= 0.9) { pushAcc -= 0.9; candles.push(makeCandle(candles[candles.length - 1], false)); candles.shift(); shift = cwOf(); }
+      shift = Math.max(0, shift - cwOf() * dt / 0.45);
+    }
+
+    ctx.clearRect(0, 0, W, H);
+    drawChart(t, dt, tl.progress() >= 1);
+    drawSmoke(t, dt);
+    emitters(t, dt, live);
+    drawSparks(dt);
+
+    // smooth mouse
+    const k = 1 - Math.exp(-dt * 3);
+    mouse.x += (mouse.tx - mouse.x) * k; mouse.y += (mouse.ty - mouse.y) * k;
+
+    // holographic camera + panel fades
+    gsap.set(holo, {
+      z: S.cam,
+      rotationY: Math.sin(t * 0.35) * 2.5 + mouse.x * 4 * mouse.amt,
+      rotationX: Math.cos(t * 0.27) * 1.5 - mouse.y * 3 * mouse.amt
+    });
+    const n = panels.length;
+    for (let i = 0; i < n; i++) {
+      const p = panels[i];
+      const appear = easeOut(clamp((S.reveal - (i / n) * 0.6) / 0.4));
+      const zFade = 1 - seg(p.z + S.cam, 80, 420);
+      p.el.style.opacity = (appear * zFade * S.dim).toFixed(3);
+    }
+
+    // mouse parallax (after the intro)
+    gsap.set(bull, { x: -mouse.x * 16 * mouse.amt, y: -mouse.y * 10 * mouse.amt });
+    gsap.set(logoWrap, { x: mouse.x * 8 * mouse.amt, y: mouse.y * 6 * mouse.amt });
+  });
+
+  /* ---------- go ---------- */
+  resize(); seedCandles(); seedSmoke(); buildPanels();
+  if (reduce) { burst = true; tl.progress(1, false); }
+  else tl.play(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "Bullish Titan Academy",
+  "description": "Institutional-grade Forex and Synthetic Indices trading education, mentorship, market signals, and capital allocation academy.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
