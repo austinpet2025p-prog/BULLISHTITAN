@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { motion } from 'motion/react';
+import { animate, motion, useMotionValue } from 'motion/react';
 import { ArrowRight, FastForward, RotateCcw } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -181,6 +181,293 @@ function generateHoloPanels(width: number, height: number): HoloPanelSpec[] {
   return result;
 }
 
+interface HoloPanelCardProps {
+  panel: HoloPanelSpec;
+  idx: number;
+  reducedMotion: boolean;
+  panelDomRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+  pxDomRefs: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+  chgDomRefs: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+  polyDomRefs: React.MutableRefObject<(SVGPolylineElement | null)[]>;
+  hitPolyDomRefs: React.MutableRefObject<(SVGPolylineElement | null)[]>;
+  guideDomRefs: React.MutableRefObject<(SVGLineElement | null)[]>;
+  intervalBandDomRefs: React.MutableRefObject<(SVGRectElement | null)[]>;
+  intervalTagDomRefs: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+  dotDomRefs: React.MutableRefObject<(SVGCircleElement | null)[]>;
+  hoverIdxRefs: React.MutableRefObject<number[]>;
+  chartPulseTriggersRef: React.MutableRefObject<Array<(() => void) | undefined>>;
+  onShowTooltip: (payload: HoloHoverPayload) => void;
+  onHideTooltip: () => void;
+}
+
+const HoloPanelCard: React.FC<HoloPanelCardProps> = ({
+  panel,
+  idx,
+  reducedMotion,
+  panelDomRefs,
+  pxDomRefs,
+  chgDomRefs,
+  polyDomRefs,
+  hitPolyDomRefs,
+  guideDomRefs,
+  intervalBandDomRefs,
+  intervalTagDomRefs,
+  dotDomRefs,
+  hoverIdxRefs,
+  chartPulseTriggersRef,
+  onShowTooltip,
+  onHideTooltip,
+}) => {
+  const pulseScale = useMotionValue(1);
+
+  useEffect(() => {
+    if (!panel.isChart || reducedMotion) {
+      chartPulseTriggersRef.current[idx] = undefined;
+      pulseScale.set(1);
+      return;
+    }
+
+    let delayTimer: number | undefined;
+    const triggerPulse = () => {
+      window.clearTimeout(delayTimer);
+      delayTimer = window.setTimeout(() => {
+        const isHovered = hoverIdxRefs.current[idx] >= 0;
+        const peakScale = isHovered ? 1.022 : 1.042;
+        animate(pulseScale, [1, peakScale, 1], {
+          duration: 0.46,
+          times: [0, 0.34, 1],
+          ease: [0.22, 1, 0.36, 1],
+        });
+      }, (idx % 5) * 65);
+    };
+
+    chartPulseTriggersRef.current[idx] = triggerPulse;
+    return () => {
+      window.clearTimeout(delayTimer);
+      chartPulseTriggersRef.current[idx] = undefined;
+    };
+  }, [idx, panel.isChart, reducedMotion, pulseScale, hoverIdxRefs, chartPulseTriggersRef]);
+
+  return (
+    <div
+      ref={(el) => {
+        panelDomRefs.current[idx] = el;
+      }}
+      className="bt-holo-panel"
+      style={{ transform: panel.transform }}
+    >
+      <motion.div
+        animate={
+          reducedMotion
+            ? undefined
+            : {
+                y: [
+                  -panel.floatAmplitude,
+                  panel.floatAmplitude,
+                  -panel.floatAmplitude,
+                ],
+              }
+        }
+        transition={
+          reducedMotion
+            ? undefined
+            : {
+                duration: panel.floatDuration,
+                delay: panel.floatDelay,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }
+        }
+        style={panel.isChart && !reducedMotion ? { scale: pulseScale } : undefined}
+        className={`bt-holo-card ${panel.isChart ? 'bt-chart' : 'bt-tick'}`}
+      >
+        {panel.isChart ? (
+          <>
+            <div className="bt-row">
+              <span className="bt-sym">{panel.sym}</span>
+              <span
+                ref={(el) => {
+                  chgDomRefs.current[idx] = el;
+                }}
+                className={`bt-chg ${panel.initialPct >= 0 ? 'bt-up' : 'bt-down'}`}
+              >
+                {formatPct(panel.initialPct)}
+              </span>
+            </div>
+            <div className="bt-chart-stage">
+              <span
+                ref={(el) => {
+                  intervalTagDomRefs.current[idx] = el;
+                }}
+                className="bt-interval-tag"
+              />
+              <svg
+                viewBox="0 0 120 40"
+                preserveAspectRatio="none"
+                onPointerMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  if (rect.width <= 0) return;
+                  const ratio = clamp((e.clientX - rect.left) / rect.width, 0, 1);
+                  const mouseSvgX = ratio * 120;
+                  const count = panel.points.length;
+                  const ptIdx = Math.round(ratio * (count - 1));
+                  hoverIdxRefs.current[idx] = ptIdx;
+                  const pt = panel.points[ptIdx];
+
+                  // Highlight active data point's time-interval column along the x-axis
+                  const stepW = count > 1 ? 120 / (count - 1) : 120;
+                  const bandStart = clamp(pt.x - stepW * 0.5, 0, 120);
+                  const bandEnd = clamp(pt.x + stepW * 0.5, 0, 120);
+                  const bandEl = intervalBandDomRefs.current[idx];
+                  if (bandEl) {
+                    bandEl.setAttribute('x', bandStart.toFixed(2));
+                    bandEl.setAttribute(
+                      'width',
+                      Math.max(2, bandEnd - bandStart).toFixed(2)
+                    );
+                    bandEl.setAttribute('opacity', '1');
+                  }
+
+                  // Vertical crosshair line smoothly tracks cursor X within the SVG
+                  const guideEl = guideDomRefs.current[idx];
+                  if (guideEl) {
+                    guideEl.setAttribute('x1', mouseSvgX.toFixed(2));
+                    guideEl.setAttribute('x2', mouseSvgX.toFixed(2));
+                    guideEl.setAttribute('opacity', '1');
+                  }
+
+                  // Snap active vertex indicator to the highlighted interval's data point
+                  const dotEl = dotDomRefs.current[idx];
+                  if (dotEl) {
+                    dotEl.setAttribute('cx', pt.x.toFixed(1));
+                    dotEl.setAttribute('cy', pt.y.toFixed(1));
+                    dotEl.setAttribute('opacity', '1');
+                  }
+
+                  // Track time-interval badge along the top edge without SVG text stretching
+                  const tagEl = intervalTagDomRefs.current[idx];
+                  if (tagEl) {
+                    const pctLeft = clamp(ratio * 100, 16, 84);
+                    tagEl.textContent = pt.timeLabel;
+                    tagEl.style.left = `${pctLeft.toFixed(1)}%`;
+                    tagEl.style.transform = 'translateX(-50%)';
+                    tagEl.style.opacity = '1';
+                  }
+
+                  onShowTooltip({
+                    symbol: panel.sym,
+                    point: pt,
+                    clientX: e.clientX,
+                    clientY: e.clientY,
+                  });
+                }}
+                onPointerLeave={() => {
+                  hoverIdxRefs.current[idx] = -1;
+                  intervalBandDomRefs.current[idx]?.setAttribute('opacity', '0');
+                  guideDomRefs.current[idx]?.setAttribute('opacity', '0');
+                  dotDomRefs.current[idx]?.setAttribute('opacity', '0');
+                  const tagEl = intervalTagDomRefs.current[idx];
+                  if (tagEl) tagEl.style.opacity = '0';
+                  onHideTooltip();
+                }}
+              >
+                <defs>
+                  <linearGradient
+                    id={`bt-holo-interval-grad-${panel.id}`}
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop offset="0%" stopColor="rgba(240, 213, 138, 0.24)" />
+                    <stop offset="60%" stopColor="rgba(52, 211, 153, 0.16)" />
+                    <stop offset="100%" stopColor="rgba(52, 211, 153, 0.04)" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  ref={(el) => {
+                    intervalBandDomRefs.current[idx] = el;
+                  }}
+                  className="bt-holo-interval-band"
+                  style={{ fill: `url(#bt-holo-interval-grad-${panel.id})` }}
+                  x="0"
+                  y="0"
+                  width="8"
+                  height="40"
+                  rx="1"
+                  opacity="0"
+                />
+                <line
+                  ref={(el) => {
+                    guideDomRefs.current[idx] = el;
+                  }}
+                  className="bt-holo-crosshair"
+                  y1="0"
+                  y2="40"
+                  opacity="0"
+                />
+                <polyline
+                  ref={(el) => {
+                    polyDomRefs.current[idx] = el;
+                  }}
+                  className="bt-holo-line"
+                  points={panel.pointsAttr}
+                />
+                <polyline
+                  ref={(el) => {
+                    hitPolyDomRefs.current[idx] = el;
+                  }}
+                  className="bt-holo-hit"
+                  points={panel.pointsAttr}
+                />
+                <circle
+                  ref={(el) => {
+                    dotDomRefs.current[idx] = el;
+                  }}
+                  r="2.8"
+                  fill="#34D399"
+                  stroke="#F0D58A"
+                  strokeWidth="1.2"
+                  opacity="0"
+                  style={{ pointerEvents: 'none' }}
+                />
+              </svg>
+            </div>
+            <span
+              ref={(el) => {
+                pxDomRefs.current[idx] = el;
+              }}
+              className="bt-px"
+            >
+              {formatPrice(panel.initialPrice)}
+            </span>
+          </>
+        ) : (
+          <>
+            <span className="bt-sym">{panel.sym}</span>
+            <span
+              ref={(el) => {
+                pxDomRefs.current[idx] = el;
+              }}
+              className="bt-px"
+            >
+              {formatPrice(panel.initialPrice)}
+            </span>
+            <span
+              ref={(el) => {
+                chgDomRefs.current[idx] = el;
+              }}
+              className={`bt-chg ${panel.initialPct >= 0 ? 'bt-up' : 'bt-down'}`}
+            >
+              {formatPct(panel.initialPct)}
+            </span>
+          </>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
 export const HeroSection: React.FC = () => {
   const reducedMotion = useReducedMotion();
 
@@ -228,12 +515,13 @@ export const HeroSection: React.FC = () => {
   const intervalTagDomRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const dotDomRefs = useRef<(SVGCircleElement | null)[]>([]);
   const hoverIdxRefs = useRef<number[]>([]);
+  const chartPulseTriggersRef = useRef<Array<(() => void) | undefined>>([]);
   const livePricesRef = useRef<{ price: number; pct: number }[]>([]);
 
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const restartFnRef = useRef<(() => void) | null>(null);
 
-  const showHoloTooltip = ({ symbol, point, clientX, clientY }: HoloHoverPayload) => {
+  const showHoloTooltip = useCallback(({ symbol, point, clientX, clientY }: HoloHoverPayload) => {
     const tip = holoTooltipRef.current;
     const hero = heroRef.current;
     if (!tip || !hero) return;
@@ -260,13 +548,13 @@ export const HeroSection: React.FC = () => {
     const relY = Math.max(76, clientY - heroRect.top - 14);
     tip.style.transform = `translate3d(${relX.toFixed(1)}px, ${relY.toFixed(1)}px, 0) translate(-50%, -100%)`;
     tip.style.opacity = '1';
-  };
+  }, []);
 
-  const hideHoloTooltip = () => {
+  const hideHoloTooltip = useCallback(() => {
     const tip = holoTooltipRef.current;
     if (!tip) return;
     tip.style.opacity = '0';
-  };
+  }, []);
 
   // Resolve transparent crest URL asynchronously without ever flashing the raw white sheet
   useEffect(() => {
@@ -726,6 +1014,7 @@ export const HeroSection: React.FC = () => {
         }
 
         if (panel.isChart && panel.points.length > 0) {
+          const prevPtsAttr = polyDomRefs.current[idx]?.getAttribute('points') ?? panel.pointsAttr;
           const last = panel.points[panel.points.length - 1];
           last.price = state.price;
           last.pctDelta = ((state.price - panel.points[0].price) / panel.points[0].price) * 100;
@@ -740,6 +1029,9 @@ export const HeroSection: React.FC = () => {
               dotEl.setAttribute('cx', activePt.x.toFixed(1));
               dotEl.setAttribute('cy', activePt.y.toFixed(1));
             }
+          }
+          if (ptsAttr !== prevPtsAttr) {
+            chartPulseTriggersRef.current[idx]?.();
           }
         }
       });
@@ -1200,222 +1492,25 @@ export const HeroSection: React.FC = () => {
         <div className="bt-holo-layer">
           <div ref={holoWorldRef} className="bt-holo-world">
             {holoPanels.map((panel, idx) => (
-              <div
+              <HoloPanelCard
                 key={panel.id}
-                ref={(el) => {
-                  panelDomRefs.current[idx] = el;
-                }}
-                className="bt-holo-panel"
-                style={{ transform: panel.transform }}
-              >
-                <motion.div
-                  animate={
-                    reducedMotion
-                      ? undefined
-                      : {
-                          y: [
-                            -panel.floatAmplitude,
-                            panel.floatAmplitude,
-                            -panel.floatAmplitude,
-                          ],
-                        }
-                  }
-                  transition={
-                    reducedMotion
-                      ? undefined
-                      : {
-                          duration: panel.floatDuration,
-                          delay: panel.floatDelay,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }
-                  }
-                  className={`bt-holo-card ${panel.isChart ? 'bt-chart' : 'bt-tick'}`}
-                >
-                  {panel.isChart ? (
-                    <>
-                      <div className="bt-row">
-                        <span className="bt-sym">{panel.sym}</span>
-                        <span
-                          ref={(el) => {
-                            chgDomRefs.current[idx] = el;
-                          }}
-                          className={`bt-chg ${panel.initialPct >= 0 ? 'bt-up' : 'bt-down'}`}
-                        >
-                          {formatPct(panel.initialPct)}
-                        </span>
-                      </div>
-                      <div className="bt-chart-stage">
-                        <span
-                          ref={(el) => {
-                            intervalTagDomRefs.current[idx] = el;
-                          }}
-                          className="bt-interval-tag"
-                        />
-                        <svg
-                          viewBox="0 0 120 40"
-                          preserveAspectRatio="none"
-                          onPointerMove={(e) => {
-                            const rect = e.currentTarget.getBoundingClientRect();
-                            if (rect.width <= 0) return;
-                            const ratio = clamp((e.clientX - rect.left) / rect.width, 0, 1);
-                            const mouseSvgX = ratio * 120;
-                            const count = panel.points.length;
-                            const ptIdx = Math.round(ratio * (count - 1));
-                            hoverIdxRefs.current[idx] = ptIdx;
-                            const pt = panel.points[ptIdx];
-
-                            // Highlight active data point's time-interval column along the x-axis
-                            const stepW = count > 1 ? 120 / (count - 1) : 120;
-                            const bandStart = clamp(pt.x - stepW * 0.5, 0, 120);
-                            const bandEnd = clamp(pt.x + stepW * 0.5, 0, 120);
-                            const bandEl = intervalBandDomRefs.current[idx];
-                            if (bandEl) {
-                              bandEl.setAttribute('x', bandStart.toFixed(2));
-                              bandEl.setAttribute(
-                                'width',
-                                Math.max(2, bandEnd - bandStart).toFixed(2)
-                              );
-                              bandEl.setAttribute('opacity', '1');
-                            }
-
-                            // Vertical crosshair line smoothly tracks cursor X within the SVG
-                            const guideEl = guideDomRefs.current[idx];
-                            if (guideEl) {
-                              guideEl.setAttribute('x1', mouseSvgX.toFixed(2));
-                              guideEl.setAttribute('x2', mouseSvgX.toFixed(2));
-                              guideEl.setAttribute('opacity', '1');
-                            }
-
-                            // Snap active vertex indicator to the highlighted interval's data point
-                            const dotEl = dotDomRefs.current[idx];
-                            if (dotEl) {
-                              dotEl.setAttribute('cx', pt.x.toFixed(1));
-                              dotEl.setAttribute('cy', pt.y.toFixed(1));
-                              dotEl.setAttribute('opacity', '1');
-                            }
-
-                            // Track time-interval badge along the top edge without SVG text stretching
-                            const tagEl = intervalTagDomRefs.current[idx];
-                            if (tagEl) {
-                              const pctLeft = clamp(ratio * 100, 16, 84);
-                              tagEl.textContent = pt.timeLabel;
-                              tagEl.style.left = `${pctLeft.toFixed(1)}%`;
-                              tagEl.style.transform = 'translateX(-50%)';
-                              tagEl.style.opacity = '1';
-                            }
-
-                            showHoloTooltip({
-                              symbol: panel.sym,
-                              point: pt,
-                              clientX: e.clientX,
-                              clientY: e.clientY,
-                            });
-                          }}
-                          onPointerLeave={() => {
-                            hoverIdxRefs.current[idx] = -1;
-                            intervalBandDomRefs.current[idx]?.setAttribute('opacity', '0');
-                            guideDomRefs.current[idx]?.setAttribute('opacity', '0');
-                            dotDomRefs.current[idx]?.setAttribute('opacity', '0');
-                            const tagEl = intervalTagDomRefs.current[idx];
-                            if (tagEl) tagEl.style.opacity = '0';
-                            hideHoloTooltip();
-                          }}
-                        >
-                          <defs>
-                            <linearGradient
-                              id={`bt-holo-interval-grad-${panel.id}`}
-                              x1="0"
-                              y1="0"
-                              x2="0"
-                              y2="1"
-                            >
-                              <stop offset="0%" stopColor="rgba(240, 213, 138, 0.24)" />
-                              <stop offset="60%" stopColor="rgba(52, 211, 153, 0.16)" />
-                              <stop offset="100%" stopColor="rgba(52, 211, 153, 0.04)" />
-                            </linearGradient>
-                          </defs>
-                          <rect
-                            ref={(el) => {
-                              intervalBandDomRefs.current[idx] = el;
-                            }}
-                            className="bt-holo-interval-band"
-                            style={{ fill: `url(#bt-holo-interval-grad-${panel.id})` }}
-                            x="0"
-                            y="0"
-                            width="8"
-                            height="40"
-                            rx="1"
-                            opacity="0"
-                          />
-                          <line
-                            ref={(el) => {
-                              guideDomRefs.current[idx] = el;
-                            }}
-                            className="bt-holo-crosshair"
-                            y1="0"
-                            y2="40"
-                            opacity="0"
-                          />
-                          <polyline
-                            ref={(el) => {
-                              polyDomRefs.current[idx] = el;
-                            }}
-                            className="bt-holo-line"
-                            points={panel.pointsAttr}
-                          />
-                          <polyline
-                            ref={(el) => {
-                              hitPolyDomRefs.current[idx] = el;
-                            }}
-                            className="bt-holo-hit"
-                            points={panel.pointsAttr}
-                          />
-                          <circle
-                            ref={(el) => {
-                              dotDomRefs.current[idx] = el;
-                            }}
-                            r="2.8"
-                            fill="#34D399"
-                            stroke="#F0D58A"
-                            strokeWidth="1.2"
-                            opacity="0"
-                            style={{ pointerEvents: 'none' }}
-                          />
-                        </svg>
-                      </div>
-                      <span
-                        ref={(el) => {
-                          pxDomRefs.current[idx] = el;
-                        }}
-                        className="bt-px"
-                      >
-                        {formatPrice(panel.initialPrice)}
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="bt-sym">{panel.sym}</span>
-                      <span
-                        ref={(el) => {
-                          pxDomRefs.current[idx] = el;
-                        }}
-                        className="bt-px"
-                      >
-                        {formatPrice(panel.initialPrice)}
-                      </span>
-                      <span
-                        ref={(el) => {
-                          chgDomRefs.current[idx] = el;
-                        }}
-                        className={`bt-chg ${panel.initialPct >= 0 ? 'bt-up' : 'bt-down'}`}
-                      >
-                        {formatPct(panel.initialPct)}
-                      </span>
-                    </>
-                  )}
-                </motion.div>
-              </div>
+                panel={panel}
+                idx={idx}
+                reducedMotion={reducedMotion}
+                panelDomRefs={panelDomRefs}
+                pxDomRefs={pxDomRefs}
+                chgDomRefs={chgDomRefs}
+                polyDomRefs={polyDomRefs}
+                hitPolyDomRefs={hitPolyDomRefs}
+                guideDomRefs={guideDomRefs}
+                intervalBandDomRefs={intervalBandDomRefs}
+                intervalTagDomRefs={intervalTagDomRefs}
+                dotDomRefs={dotDomRefs}
+                hoverIdxRefs={hoverIdxRefs}
+                chartPulseTriggersRef={chartPulseTriggersRef}
+                onShowTooltip={showHoloTooltip}
+                onHideTooltip={hideHoloTooltip}
+              />
             ))}
           </div>
         </div>

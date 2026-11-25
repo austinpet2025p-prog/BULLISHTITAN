@@ -1,4 +1,4 @@
-import elenaRostovaImg from '../assets/images/mentor_elena_rostova_1794780444734.jpg';
+import nigerianStrategistImg from '../assets/images/mentor_nigerian_strategist_1795612622463.jpg';
 import davidOkaforImg from '../assets/images/mentor_david_okafor_1794780446216.jpg';
 import academyDeskImg from '../assets/images/academy_trading_desk_1794780446372.jpg';
 import heroFloorImg from '../assets/images/hero_trading_floor_1794784711615.jpg';
@@ -253,12 +253,12 @@ export const MENTORS: MentorProfile[] = [
   },
   {
     id: 'elena-rostova',
-    name: 'Elena Rostova',
+    name: 'Chinedu Balogun',
     role: 'Lead Strategos · Synthetic Volatility',
     specialty: 'Algorithmic Volatility & Spike Structure',
     experience: '8 Years Market Command',
     markets: 'V75 · V100 · Boom 500 · Crash 1000',
-    image: elenaRostovaImg,
+    image: nigerianStrategistImg,
     bio: 'Quantitative strategist focused on synthetic volatility regimes, Boom/Crash spike mechanics, and systematic drawdown shields.',
     focusAreas: ['Synthetic Price Action', 'Volatility Regimes', 'Backtest Auditing'],
   },
