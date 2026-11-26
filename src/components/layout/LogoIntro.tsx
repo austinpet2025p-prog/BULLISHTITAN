@@ -116,6 +116,7 @@ export const LogoIntro: React.FC = () => {
               <img
                 src="/assets/aistudio/WhatsApp_Image_2026-11-15_at_11.43.04_PM_dff4afd1.jpeg"
                 alt="Bullish Titan Academy crest"
+                referrerPolicy="no-referrer"
                 className="h-full w-full object-contain mix-blend-lighten"
               />
 

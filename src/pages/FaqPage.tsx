@@ -21,15 +21,15 @@ export const FaqPage: React.FC = () => {
     <div className="pt-20 bg-[#000000]">
       <Section
         romanIndex="01"
-        kicker="Doctrine &amp; Knowledge Base"
+        kicker="Help &amp; Guides"
         title="Frequently Asked Questions"
-        subtitle="Filter by division or search any keyword across The Forge, Strategos Mentorship, Vanguard Intelligence, and Capital Mandates."
+        subtitle="Filter by program or search any keyword across Trading Courses, 1-on-1 Coaching, Daily Signals, and Managed Accounts."
       >
         <div className="max-w-4xl">
           <FaqSearchFilter
             items={allFaqs}
             enableGlobalShortcut
-            placeholder="Search doctrine (press / to focus · e.g., risk, vanguard, strategos, custody)..."
+            placeholder="Search any question (press / to type · e.g., risk, signals, coaching, safety)..."
           />
         </div>
       </Section>

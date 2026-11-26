@@ -14,7 +14,7 @@ export const ContactPage: React.FC = () => {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    topic: 'The Forge · Training Division',
+    topic: 'Video Trading Courses',
     message: '',
   });
   const [error, setError] = useState('');
@@ -42,9 +42,9 @@ export const ContactPage: React.FC = () => {
     <div className="pt-20 bg-[#000000]">
       <Section
         romanIndex="01"
-        kicker="Admissions & Support"
-        title="Contact the Bullish Titan Desk"
-        subtitle="Reach out via inquiry form, Telegram, WhatsApp, or visit our flagship Abeokuta branch at Timeline Bazaar, Camp."
+        kicker="Support &amp; Help"
+        title="Contact Bullish Titan Support"
+        subtitle="Send us a quick message, reach us on Telegram or WhatsApp, or visit our flagship Abeokuta branch at Timeline Bazaar, Camp."
       >
         <div className="grid gap-10 lg:grid-cols-12 items-start">
           <div className="lg:col-span-5 space-y-6">
@@ -211,15 +211,15 @@ export const ContactPage: React.FC = () => {
                     onChange={(e) => setForm({ ...form, topic: e.target.value })}
                     className="h-11 w-full rounded-md border border-[#C9A24B]/24 bg-[#000000] px-3.5 text-sm text-[#EDE6D6] focus:border-[#F0D58A] focus:outline-none"
                   >
-                    <option>The Forge · Training Division</option>
-                    <option>Strategos Mentorship</option>
-                    <option>Vanguard Intelligence</option>
-                    <option>Sovereign Mandates</option>
+                    <option>Video Trading Courses</option>
+                    <option>1-on-1 Coaching</option>
+                    <option>Daily Trade Signals</option>
+                    <option>Managed Accounts</option>
                     <option>Abeokuta Branch Walk-In Visit</option>
                     <option>Abuja Branch Inquiry</option>
-                    <option>Telegram Desk Channel</option>
-                    <option>WhatsApp Admissions</option>
-                    <option>General Desk Inquiry</option>
+                    <option>Telegram Support</option>
+                    <option>WhatsApp Support</option>
+                    <option>General Question</option>
                   </select>
                 </div>
 

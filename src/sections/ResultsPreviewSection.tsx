@@ -113,9 +113,9 @@ export const ResultsPreviewSection: React.FC = () => {
     <Section
       id="results"
       romanIndex="04"
-      kicker="Operational Ledger & Proof"
-      title="Risk-Normalized Performance Curve"
-      subtitle="Transparent statistical tracking built around fixed-fractional 1% risk shields across Forex Majors and Synthetic Indices."
+      kicker="Sample Track Record"
+      title="Steady Growth With Small Risks"
+      subtitle="See how risking just 1% per trade protects an account during quiet weeks and helps steady wins add up over time."
     >
       <div ref={stageRef} className="grid gap-10 lg:grid-cols-12 items-start">
         {/* Left: Self-Drawing SVG Equity Curve with Scroll-Zoom Settle */}
@@ -357,16 +357,16 @@ export const ResultsPreviewSection: React.FC = () => {
           <EditorialReveal delay={0.12} className="space-y-4">
             <GoldHairlineDivider />
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-gradient font-semibold pt-2">
-              Verified Doctrine
+              Golden Rule
             </p>
             <h3 className="font-display text-2xl font-bold text-[#EDE6D6]">
-              Discipline Over Speculation
+              Safety First, Patience Always
             </h3>
             <p className="text-sm text-[#9A968C] leading-relaxed">
-              Every position logged across our Forex and Synthetic Indices desk enforces hard stop invalidation and weekly command audit before capital scales.
+              Every trade logged across our Forex and Synthetic Indices classes follows a strict stop-loss rule and weekly check-in before anyone trades bigger sizes.
             </p>
             <Button to="/results" variant="secondary" fullWidth className={cn('min-h-[46px]')}>
-              Inspect Operational Ledger
+              View Full Track Record
               <ArrowRight className="h-4 w-4" />
             </Button>
           </EditorialReveal>

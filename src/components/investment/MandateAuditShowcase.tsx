@@ -82,7 +82,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
           value={filter}
           onChange={handleFilterChange}
           options={[
-            { value: 'all', label: 'All Demo Audits' },
+            { value: 'all', label: 'All Samples' },
             { value: 'Forex & Gold', label: 'Forex & Gold' },
             { value: 'Synthetic Indices', label: 'Synthetic Indices' },
           ]}
@@ -191,7 +191,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
                     onClick={() => setInspectAudit(audit)}
                     className="inline-flex items-center gap-1.5 py-1 text-xs font-semibold text-[#F0D58A] hover:underline whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-[#C9A24B] rounded"
                   >
-                    Inspect Dossier
+                    See Full Story
                     <ArrowRight className="h-3.5 w-3.5" />
                   </button>
                 </div>
@@ -249,7 +249,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
       <Modal
         isOpen={Boolean(inspectAudit)}
         onClose={() => setInspectAudit(null)}
-        title={inspectAudit?.title || 'Managed Mandate Audit'}
+        title={inspectAudit?.title || 'Sample Managed Account'}
         subtitle={
           inspectAudit
             ? `${inspectAudit.phase} · ${inspectAudit.horizon}`
@@ -298,7 +298,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
               </div>
               <div>
                 <span className="block text-[10px] uppercase tracking-wider text-[#9A968C]">
-                  Mandate Rank
+                  Plan
                 </span>
                 <span className="mt-1 block text-base font-bold text-[#F0D58A]">
                   {inspectAudit.phase}
@@ -309,7 +309,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
             <div className="space-y-2.5">
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gold-gradient">
                 <ShieldCheck className="h-4 w-4 text-[#C9A24B]" />
-                <span>Mandate Governance &amp; Stewardship Rules Enforced</span>
+                <span>Safety Rules Followed</span>
               </div>
               <ul className="space-y-2 text-xs sm:text-sm text-[#EDE6D6]/90">
                 {inspectAudit.rulesApplied.map((rule) => (
@@ -324,7 +324,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#C9A24B]/18">
               <div className="flex items-center gap-2 text-xs text-[#9A968C]">
                 <Lock className="h-3.5 w-3.5 text-[#C9A24B]" />
-                <span>Capital remains strictly inside client-owned broker custody.</span>
+                <span>Your money stays safely inside your own broker account.</span>
               </div>
               <Button
                 variant="primary"
@@ -334,7 +334,7 @@ export const MandateAuditShowcase: React.FC<MandateAuditShowcaseProps> = ({
                   onSelectPhaseForKyc(chosen);
                 }}
               >
-                Apply Under {inspectAudit.phase}
+                Apply With {inspectAudit.phase}
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>

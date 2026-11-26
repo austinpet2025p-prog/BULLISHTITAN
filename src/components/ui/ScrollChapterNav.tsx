@@ -9,15 +9,15 @@ interface ChapterLink {
 }
 
 const HOME_CHAPTERS: ChapterLink[] = [
-  { id: 'hero', label: 'Origin' },
-  { id: 'about', label: 'Ethos' },
-  { id: 'spatial-architecture', label: 'Architecture' },
-  { id: 'programs', label: 'Divisions' },
-  { id: 'results', label: 'Ledger' },
-  { id: 'quiz', label: 'Placement' },
-  { id: 'testimonials', label: 'Phalanx' },
-  { id: 'pricing-enrollment', label: 'Ranks' },
-  { id: 'faq', label: 'Doctrine' },
+  { id: 'hero', label: 'Start' },
+  { id: 'about', label: 'About' },
+  { id: 'spatial-architecture', label: 'How It Works' },
+  { id: 'programs', label: 'Programs' },
+  { id: 'results', label: 'Results' },
+  { id: 'quiz', label: 'Quiz' },
+  { id: 'testimonials', label: 'Stories' },
+  { id: 'pricing-enrollment', label: 'Pricing' },
+  { id: 'faq', label: 'FAQ' },
 ];
 
 /**

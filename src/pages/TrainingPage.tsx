@@ -41,61 +41,61 @@ const SKILLS_GRID = [
   {
     roman: 'I',
     icon: TrendingUp,
-    title: 'Price Action Literacy',
-    desc: 'Read impulse versus corrective orderflow without indicator lag.',
+    title: 'Reading Price Charts Clearly',
+    desc: 'See where price is truly moving without cluttered lines or confusing indicators.',
   },
   {
     roman: 'II',
     icon: ShieldCheck,
-    title: 'Risk Management',
-    desc: 'Enforce strict 0.5%–1.0% risk caps and asymmetric invalidation.',
+    title: 'Protecting Your Money First',
+    desc: 'Use simple 0.5% to 1.0% safety limits so one bad trade never hurts your account.',
   },
   {
     roman: 'III',
     icon: Brain,
-    title: 'Trading Psychology',
-    desc: 'Build pre-session checklists that eliminate impulsive FOMO trades.',
+    title: 'Calm Trading Habits',
+    desc: 'Follow an easy pre-trade checklist so you stay patient and never chase trades.',
   },
   {
     roman: 'IV',
     icon: Layers,
-    title: 'Market Structure',
-    desc: 'Align higher-timeframe liquidity pools with intraday execution frames.',
+    title: 'How Markets Move',
+    desc: 'Match big-picture daily trends with smart, clean entries on smaller timeframes.',
   },
   {
     roman: 'V',
     icon: BarChart2,
-    title: 'Repeatable Strategies',
-    desc: 'Deploy documented London & New York killzone breakout models.',
+    title: 'Step-by-Step Setups',
+    desc: 'Learn repeatable London and New York trading hours setups you can practice every week.',
   },
   {
     roman: 'VI',
     icon: FlaskConical,
-    title: 'Systematic Backtesting',
-    desc: 'Validate statistical expectancy across 100-trade historical samples.',
+    title: 'Practicing Before Risking',
+    desc: 'Test your plan across 100 practice trades so you trust your rules before going live.',
   },
 ];
 
 const LEARNING_FORMATS = [
   {
     icon: Video,
-    title: 'HD Video Lessons',
-    desc: 'Concise 15–30 minute chart walkthroughs organized by difficulty.',
+    title: 'Clear HD Video Lessons',
+    desc: 'Short 15 to 30 minute chart walkthroughs organized from beginner to advanced.',
   },
   {
     icon: BookOpen,
     title: 'Live Weekly Classes',
-    desc: 'Interactive Q&A sessions breaking down upcoming FX & Synthetic Indices setups.',
+    desc: 'Friendly Q&A calls breaking down upcoming Forex and Synthetic Indices setups.',
   },
   {
     icon: FileDown,
-    title: 'Downloadable Playbooks',
-    desc: 'PDF execution templates, risk spreadsheets, and Notion trade journals.',
+    title: 'Printable Checklists & Guides',
+    desc: 'Easy PDF trade checklists, safety spreadsheets, and simple trade journals.',
   },
   {
     icon: Award,
     title: 'Completion Certificate',
-    desc: 'Earned upon passing final risk assessment and journal audit.',
+    desc: 'Earned after finishing your safety check and practice trade journal.',
   },
 ];
 
@@ -160,17 +160,17 @@ export const TrainingPage: React.FC = () => {
               <div className="flex items-center gap-3 mb-4">
                 <span className="h-px w-8 bg-gold-gradient" aria-hidden="true" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold text-gold-gradient">
-                  01 · The Forge · Training Division
+                  01 · Video Trading Courses
                 </p>
               </div>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#EDE6D6] leading-[1.06]">
-                Forge Mastery Across Forex &amp; Synthetic Indices With{' '}
+                Learn Forex &amp; Synthetic Indices With{' '}
                 <span className="italic font-semibold text-gold-gradient">
-                  Institutional Discipline
+                  Calm Confidence
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-base text-[#9A968C] leading-relaxed">
-                Three structured ranks engineered to carry you from foundational chart literacy to disciplined multi-asset execution—backed by playbooks, live desk briefings, and quantitative risk math.
+                Three simple course levels built to guide you from your very first chart to calm, steady trading—backed by step-by-step videos, weekly classes, and clear money-safety rules.
               </p>
               <div className="mt-8 flex flex-wrap gap-3.5">
                 <Button variant="primary" size="lg" onClick={() => setPreviewOpen(true)}>
@@ -184,7 +184,7 @@ export const TrainingPage: React.FC = () => {
                     document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  Explore Curriculum
+                  See All Lessons
                 </Button>
               </div>
             </div>
@@ -193,12 +193,12 @@ export const TrainingPage: React.FC = () => {
               <ShieldFrame
                 variant="crest"
                 bright
-                caption="PLATE I — SPARTAN SYLLABUS CODEX"
+                caption="PLATE I — VIDEO COURSE GUIDE"
               >
                 <Suspense
                   fallback={
                     <div className="h-[340px] flex items-center justify-center text-xs font-mono text-[#9A968C]">
-                      Loading 3D Playbook...
+                      Loading 3D Guide...
                     </div>
                   }
                 >
@@ -215,9 +215,9 @@ export const TrainingPage: React.FC = () => {
       {/* Three Level Cards */}
       <Section
         romanIndex="01"
-        kicker="Rank Progression"
-        title="Three Progressive Ranks of The Forge"
-        subtitle="Enter at the rank calibrated to your current readiness or advance sequentially through mastery."
+        kicker="Skill Levels"
+        title="Three Clear Course Levels"
+        subtitle="Start at the level that fits you today, or move step by step from Beginner to Advanced."
       >
         <div className="grid gap-6 md:grid-cols-3">
           {COURSES.map((course: CourseItem) => (
@@ -232,15 +232,15 @@ export const TrainingPage: React.FC = () => {
         </div>
       </Section>
 
-      <ShieldSectionDivider label="Syllabus Ledger" />
+      <ShieldSectionDivider label="Lesson List" />
 
       {/* Curriculum Accordion + Sticky Enroll Side Card */}
       <Section
         id="curriculum"
         romanIndex="02"
-        kicker="Field Syllabus"
-        title="Inspect Modules &amp; Drills by Rank"
-        subtitle="Select a rank tab to review exact module breakdowns and briefing durations."
+        kicker="Course Lessons"
+        title="See Every Lesson &amp; Exercise"
+        subtitle="Pick a level below to check every video topic and lesson length."
       >
         <div className="mb-8">
           <Tabs
@@ -316,7 +316,7 @@ export const TrainingPage: React.FC = () => {
               </p>
 
               <div className="my-5 py-4 border-y border-[#C9A24B]/20 flex items-baseline justify-between">
-                <span className="text-xs text-[#9A968C]">One-time Commitment</span>
+                <span className="text-xs text-[#9A968C]">One-time Course Fee</span>
                 <span className="font-mono text-3xl font-semibold text-[#EDE6D6] tabular-nums">
                   {formatCurrency(selectedCourse.price)}
                 </span>
@@ -324,7 +324,7 @@ export const TrainingPage: React.FC = () => {
 
               <div className="space-y-2.5">
                 <Button fullWidth variant="primary" onClick={() => setEnrollConfirm(true)}>
-                  Initiate {selectedCourse.level}
+                  Start {selectedCourse.level}
                 </Button>
                 <Button fullWidth variant="outline" onClick={() => setPreviewOpen(true)}>
                   Preview Sample Lesson
@@ -335,20 +335,20 @@ export const TrainingPage: React.FC = () => {
         </div>
       </Section>
 
-      {/* What You Will Learn — Ruled Asymmetric Editorial Ledger instead of 6-box Grid */}
+      {/* What You Will Learn */}
       <Section
         romanIndex="03"
-        kicker="Core Competencies"
-        title="What You Will Master"
-        subtitle="Six foundational disciplines woven across every module and practical assignment."
+        kicker="Core Skills"
+        title="What You Will Learn"
+        subtitle="Six practical habits taught in every lesson and practice exercise."
       >
         <div className="grid gap-10 lg:grid-cols-12 items-start">
           <div className="lg:col-span-4 lg:sticky lg:top-28 border-t border-[#C9A24B]/30 pt-6">
             <p className="font-display italic text-2xl text-[#EDE6D6] leading-snug">
-              &ldquo;Repeatable execution begins where guesswork ends.&rdquo;
+              &ldquo;Calm, steady trading starts when guesswork ends.&rdquo;
             </p>
             <p className="mt-3 text-sm text-[#9A968C] leading-relaxed">
-              Each module reinforces liquidity identification, strict stop placement, and systematic journal auditing across Forex and synthetic volatility indices.
+              Every module shows you where smart buyers and sellers step in, where to place your safety stop, and how to review your trades across Forex and Synthetic Indices.
             </p>
             <RisingArrowConnector align="left" className="px-0 mt-5" />
           </div>
@@ -384,9 +384,9 @@ export const TrainingPage: React.FC = () => {
       {/* Learning Format + Student Progress Sample UI + Lead Instructor */}
       <Section
         romanIndex="04"
-        kicker="Initiate Experience"
-        title="Inside The Forge Environment"
-        subtitle="Structured training modules paired with live briefings, tactical checklists, and clear rank progression."
+        kicker="How You Learn"
+        title="Inside Your Student Courses"
+        subtitle="Easy video lessons paired with live weekly classes, simple checklists, and clear progress tracking."
       >
         <div className="grid gap-8 lg:grid-cols-12 items-stretch">
           <div className="lg:col-span-7 border-y border-[#C9A24B]/22 divide-y divide-[#C9A24B]/16">
@@ -439,25 +439,25 @@ export const TrainingPage: React.FC = () => {
       </Section>
 
       {/* Training FAQ & CTA */}
-      <Section romanIndex="05" kicker="The Forge Doctrine" title="Questions About the Syllabus">
+      <Section romanIndex="05" kicker="Course Questions" title="Common Questions About Our Courses">
         <div className="grid gap-8 lg:grid-cols-12 items-start">
           <div className="lg:col-span-7">
             <Accordion
               items={[
                 {
-                  title: 'How long do I retain access to course videos and updates?',
+                  title: 'How long do I keep access to the course videos?',
                   content:
-                    'Initiation includes ongoing access to your rank’s video briefings, downloadable playbooks, and future syllabus refinements.',
+                    'Once you join a course level, you keep ongoing access to its video lessons, printable checklists, and all future lesson updates.',
                 },
                 {
-                  title: 'Does The Forge cover both Forex and Synthetic Indices?',
+                  title: 'Do the courses cover both Forex and Synthetic Indices?',
                   content:
-                    'Yes. Market structure and risk shields apply across G10 FX, Gold, and Synthetic Indices (Volatility 75, V100, Boom/Crash), with dedicated briefings on ATR stop sizing and session spreads.',
+                    'Yes. Our chart reading and safety rules work across major Forex pairs, Gold, and Synthetic Indices (Volatility 75, V100, and Boom/Crash), with clear examples on stop placement and trade sizing.',
                 },
                 {
-                  title: 'Can I ascend from Foundation Rank to Vanguard Tier or Strategos Mentorship later?',
+                  title: 'Can I move up from Beginner to Intermediate or 1-on-1 Coaching later?',
                   content:
-                    'Yes, tuition credits from your current rank apply cleanly toward higher-tier orders or 12-week Strategos Mentorship cohorts.',
+                    'Yes. Everything you pay for your current course can go smoothly toward higher levels or our 12-week 1-on-1 Coaching program.',
                 },
               ]}
             />
@@ -465,17 +465,17 @@ export const TrainingPage: React.FC = () => {
 
           <Card featured className="lg:col-span-5">
             <h3 className="font-display text-2xl font-bold text-[#EDE6D6]">
-              Ready to Enter The Forge?
+              Ready to Start Learning?
             </h3>
             <p className="mt-2.5 text-sm text-[#9A968C] leading-relaxed">
-              Need clarity choosing between Foundation Rank, Vanguard Tier, or Strategos Mentorship? Speak with desk admissions or initiate today.
+              Not sure whether to start with Beginner, Intermediate, or 1-on-1 Coaching? Talk with our support team or enroll today.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button variant="primary" onClick={() => setEnrollConfirm(true)}>
-                Enter The Forge
+                Join This Course
               </Button>
               <Button variant="outline" to="/mentorship">
-                Inspect Strategos Desk
+                Explore 1-on-1 Coaching
               </Button>
             </div>
           </Card>
@@ -486,7 +486,7 @@ export const TrainingPage: React.FC = () => {
       <Modal
         isOpen={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="Free Lesson Preview · Liquidity & Session Structure"
+        title="Free Lesson Preview · Reading Price &amp; Session Highs"
         subtitle="Sample Module 01 Walkthrough (Video Player Placeholder)"
         size="lg"
       >
@@ -494,14 +494,14 @@ export const TrainingPage: React.FC = () => {
           <div className="aspect-video rounded-lg hairline-gold bg-[#000000] flex flex-col items-center justify-center p-6 text-center">
             <PlayCircle className="h-14 w-14 text-[#F0D58A] mb-3" />
             <p className="font-display text-lg font-bold text-[#EDE6D6]">
-              Lesson 01: How FX &amp; Synthetic Liquidity Pools Form
+              Lesson 01: How Forex &amp; Synthetic Markets Move Each Day
             </p>
             <p className="mt-1.5 text-xs text-[#9A968C] max-w-md">
-              18:24 · Interactive HTML5/Mux/Vimeo video embed placeholder ready for your production stream URL.
+              18:24 · Sample video player ready for your live course stream.
             </p>
           </div>
           <p className="text-xs text-[#9A968C] leading-relaxed">
-            In this introductory session, Marcus Vance walks through Asian session range highs/lows, stop clustering, and why waiting for displacement protects your invalidation level.
+            In this starter lesson, {MENTORS[0].name} walks through Asian session highs and lows, why price pauses at key levels, and how waiting for clear confirmation keeps your risk small.
           </p>
         </div>
       </Modal>

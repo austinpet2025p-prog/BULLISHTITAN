@@ -23,9 +23,9 @@ export const FeaturedCoursesSection: React.FC = () => {
   return (
     <Section
       romanIndex="03"
-      kicker="The Forge Curriculum"
-      title="Flagship Forging Syllabi"
-      subtitle="Inspect our featured curriculum monograph or switch ranks below to preview complete module breakdowns."
+      kicker="Trading Courses"
+      title="Step-by-Step Video Courses"
+      subtitle="Pick a skill level below to see every lesson, market covered, and what you will learn."
     >
       {/* Editorial Controls Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-10 border-b border-[#C9A24B]/22">
@@ -93,7 +93,7 @@ export const FeaturedCoursesSection: React.FC = () => {
         <EditorialReveal className="lg:col-span-6 space-y-6" delay={0.1}>
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold-gradient font-semibold">
-              {featured.level} · Featured Monograph
+              {featured.level} · Featured Course
             </p>
             <h3 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-[#EDE6D6] leading-[1.1]">
               {featured.title}
@@ -113,7 +113,7 @@ export const FeaturedCoursesSection: React.FC = () => {
               {featured.lessons} Lessons
             </span>
             <span className="text-gold-gradient font-semibold">
-              Tuition {formatCurrency(featured.price)}
+              Course Fee {formatCurrency(featured.price)}
             </span>
           </div>
 
@@ -128,12 +128,12 @@ export const FeaturedCoursesSection: React.FC = () => {
 
           <div className="flex flex-wrap items-center gap-3.5 pt-2">
             <Button variant="primary" size="lg" to="/training">
-              Explore Full Syllabus
+              See Full Lesson List
               <ArrowRight className="h-4 w-4" />
             </Button>
             <Button variant="outline" size="lg" onClick={() => setPreviewCourse(featured)}>
               <PlayCircle className="h-4 w-4 text-[#F0D58A]" />
-              Preview Sample Module
+              Preview Sample Lesson
             </Button>
           </div>
         </EditorialReveal>
@@ -151,7 +151,7 @@ export const FeaturedCoursesSection: React.FC = () => {
           >
             <div className="space-y-1.5">
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#C9A24B]">
-                Rank 0{idx + 1} · {course.level} · {course.duration}
+                Level 0{idx + 1} · {course.level} · {course.duration}
               </p>
               <h4 className="font-display text-xl font-bold text-[#EDE6D6]">
                 {course.title}
@@ -163,7 +163,7 @@ export const FeaturedCoursesSection: React.FC = () => {
                 {formatCurrency(course.price)}
               </span>
               <Button variant="secondary" size="sm" onClick={() => setActiveIndex(idx)}>
-                Inspect Rank
+                View Course
               </Button>
             </div>
           </EditorialReveal>
@@ -217,7 +217,7 @@ export const FeaturedCoursesSection: React.FC = () => {
                 Close
               </Button>
               <Button to="/training" variant="primary" onClick={() => setPreviewCourse(null)}>
-                Open Full Forge Curriculum
+                View All Trading Courses
               </Button>
             </div>
           </div>

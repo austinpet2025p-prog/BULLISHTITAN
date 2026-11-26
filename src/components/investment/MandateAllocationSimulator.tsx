@@ -41,13 +41,13 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#C9A24B]/18">
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] font-semibold text-sapphire-gold">
-            Interactive Mandate Calibrator
+            Interactive Account &amp; Profit Split Tool
           </p>
           <h3 className="mt-1 font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6]">
-            Stewardship Rank &amp; Equity Simulator
+            Plan &amp; Account Size Simulator
           </h3>
           <p className="mt-1.5 text-xs sm:text-sm text-[#9A968C]">
-            Slide your intended broker equity deposit to preview matched Mandate Rank, drawdown shield math, 50/50 split rules, and Clause 9 coverage eligibility.
+            Slide your starting broker balance to preview the best plan, safety limit math, 50/50 profit split rules, and Rule 9 goodwill buffer eligibility.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
                 htmlFor="sim-equity-range"
                 className="text-xs sm:text-sm font-medium text-[#EDE6D6]"
               >
-                Intended Brokerage Equity (Client Custody)
+                Your Starting Broker Balance (Stays in Your Name)
               </label>
               <span className="font-mono text-2xl font-bold text-gold-gradient tabular-nums">
                 ${equity.toLocaleString()}
@@ -89,10 +89,10 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
             />
 
             <div className="mt-2 flex items-center justify-between font-mono text-[11px] text-[#9A968C] tabular-nums">
-              <span>$900 Agoge</span>
-              <span>$1,500 Vanguard</span>
-              <span>$6,000 Strategos</span>
-              <span>$10,000+ Archon</span>
+              <span>$900 Starter</span>
+              <span>$1,500 Growth</span>
+              <span>$6,000 Pro</span>
+              <span>$10,000+ Private VIP</span>
             </div>
           </div>
 
@@ -117,13 +117,13 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
             <div className="flex items-start gap-2.5">
               <Lock className="h-4 w-4 shrink-0 text-[#C9A24B] mt-0.5" />
               <span>
-                <strong className="text-[#EDE6D6]">Clauses 1 &amp; 2 (Sole Custody):</strong> Capital sits inside your own verified broker account with execution-only access and zero withdrawal rights granted to Bullish Titan.
+                <strong className="text-[#EDE6D6]">Rules 1 &amp; 2 (Your Money, Your Control):</strong> Your funds stay inside your own verified broker account with trade-only access and zero withdrawal rights for Bullish Titan.
               </span>
             </div>
             <div className="flex items-start gap-2.5">
               <ShieldCheck className="h-4 w-4 shrink-0 text-[#F0D58A] mt-0.5" />
               <span>
-                <strong className="text-[#EDE6D6]">Clauses 3 &amp; 9 (Split &amp; Coverage):</strong> 50% Client / 50% Desk once target is met; accounts funded above $5,000 qualify for the 10% goodwill loss-coverage buffer.
+                <strong className="text-[#EDE6D6]">Rules 3 &amp; 9 (Split &amp; Safety Buffer):</strong> 50% You / 50% Bullish Titan once your profit goal is reached; accounts funded above $5,000 qualify for the 10% goodwill buffer.
               </span>
             </div>
           </div>
@@ -134,7 +134,7 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
           <div className="flex flex-wrap items-start justify-between gap-2 pb-4 border-b border-[#60A5FA]/20">
             <div>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#93C5FD]">
-                Matched Mandate Rank
+                Best Plan for This Balance
               </span>
               <h4 className="mt-1 font-display text-2xl font-bold text-[#EDE6D6]">
                 {matchedTier.name}
@@ -146,10 +146,10 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
 
             <div className="text-right font-mono">
               <span className="block text-[10px] uppercase tracking-wider text-[#9A968C]">
-                Review Cadence
+                Check-In Schedule
               </span>
               <span className="mt-1 block text-xs font-semibold text-[#EDE6D6] capitalize">
-                {cadence} Checkpoints
+                {cadence} Updates
               </span>
             </div>
           </div>
@@ -157,7 +157,7 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
           <div className="grid grid-cols-2 gap-4 font-mono text-xs tabular-nums">
             <div>
               <span className="block text-[10px] uppercase tracking-wider text-[#9A968C]">
-                Max Risk-Shield Buffer
+                Max Risk Safety Limit
               </span>
               <span className="mt-1 block text-base font-bold text-[#FB7185]">
                 -${riskBudgetDollars.dollars.toLocaleString()} ({riskBudgetDollars.pctLabel})
@@ -165,15 +165,15 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
             </div>
             <div>
               <span className="block text-[10px] uppercase tracking-wider text-[#9A968C]">
-                Profit Sharing (Clause 3)
+                50/50 Profit Split (Rule 3)
               </span>
               <span className="mt-1 block text-base font-bold text-[#34D399]">
-                50% Principal / 50% House
+                50% You / 50% Bullish Titan
               </span>
             </div>
             <div>
               <span className="block text-[10px] uppercase tracking-wider text-[#9A968C]">
-                Clause 9 Loss Coverage (&gt;$5k)
+                Rule 9 Goodwill Buffer (&gt;$5k)
               </span>
               <span
                 className={`mt-1 block text-xs font-semibold ${
@@ -187,14 +187,14 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
             </div>
             <div>
               <span className="block text-[10px] uppercase tracking-wider text-[#9A968C]">
-                Commanding Lead
+                Dedicated Lead Trader
               </span>
               <span className="mt-1 block text-xs font-semibold text-[#F0D58A]">
                 {matchedTier.id === 'grande-phase'
-                  ? 'Executive Desk Director'
+                  ? 'Executive Lead Trader'
                   : matchedTier.id === 'geant-phase'
-                    ? 'Senior Lead Strategos'
-                    : 'Assigned Desk Strategist'}
+                    ? 'Senior Lead Trader'
+                    : 'Assigned Lead Trader'}
               </span>
             </div>
           </div>
@@ -202,13 +202,13 @@ export const MandateAllocationSimulator: React.FC<MandateAllocationSimulatorProp
           <div className="pt-4 border-t border-[#C9A24B]/18 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-[11px] font-mono text-[#9A968C]">
               <Calculator className="h-3.5 w-3.5 text-[#C9A24B]" />
-              <span>Goodwill coverage is not insurance · Subject to signed terms</span>
+              <span>Goodwill buffer is not insurance · Subject to signed agreement</span>
             </div>
             <Button
               variant="primary"
               onClick={() => onApplyConfiguration(matchedTier.name, equity)}
             >
-              Commit {matchedTier.name}
+              Choose {matchedTier.name}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

@@ -6,31 +6,31 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 const STEPS = [
   {
     roman: 'I',
-    step: 'Stage 01',
-    title: 'Establish Baseline Formation',
+    step: 'Step 01',
+    title: 'Pick Your Starting Point',
     detail:
-      'Complete our rank diagnostic to align your current execution habits with the right division inside the House.',
+      'Take our quick quiz to match your free time and experience level to the right lessons or plan.',
   },
   {
     roman: 'II',
-    step: 'Stage 02',
-    title: 'Forge Structural Precision',
+    step: 'Step 02',
+    title: 'Learn Clear Chart Rules',
     detail:
-      'Master multi-timeframe liquidity sweeps, session timing, and hard fixed-fractional risk shields before committing live equity.',
+      'Practice reading price trends, timing active market hours, and sizing every trade safely before using real money.',
   },
   {
     roman: 'III',
-    step: 'Stage 03',
-    title: 'Backtest & Audit With Strategos',
+    step: 'Step 03',
+    title: 'Practice & Check With a Coach',
     detail:
-      'Log 100 historical occurrences in your operational ledger and verify invalidation discipline directly with senior Strategos leads.',
+      'Log 100 practice trades in your simple journal and review your habits directly with a helpful senior coach.',
   },
   {
     roman: 'IV',
-    step: 'Stage 04',
-    title: 'Execute With Sovereign Discipline',
+    step: 'Step 04',
+    title: 'Trade Calmly With Confidence',
     detail:
-      'Operate pre-market checklists across Forex majors or synthetic indices with strict position sizing and weekly command debriefs.',
+      'Follow a simple daily checklist on Forex or Synthetic Indices with strict loss limits and weekly support.',
   },
 ];
 
@@ -40,9 +40,9 @@ export const HowItWorksSection: React.FC = () => {
   return (
     <Section
       romanIndex="02"
-      kicker="The Ascent Protocol"
-      title="Four Deliberate Stages From Clarity to Execution"
-      subtitle="An upward progression engineered around discipline, measurable sample sizes, and capital preservation."
+      kicker="Your Simple Roadmap"
+      title="Four Clear Steps From Beginner to Confident Trader"
+      subtitle="A calm, step-by-step path built around safety, steady practice, and protecting your money."
     >
       <div className="relative pt-4 pb-8">
         {/* Continuous Rising Arrow Trajectory SVG Behind the Ascending Steps */}

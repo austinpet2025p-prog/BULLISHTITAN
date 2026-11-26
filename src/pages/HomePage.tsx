@@ -27,9 +27,9 @@ export const HomePage: React.FC = () => {
       {/* 3. Interactive Sticky Scroll-Scrubbed 3D Market Astrolabe */}
       <SpatialFlowSection />
 
-      <ShieldSectionDivider label="Four Divisions" />
+      <ShieldSectionDivider label="Four Programs" />
 
-      {/* 4. Four Divisions (01–04) + Live Apple 3D Division Gallery */}
+      {/* 4. Four Programs (01–04) + Live 3D Program Gallery */}
       <FourWaysSection />
 
       {/* Scroll-velocity-reactive horizontal market philosophy stream */}
@@ -40,24 +40,24 @@ export const HomePage: React.FC = () => {
       {/* 5. Results with scroll-zoom settle & self-drawing equity curve */}
       <ResultsPreviewSection />
 
-      <ShieldSectionDivider label="Rank Placement" />
+      <ShieldSectionDivider label="Quick Quiz" />
 
-      {/* 6. Animated Apple-Grade Track Calibration Quiz */}
+      {/* 6. Animated Track Calibration Quiz */}
       <FindYourPathQuiz />
 
-      <ShieldSectionDivider label="The Phalanx" />
+      <ShieldSectionDivider label="Student Stories" />
 
       {/* 7. Swipeable Testimonials Carousel */}
       <TestimonialsSection />
 
-      <ShieldSectionDivider label="Rank Orders & Access" />
+      <ShieldSectionDivider label="Simple Pricing" />
 
       {/* 8. Pricing and Enrollment */}
       <PricingEnrollmentSection />
 
-      <ShieldSectionDivider label="Admissions Doctrine" />
+      <ShieldSectionDivider label="Common Questions" />
 
-      {/* 9. Interactive Live Search FAQ & Command Invitation */}
+      {/* 9. Interactive Live Search FAQ & Welcome Invitation */}
       <FaqCtaSection />
     </div>
   );

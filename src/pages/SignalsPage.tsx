@@ -50,6 +50,7 @@ import {
 } from '../data/academyData';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { cn } from '../lib/utils';
+import signalsSpartanBg from '../assets/images/signals_spartan_widescreen_1795709292440.jpg';
 
 const SignalsRadarScene3D = lazy(() => import('../components/three/SignalsRadarScene3D'));
 
@@ -102,7 +103,7 @@ const PAST_SIGNAL_GALLERY: PastSignalRecord[] = [
     id: 'past-5',
     image: ACADEMY_ASSETS.deskHero,
     headline: 'Boom 500 · +2.6R Demand Continuation',
-    caption: 'Synthetic Spike Cycle · Hard SL Invalidation Logged',
+    caption: 'Synthetic Spike Cycle · Safety Stop-Loss Set',
     session: 'Demo Setup Record · Page 02',
     signal: {
       id: 'sig-5',
@@ -214,7 +215,7 @@ const DELIVERY_CHANNELS = [
   { icon: Send, name: 'Telegram Desk', detail: 'Instant encrypted channel alerts with chart links.' },
   { icon: MessageCircle, name: 'WhatsApp Alerts', detail: 'Direct high-priority setup notifications.' },
   { icon: Smartphone, name: 'In-App Terminal', detail: 'Organized active, pending, and closed setup feed.' },
-  { icon: Mail, name: 'Email Digest', detail: 'Daily session summaries and invalidation updates.' },
+  { icon: Mail, name: 'Email Digest', detail: 'Daily session summaries and stop-loss updates.' },
   { icon: Bell, name: 'Push Alerts', detail: 'Browser & mobile pings on TP1/SL adjustments.' },
 ];
 
@@ -255,40 +256,30 @@ export const SignalsPage: React.FC = () => {
 
   return (
     <div className="relative isolate bg-[#000000] overflow-x-clip">
-      {/* Spartan Vanguard Background Layer (100% of image preserved, 22% opacity, blended with site theme) */}
+      {/* Spartan Vanguard Full-Width Background Layer (100% of scene preserved, 22% opacity, blended with site theme) */}
       <div
         aria-hidden="true"
         className="pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen w-full overflow-hidden"
       >
-        {/* Atmospheric obsidian, sapphire & gold aura spanning 100% width */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 72% 78% at 50% 45%, rgba(201, 162, 75, 0.09), rgba(30, 58, 138, 0.1) 52%, rgba(0, 0, 0, 0.94) 92%)',
+              'radial-gradient(ellipse 72% 78% at 50% 46%, rgba(201, 162, 75, 0.08), rgba(30, 58, 138, 0.09) 56%, rgba(0, 0, 0, 0.92) 92%)',
           }}
         />
-        <div className="relative flex h-full w-full items-center justify-center">
-          <img
-            src="/assets/aistudio/Screenshot_20261125-172343_3b4ec5b6.png"
-            alt=""
-            referrerPolicy="no-referrer"
-            className="h-full w-full object-contain object-center opacity-[0.22] mix-blend-lighten select-none"
-            style={{
-              maskImage:
-                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%)',
-              maskComposite: 'intersect',
-              WebkitMaskImage:
-                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%)',
-            }}
-          />
-        </div>
+        <img
+          src={signalsSpartanBg}
+          alt=""
+          referrerPolicy="no-referrer"
+          className="relative h-full w-full object-cover object-center opacity-[0.22] mix-blend-lighten select-none"
+        />
         {/* Seamless obsidian & sapphire perimeter blend */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 68% 82% at 50% 48%, transparent 32%, rgba(2, 5, 13, 0.48) 70%, #000000 96%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
+              'radial-gradient(ellipse 78% 84% at 50% 48%, transparent 38%, rgba(2, 5, 13, 0.44) 74%, #000000 98%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
           }}
         />
       </div>
@@ -321,23 +312,23 @@ export const SignalsPage: React.FC = () => {
                 <div className="flex items-center gap-3 mb-3.5">
                   <span className="h-px w-8 bg-gold-gradient" aria-hidden="true" />
                   <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold text-gold-gradient">
-                    Bullish Titan · Vanguard Intelligence Desk
+                    Bullish Titan · Daily Trade Alerts
                   </p>
                 </div>
                 <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#EDE6D6] leading-[1.06]">
-                  Vanguard{' '}
+                  Daily Trade{' '}
                   <span className="italic font-semibold text-gold-gradient">
-                    Intelligence
+                    Signals
                   </span>
                 </h1>
               </div>
 
               <div className="space-y-4 text-sm sm:text-base text-[#9A968C] leading-relaxed">
                 <p>
-                  Bullish Titan dispatches disciplined Forex and Synthetic Indices intelligence—delivering institutional liquidity setups, precision structure analysis, and unmistakable invalidation boundaries.
+                  Bullish Titan sends clear Forex and Synthetic Indices trade ideas every day—showing you clean chart setups, simple rules, and exact safety stops.
                 </p>
                 <p>
-                  Every Vanguard brief arrives with exact entry zones, hard stop-loss placement, multi-stage exit targets, and full structural rationale—eliminating emotional hesitation and reckless over-leverage.
+                  Every alert gives you the exact entry price, safety stop-loss, profit targets, and a plain-English reason for the trade—so you never have to guess or over-risk.
                 </p>
               </div>
 
@@ -349,10 +340,10 @@ export const SignalsPage: React.FC = () => {
                   </ShieldCrestBadge>
                   <div>
                     <h2 className="font-display text-base font-bold text-[#EDE6D6]">
-                      Risk &amp; Sizing Guidelines
+                      Safety-First Trade Sizes
                     </h2>
                     <p className="mt-1 text-xs text-[#9A968C]">
-                      Protect equity cleanly with 1:2.5+ R:R parameters and lot calculator tools.
+                      Protect your money with clear 1:2.5+ reward-to-risk ratios and our simple lot calculator.
                     </p>
                   </div>
                 </div>
@@ -363,10 +354,10 @@ export const SignalsPage: React.FC = () => {
                   </ShieldCrestBadge>
                   <div>
                     <h2 className="font-display text-base font-bold text-[#EDE6D6]">
-                      Disciplined Trade Coverage
+                      Hand-Picked Daily Setups
                     </h2>
                     <p className="mt-1 text-xs text-[#9A968C]">
-                      Curated EUR/USD, XAU/USD, V75, and Boom &amp; Crash alerts delivered across channels.
+                      Carefully checked EUR/USD, Gold, V75, and Boom &amp; Crash alerts sent straight to your phone.
                     </p>
                   </div>
                 </div>
@@ -378,7 +369,7 @@ export const SignalsPage: React.FC = () => {
                   size="lg"
                   onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Inspect Dispatch Orders
+                  View Signal Plans
                   <ArrowRight className="h-4 w-4" />
                 </Button>
                 <Button
@@ -386,7 +377,7 @@ export const SignalsPage: React.FC = () => {
                   size="lg"
                   onClick={() => document.getElementById('past-signals')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Inspect Dispatch Archive
+                  See Past Trade Examples
                 </Button>
               </div>
             </div>
@@ -454,9 +445,9 @@ export const SignalsPage: React.FC = () => {
       <Section
         id="past-signals"
         romanIndex="01"
-        kicker="Archived Setup Ledgers · Demo Records"
-        title="Dispatch Archive"
-        subtitle="Inspect illustrative Forex and Synthetic Indices setup records. Open any dossier to verify exact entry, stop-loss, and R:R parameters."
+        kicker="Sample Past Trades · Demo Examples"
+        title="Past Trade Examples"
+        subtitle="Look through sample Forex and Synthetic Indices setups. Click any card to see the exact entry, stop-loss, and targets."
       >
         <div className="grid gap-6 md:grid-cols-3">
           {visibleGallery.map((item) => (
@@ -566,15 +557,15 @@ export const SignalsPage: React.FC = () => {
         <RiskDisclaimer compact className="mt-8" />
       </Section>
 
-      <ShieldSectionDivider label="Vanguard Orders" />
+      <ShieldSectionDivider label="Signal Plans" />
 
       {/* 3. Plan Cards with Billing Toggle */}
       <Section
         id="plans"
         romanIndex="02"
-        kicker="Desk Access"
-        title="Vanguard Intelligence Subscriptions"
-        subtitle="Select your billing cadence below. Every order includes encrypted Telegram, WhatsApp, email, and position-sizing tools."
+        kicker="Choose Your Plan"
+        title="Daily Signal Subscriptions"
+        subtitle="Pick weekly, monthly, or yearly billing. Every plan includes Telegram, WhatsApp, email alerts, and our easy lot-size calculator."
       >
         <div className="mb-8 flex justify-start">
           <Tabs
@@ -590,48 +581,48 @@ export const SignalsPage: React.FC = () => {
 
         <div className="grid gap-6 md:grid-cols-3">
           <PricingCard
-            title="Vanguard FX Core"
-            subtitle="G10 FX Majors & Gold dispatches aligned to London and New York liquidity."
+            title="Forex &amp; Gold Signals"
+            subtitle="Clean Forex &amp; Gold trade alerts timed for London and New York hours."
             price={billing === 'weekly' ? 39 : billing === 'monthly' ? 119 : 990}
             periodLabel={planPriceMap[billing].suffix}
             features={[
-              '6–10 curated FX & XAU/USD dispatches weekly',
-              'Entry zone, SL, TP1/TP2/TP3 & R:R breakdown',
-              'Telegram & email delivery channels',
+              '6–10 hand-picked Forex & Gold alerts each week',
+              'Clear entry price, safety stop, and profit targets',
+              'Sent straight to your Telegram and email',
             ]}
             to="/contact"
-            ctaLabel="Claim FX Core"
+            ctaLabel="Choose Forex & Gold"
           />
 
           <PricingCard
-            title="Vanguard Cross-Asset Order"
-            subtitle="Complete Forex, Gold, Volatility 75 & Boom/Crash real-time intelligence."
+            title="All-Market Signals"
+            subtitle="Complete Forex, Gold, Volatility 75, and Boom/Crash real-time trade alerts."
             price={planPriceMap[billing].price}
             periodLabel={planPriceMap[billing].suffix}
             featured
-            metaTag="Commander Pick"
+            metaTag="Most Popular"
             features={[
-              'All Forex, Gold & Synthetic Indices dispatches',
-              'Telegram, WhatsApp, Push & Command Feed delivery',
-              'Sunday macro liquidity & DXY briefing',
-              'Weekly live desk rationale review',
+              'All Forex, Gold & Synthetic Indices alerts',
+              'Telegram, WhatsApp, Push & Student App alerts',
+              'Sunday weekly market outlook & trade plan',
+              'Weekly live trade review call',
             ]}
             to="/contact"
-            ctaLabel="Claim Full Order"
+            ctaLabel="Choose All-Market"
           />
 
           <PricingCard
-            title="Phalanx Dual Order"
-            subtitle="Pair daily market intelligence with full access to The Forge curriculum."
+            title="Courses + Signals Bundle"
+            subtitle="Get daily trade alerts plus full access to our Beginner &amp; Intermediate video courses."
             price={billing === 'weekly' ? 69 : billing === 'monthly' ? 199 : 1680}
             periodLabel={planPriceMap[billing].suffix}
             features={[
-              'Full Vanguard Cross-Asset Intelligence access',
-              'Foundation Rank & Vanguard Tier Forge curriculum',
-              'Downloadable trade ledger & risk shield templates',
+              'Full All-Market Daily Signals access',
+              'Beginner & Intermediate video courses included',
+              'Printable trade journal & safety calculator sheets',
             ]}
             to="/training"
-            ctaLabel="Inspect Dual Order"
+            ctaLabel="View Bundle"
           />
         </div>
       </Section>
@@ -873,7 +864,7 @@ export const SignalsPage: React.FC = () => {
       </Section>
 
       {/* 7. Signals FAQ */}
-      <Section romanIndex="06" kicker="Vanguard Doctrine" title="Vanguard Intelligence Questions">
+      <Section romanIndex="06" kicker="Signal Questions" title="Common Questions About Our Signals">
         <div className="max-w-3xl">
           <Accordion
             items={[

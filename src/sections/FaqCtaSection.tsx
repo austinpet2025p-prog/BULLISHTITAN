@@ -18,21 +18,21 @@ export const FaqCtaSection: React.FC = () => {
                 <span className="font-display italic text-sm text-[#C9A24B]">08</span>
                 <span className="h-px w-8 bg-gold-gradient" aria-hidden="true" />
                 <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-sapphire-gold">
-                  Admissions &amp; Doctrine
+                  Quick Answers
                 </p>
               </div>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#EDE6D6] leading-[1.08]">
                 Frequently Asked Questions
               </h2>
               <p className="mt-4 text-sm sm:text-base text-[#9A968C] leading-relaxed">
-                Search instantly across The Forge curriculum, synthetic volatility shields, broker custody, and Strategos onboarding.
+                Search for quick answers on our video courses, risk rules, broker safety, and 1-on-1 coaching.
               </p>
               <div className="mt-5">
                 <Link
                   to="/faq"
                   className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#C9A24B] hover:text-[var(--color-gold-bright)] transition-colors"
                 >
-                  Open Full Knowledge Base
+                  See All Questions &amp; Answers
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </div>
@@ -54,23 +54,23 @@ export const FaqCtaSection: React.FC = () => {
             <div className="grid gap-8 lg:grid-cols-12 items-center">
               <div className="lg:col-span-8">
                 <p className="font-mono text-[11px] uppercase font-semibold tracking-[0.22em] text-gold-gradient">
-                  Command Your Execution
+                  Ready When You Are
                 </p>
                 <h2 className="mt-3 font-display text-3xl sm:text-5xl font-bold text-[#EDE6D6] leading-[1.08]">
-                  Enter Structured Forex &amp; Synthetic Execution
+                  Start Trading With Calm, Simple Rules
                 </h2>
                 <p className="mt-4 max-w-xl text-sm sm:text-base text-[#9A968C] leading-relaxed">
-                  Begin your training inside The Forge, enter 12-week 1-on-1 Strategos Mentorship, or join our real-time Vanguard Intelligence Desk.
+                  Watch our step-by-step courses, get help from a personal coach, or follow clear daily trade alerts with Bullish Titan Academy.
                 </p>
               </div>
 
               <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 lg:items-end">
                 <Button to="/training" variant="primary" size="lg" className="w-full sm:w-auto lg:w-full">
-                  Enter The Forge
+                  Explore Trading Courses
                   <ArrowRight className="h-4 w-4" />
                 </Button>
                 <Button to="/contact" variant="outline" size="lg" className="w-full sm:w-auto lg:w-full">
-                  Speak With Desk Admissions
+                  Talk to Support
                 </Button>
               </div>
             </div>

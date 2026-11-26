@@ -7,59 +7,59 @@ interface PageMetaConfig {
 
 const ROUTE_META: Record<string, PageMetaConfig> = {
   '/': {
-    title: 'Bullish Titan Academy — Disciplined FX & Synthetic Capital Command',
+    title: 'Bullish Titan Academy — Simple, Disciplined Forex & Synthetic Trading',
     description:
-      'Forge precision in Forex and Synthetic Indices market structure, Strategos mentorship, Vanguard intelligence, and Sovereign Mandates at Bullish Titan.',
+      'Learn Forex and Synthetic Indices step by step with plain-English courses, 1-on-1 coaching, daily trade signals, and managed accounts.',
   },
   '/training': {
-    title: 'The Forge Training Academy — Foundation to Strategos | Bullish Titan',
+    title: 'Trading Courses — Beginner to Advanced | Bullish Titan Academy',
     description:
-      'Ascend through Foundation Rank, Vanguard Tier, and Strategos Mastery in Forex & Synthetic Indices with war-room briefings and playbooks.',
+      'Learn step-by-step across Beginner, Intermediate, and Advanced courses in Forex and Synthetic Indices with clear checklists and video lessons.',
   },
   '/mentorship': {
-    title: '12-Week Strategos Mentorship | Bullish Titan Academy',
+    title: '12-Week 1-on-1 Coaching & Mentorship | Bullish Titan Academy',
     description:
-      'Operate alongside senior FX and Synthetic Indices strategists with weekly chart audits, Phalanx labs, and 1-on-1 desk command.',
+      'Train alongside experienced Forex and Synthetic Indices coaches with weekly chart reviews, group classes, and personal support.',
   },
   '/signals': {
-    title: 'Vanguard Intelligence — FX & Synthetic Setups | Bullish Titan Academy',
+    title: 'Daily Trade Signals — Forex & Synthetic Alerts | Bullish Titan Academy',
     description:
-      'Vetted FX, Gold, and Synthetic Indices briefings with entry zones, invalidation shields, and built-in lot sizing.',
+      'Clear Forex, Gold, and Synthetic Indices trade alerts with exact entries, safety stops, profit goals, and a built-in lot calculator.',
   },
   '/investment': {
-    title: 'Sovereign Capital Mandates | Bullish Titan Academy',
+    title: 'Managed Accounts — Starter to VIP | Bullish Titan Academy',
     description:
-      'Progress across Agoge, Vanguard, Strategos, and Sovereign Archon custody mandates with transparent governance and risk disclosures.',
+      'Explore Starter, Growth, Pro, and Private VIP managed account plans where 100% of your funds stay inside your own broker account.',
   },
   '/pricing': {
-    title: 'Rank Orders & Enrollment Access | Bullish Titan Academy',
+    title: 'Membership Plans & Pricing | Bullish Titan Academy',
     description:
-      'Compare Forge Initiate, Vanguard Intelligence, Phalanx Dual Order, Strategos Desk, and Sovereign Titan memberships.',
+      'Compare Courses Only, Daily Trade Signals, Courses + Signals Bundle, 1-on-1 Coaching, and All-Access VIP plans.',
   },
   '/results': {
-    title: 'Operational Ledger & The Phalanx | Bullish Titan Academy',
+    title: 'Student Results & Track Record | Bullish Titan Academy',
     description:
-      'Inspect audited journal metrics, Phalanx cohort milestones, and risk-first capital discipline.',
+      'See real student milestones, sample trade logs, and risk-first trading results across Forex and Synthetic Indices.',
   },
   '/about': {
-    title: 'About the House — Ethos, Mission & Strategos Faculty | Bullish Titan',
+    title: 'About Us — Our Story & Coaches | Bullish Titan Academy',
     description:
-      'Meet the senior strategists behind Bullish Titan Academy and explore our seven-year institutional lineage.',
+      'Meet the experienced trading coaches behind Bullish Titan Academy and see how we keep trading clear, honest, and safe.',
   },
   '/blog': {
-    title: 'Desk Dispatches & Research Briefs | Bullish Titan Academy',
+    title: 'Trading Guides & Articles | Bullish Titan Academy',
     description:
-      'Read analytical essays on liquidity sweeps, drawdown math, macro DXY flows, and execution endurance.',
+      'Read simple, helpful guides on price action, money safety, US Dollar trends, and building calm trading habits.',
   },
   '/faq': {
-    title: 'Doctrine & Frequently Asked Questions | Bullish Titan Academy',
+    title: 'Frequently Asked Questions | Bullish Titan Academy',
     description:
-      'Search answers across The Forge, Strategos Mentorship, Vanguard Intelligence, Sovereign Mandates, and governance.',
+      'Find clear answers about Trading Courses, 1-on-1 Coaching, Daily Trade Signals, Managed Accounts, and account safety.',
   },
   '/contact': {
-    title: 'Admissions & Command Desk | Bullish Titan Academy',
+    title: 'Help, Admissions & Contact | Bullish Titan Academy',
     description:
-      'Reach the Bullish Titan Admissions Desk via inquiry briefing, Telegram, or WhatsApp support.',
+      'Message the Bullish Titan support team or visit our office via interactive Google Maps directions, Telegram, or WhatsApp.',
   },
 };
 

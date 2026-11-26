@@ -19,7 +19,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [program, setProgram] = useState('The Forge · Training Academy');
+  const [program, setProgram] = useState('Trading Courses');
   const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -47,8 +47,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={resetAndClose}
-      title={mode === 'login' ? 'Command Console Access' : 'Initiate Your Rank Ascension'}
-      subtitle="Front-end command portal preview — ready for authentication integration."
+      title={mode === 'login' ? 'Student Portal Sign In' : 'Create Your Free Account'}
+      subtitle="Preview of the student portal — ready to sign in and explore."
     >
       <div className="mb-5">
         <Tabs
@@ -59,8 +59,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             setError('');
           }}
           options={[
-            { value: 'signup', label: 'Enlist Rank' },
-            { value: 'login', label: 'Fellow Sign In' },
+            { value: 'signup', label: 'Create Account' },
+            { value: 'login', label: 'Sign In' },
           ]}
         />
       </div>
@@ -69,15 +69,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         <div className="rounded-2xl hairline-gold-bright p-5 text-center">
           <CheckCircle2 className="mx-auto h-8 w-8 text-[#F0D58A] mb-2" />
           <h4 className="text-base font-semibold text-[#EDE6D6]">
-            {mode === 'login' ? 'Command Console Ready' : 'Initiation Briefing Logged'}
+            {mode === 'login' ? 'You Are Signed In' : 'Account Request Received'}
           </h4>
           <p className="mt-1.5 text-xs text-[#9A968C] leading-relaxed">
             {mode === 'login'
-              ? `Demo command session prepared for ${email}. Connect your backend authentication provider to enable live console access.`
-              : `Confirmed${name ? `, ${name}` : ''}. Your initiation dossier for ${program} is queued.`}
+              ? `Demo student session ready for ${email}.`
+              : `Thank you${name ? `, ${name}` : ''}. Your interest in ${program} has been saved.`}
           </p>
           <Button className="mt-4" size="sm" onClick={resetAndClose}>
-            Return to House
+            Return to Home
           </Button>
         </div>
       ) : (
@@ -115,7 +115,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           {mode === 'signup' && (
             <div>
               <label htmlFor="auth-program" className="block text-xs font-medium text-[#EDE6D6] mb-1.5">
-                Primary Division Interest
+                Which Program Interests You Most?
               </label>
               <select
                 id="auth-program"
@@ -123,10 +123,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 onChange={(e) => setProgram(e.target.value)}
                 className="h-11 w-full rounded-xl border border-[#C9A24B]/24 bg-[#141414] px-3.5 text-sm text-[#EDE6D6] focus:border-[#F0D58A] focus:outline-none"
               >
-                <option>The Forge · Training Academy</option>
-                <option>Strategos Mentorship</option>
-                <option>Vanguard Intelligence</option>
-                <option>Sovereign Mandates</option>
+                <option>Trading Courses</option>
+                <option>1-on-1 Coaching</option>
+                <option>Daily Trade Signals</option>
+                <option>Managed Accounts</option>
               </select>
             </div>
           )}
@@ -138,7 +138,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           )}
 
           <Button type="submit" fullWidth>
-            {mode === 'login' ? 'Enter Command Console' : 'Request Initiation Access'}
+            {mode === 'login' ? 'Sign In' : 'Join Now'}
           </Button>
         </form>
       )}

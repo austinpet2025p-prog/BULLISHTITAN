@@ -31,11 +31,11 @@ import { cn } from '../lib/utils';
 type DashTab = 'overview' | 'courses' | 'signals' | 'mentorship' | 'investor' | 'settings';
 
 const NAV_TABS: { id: DashTab; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
-  { id: 'overview', label: 'Command Overview', icon: LayoutDashboard },
-  { id: 'courses', label: 'The Forge', icon: BookOpen },
-  { id: 'signals', label: 'Vanguard Feed', icon: Radio },
-  { id: 'mentorship', label: 'Strategos', icon: Users },
-  { id: 'investor', label: 'Mandate Vault', icon: Briefcase },
+  { id: 'overview', label: 'Overview', icon: LayoutDashboard },
+  { id: 'courses', label: 'Courses', icon: BookOpen },
+  { id: 'signals', label: 'Trade Signals', icon: Radio },
+  { id: 'mentorship', label: 'Coaching', icon: Users },
+  { id: 'investor', label: 'Managed Account', icon: Briefcase },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
@@ -160,10 +160,10 @@ export const DashboardPage: React.FC = () => {
             </button>
             <div>
               <h1 className="font-display text-xl sm:text-2xl font-bold">
-                Command Console
+                Student Dashboard
               </h1>
               <p className="text-xs text-stone-600 dark:text-[#9A968C]">
-                {user.name} · Active Rank:{' '}
+                {user.name} · Current Plan:{' '}
                 <span className="font-mono font-semibold text-amber-700 dark:text-[#F0D58A]">
                   {PLAN_LABELS[user.plan]}
                 </span>
@@ -239,17 +239,17 @@ export const DashboardPage: React.FC = () => {
               <div className="rounded-lg border border-[#C9A24B]/40 bg-white dark:bg-[#0B0B0C] p-8 text-center">
                 <Lock className="mx-auto h-10 w-10 text-[#C9A24B] mb-3" />
                 <h2 className="font-display text-2xl font-bold">
-                  Sector Restricted Under &ldquo;{PLAN_LABELS[user.plan]}&rdquo;
+                  Not Included in &ldquo;{PLAN_LABELS[user.plan]}&rdquo;
                 </h2>
                 <p className="mt-2 max-w-md mx-auto text-sm text-stone-600 dark:text-[#9A968C]">
-                  Ascend your rank order to unlock this command sector, or switch your preview rank inside Settings to inspect every division.
+                  Upgrade your plan to unlock this section, or switch your preview plan in Settings to explore every feature.
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Button variant="primary" onClick={() => updatePlan('full-access')}>
-                    Preview Sovereign Titan (Demo)
+                    Preview All-Access VIP (Demo)
                   </Button>
                   <Button variant="secondary" to="/pricing">
-                    Compare Ranks
+                    Compare Plans
                   </Button>
                 </div>
               </div>
@@ -262,12 +262,12 @@ export const DashboardPage: React.FC = () => {
                         Welcome Back, {user.name}
                       </p>
                       <h2 className="mt-1 font-display text-2xl sm:text-3xl font-bold">
-                        Your Command Desk Overview
+                        Your Learning Overview
                       </h2>
                       <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                        <ProgressRing label="The Forge Syllabus" percent={overallProgress} />
+                        <ProgressRing label="Video Courses Completed" percent={overallProgress} />
                         <ProgressRing
-                          label="Risk Shield Mastery"
+                          label="Safety Habits Score"
                           percent={Math.min(100, overallProgress + 22)}
                         />
                         <div className="flex items-center gap-3.5 rounded-lg border border-stone-200 dark:border-[#C9A24B]/24 bg-stone-50 dark:bg-[#141414] p-4">
@@ -279,7 +279,7 @@ export const DashboardPage: React.FC = () => {
                               {user.streakDays} Days
                             </p>
                             <p className="text-xs text-stone-600 dark:text-[#9A968C]">
-                              Discipline Streak
+                              Learning Streak
                             </p>
                           </div>
                         </div>
@@ -301,37 +301,37 @@ export const DashboardPage: React.FC = () => {
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="rounded-lg border border-stone-200 dark:border-[#C9A24B]/24 bg-white dark:bg-[#0B0B0C] p-6">
                         <p className="font-mono text-[10px] uppercase tracking-wider font-semibold text-[#C9A24B]">
-                          Next Live Briefing
+                          Next Live Class
                         </p>
                         <h3 className="mt-1 font-display text-xl font-bold">
-                          London Killzone Liquidity Workshop
+                          London Morning Chart Walkthrough
                         </h3>
                         <p className="mt-1 text-xs text-stone-600 dark:text-[#9A968C]">
-                          Wednesday · 13:30 UTC with Marcus Vance
+                          Wednesday · 13:30 UTC with Mr Odinaka
                         </p>
                         <Button className="mt-4" size="sm" onClick={() => setActiveTab('courses')}>
-                          Enter The Forge
+                          Open Courses
                         </Button>
                       </div>
 
                       <div className="rounded-lg border border-stone-200 dark:border-[#C9A24B]/24 bg-white dark:bg-[#0B0B0C] p-6">
                         <p className="font-mono text-[10px] uppercase tracking-wider font-semibold text-[#F0D58A]">
-                          Upcoming Strategos Review
+                          Upcoming Coaching Call
                         </p>
                         <h3 className="mt-1 font-display text-xl font-bold">
-                          Weekly 1-on-1 Chart &amp; Ledger Audit
+                          Weekly 1-on-1 Chart &amp; Journal Review
                         </h3>
                         <p className="mt-1 text-xs text-stone-600 dark:text-[#9A968C]">
                           Friday · 14:00 EST · Status: Scheduled (Demo)
                         </p>
                         <Button className="mt-4" size="sm" variant="secondary" onClick={() => setActiveTab('mentorship')}>
-                          Inspect Audit Notes
+                          View Coaching Notes
                         </Button>
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="font-display text-lg font-bold mb-3">Latest Vanguard Dispatch Preview</h3>
+                      <h3 className="font-display text-lg font-bold mb-3">Latest Sample Signal</h3>
                       <SignalCard signal={DEMO_SIGNALS[0]} />
                     </div>
                   </div>
@@ -520,22 +520,22 @@ export const DashboardPage: React.FC = () => {
                 {activeTab === 'mentorship' && (
                   <div className="space-y-5">
                     <div className="rounded-lg border border-stone-200 dark:border-[#C9A24B]/24 bg-white dark:bg-[#0B0B0C] p-6">
-                      <h3 className="font-display text-xl font-bold mb-4">Strategos Briefings (Demo)</h3>
+                      <h3 className="font-display text-xl font-bold mb-4">Coaching Sessions (Demo)</h3>
                       <div className="space-y-3">
                         {[
                           {
-                            title: '1-on-1 Execution & Journal Audit',
-                            mentor: 'Marcus Vance',
+                            title: '1-on-1 Chart & Trade Journal Review',
+                            mentor: 'Mr Odinaka',
                             when: 'Fri, Nov 20 · 14:00 EST',
                             status: 'Upcoming',
-                            notes: 'Focus on avoiding NY open mid-range entries on EUR/USD.',
+                            notes: 'Focus on waiting for clear New York session setups on EUR/USD.',
                           },
                           {
-                            title: 'Baseline Risk Calibration Call',
+                            title: 'Safety Limit & Risk Check Call',
                             mentor: 'David Okafor',
                             when: 'Fri, Nov 13 · 14:00 EST',
                             status: 'Completed',
-                            notes: 'Locked 0.75% max risk per setup; reviewed 25 historical trades.',
+                            notes: 'Set 0.75% max risk per trade; reviewed 25 practice trades.',
                           },
                         ].map((b) => (
                           <div
@@ -550,10 +550,10 @@ export const DashboardPage: React.FC = () => {
                               </span>
                             </div>
                             <p className="mt-1 text-xs text-stone-600 dark:text-[#9A968C]">
-                              Commander: {b.mentor}
+                              Coach: {b.mentor}
                             </p>
                             <p className="mt-2 text-xs text-stone-700 dark:text-[#EDE6D6]/90">
-                              Audit Notes: {b.notes}
+                              Notes: {b.notes}
                             </p>
                           </div>
                         ))}
@@ -566,10 +566,10 @@ export const DashboardPage: React.FC = () => {
                   <div className="space-y-5">
                     <div className="rounded-lg border border-stone-200 dark:border-[#C9A24B]/24 bg-white dark:bg-[#0B0B0C] p-6">
                       <h3 className="font-display text-xl font-bold mb-1">
-                        Mandate Statements &amp; Governance Ledger (Demo)
+                        Monthly Account Statements (Demo)
                       </h3>
                       <p className="text-xs text-stone-600 dark:text-[#9A968C] mb-5">
-                        Placeholder statement archive for qualified Mandate Vault preview.
+                        Sample monthly statements for Managed Account clients.
                       </p>
                       <div className="space-y-2.5">
                         {INVESTOR_DEMO_REPORTING.slice().reverse().map((row) => (
@@ -645,9 +645,9 @@ export const DashboardPage: React.FC = () => {
                     </div>
 
                     <div className="rounded-lg border border-stone-200 dark:border-[#C9A24B]/24 bg-white dark:bg-[#0B0B0C] p-6 space-y-4">
-                      <h3 className="font-display text-xl font-bold">Rank Access &amp; Appearance</h3>
+                      <h3 className="font-display text-xl font-bold">Plan Access &amp; Appearance</h3>
                       <p className="text-xs text-stone-600 dark:text-[#9A968C]">
-                        Verify sector permissions by switching your active demo rank:
+                        Preview what each plan unlocks by switching your demo plan below:
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {(

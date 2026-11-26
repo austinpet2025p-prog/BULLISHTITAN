@@ -48,13 +48,13 @@ function renderHighlightedText(text: string, terms: string[]): React.ReactNode {
   });
 }
 
-const DEFAULT_QUICK_TOPICS = ['risk', 'vanguard', 'strategos', 'synthetic', 'custody'];
+const DEFAULT_QUICK_TOPICS = ['risk', 'signals', 'coaching', 'synthetic', 'safety'];
 
 export const FaqSearchFilter: React.FC<FaqSearchFilterProps> = ({
   items,
   enableCategoryTabs = true,
   enableGlobalShortcut = false,
-  placeholder = 'Search doctrine (e.g., risk, vanguard, strategos, synthetic, custody)...',
+  placeholder = 'Search questions (e.g., risk, signals, coaching, synthetic, safety)...',
   quickTopics = DEFAULT_QUICK_TOPICS,
   className,
 }) => {
@@ -279,10 +279,10 @@ export const FaqSearchFilter: React.FC<FaqSearchFilterProps> = ({
         {filteredItems.length === 0 ? (
           <div className="rounded-2xl hairline-sapphire p-8 text-center space-y-4">
             <p className="font-display text-lg font-bold text-[#EDE6D6]">
-              No doctrine entries matched &ldquo;{query.trim() || selectedCategory}&rdquo;
+              No answers matched &ldquo;{query.trim() || selectedCategory}&rdquo;
             </p>
             <p className="text-xs sm:text-sm text-[#9A968C] max-w-md mx-auto">
-              Try searching a single keyword or jump straight to a common admissions topic below.
+              Try searching a single word or click a topic below.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-2 pt-1">

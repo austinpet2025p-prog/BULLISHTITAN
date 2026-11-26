@@ -17,111 +17,111 @@ interface QuizQuestion {
 
 const QUESTIONS: QuizQuestion[] = [
   {
-    prompt: 'What best reflects your current stage of market command?',
-    context: 'Current Rank Readiness',
+    prompt: 'Where are you starting from today?',
+    context: 'Your Experience Level',
     options: [
       {
-        label: 'Initiate — I want disciplined structural fundamentals from day one',
+        label: 'Brand new — I want simple, step-by-step lessons from scratch',
         scores: { training: 3, mentorship: 1, signals: 0, investment: 1 },
       },
       {
-        label: 'Practitioner — I read charts, yet lack ironclad risk governance',
+        label: 'Some experience — I know the basics, but I still lose money or break rules',
         scores: { training: 1, mentorship: 3, signals: 1, investment: 0 },
       },
       {
-        label: 'Seasoned Operator — I run tight hours and require vetted desk intelligence',
+        label: 'Busy schedule — I understand trading and just want clear daily trade alerts',
         scores: { training: 0, mentorship: 1, signals: 3, investment: 1 },
       },
       {
-        label: 'Capital Steward — I prioritize governed portfolio mandates over daily charts',
+        label: 'Hands-free investor — I want pros to trade my account safely for me',
         scores: { training: 0, mentorship: 0, signals: 1, investment: 3 },
       },
     ],
   },
   {
-    prompt: 'How many hours per week can you commit to tactical preparation?',
-    context: 'Weekly Operational Bandwidth',
+    prompt: 'How much free time do you have each week?',
+    context: 'Your Weekly Schedule',
     options: [
       {
-        label: '1–2 hours weekly (high-conviction dispatches & decisive levels)',
+        label: '1–2 hours a week (just quick alerts and clear prices)',
         scores: { training: 0, mentorship: 0, signals: 3, investment: 2 },
       },
       {
-        label: '3–5 hours weekly (structured study modules & weekend backtesting)',
+        label: '3–5 hours a week (watching lessons and practicing calmly)',
         scores: { training: 3, mentorship: 1, signals: 1, investment: 1 },
       },
       {
-        label: '6–10 hours weekly (live Strategos critiques & execution audits)',
+        label: '6–10 hours a week (live chart classes and 1-on-1 reviews)',
         scores: { training: 1, mentorship: 3, signals: 0, investment: 0 },
       },
       {
-        label: 'Monthly allocation checkpoints & quarterly stewardship reviews',
+        label: 'Almost no free time (monthly check-ins only)',
         scores: { training: 0, mentorship: 0, signals: 0, investment: 3 },
       },
     ],
   },
   {
-    prompt: 'Which market theatres command your focus today?',
-    context: 'Primary Theatre Focus',
+    prompt: 'Which markets are you most interested in?',
+    context: 'Favorite Markets',
     options: [
       {
-        label: 'Major Forex pairs (EUR/USD, GBP/USD) and XAUUSD Gold',
+        label: 'Major Forex pairs (EUR/USD, GBP/USD) and Gold',
         scores: { training: 2, mentorship: 2, signals: 2, investment: 0 },
       },
       {
-        label: 'High-tempo Synthetic Indices (V75, Boom 500, Crash 1000)',
+        label: 'Fast Synthetic Indices (Volatility 75, Boom 500, Crash 1000)',
         scores: { training: 2, mentorship: 2, signals: 3, investment: 1 },
       },
       {
-        label: 'Multi-quarter FX Macro & governed capital stewardship',
+        label: 'Long-term Forex & Gold account growth',
         scores: { training: 1, mentorship: 0, signals: 0, investment: 3 },
       },
       {
-        label: 'Cross-theatre command across Forex Majors, Gold, and Synthetics',
+        label: 'Both Forex, Gold, and Synthetic Indices together',
         scores: { training: 2, mentorship: 3, signals: 1, investment: 1 },
       },
     ],
   },
   {
-    prompt: 'Where does your execution currently break discipline?',
-    context: 'Primary Execution Bottleneck',
+    prompt: 'What is your biggest challenge right now?',
+    context: 'Main Goal',
     options: [
       {
-        label: 'Lacking an institutional blueprint free of conflicting noise',
+        label: 'Charts look confusing and I do not have a clear plan yet',
         scores: { training: 3, mentorship: 1, signals: 0, investment: 0 },
       },
       {
-        label: 'Emotional hesitation, impulse entries, or shifting hard stops',
+        label: 'Getting nervous, jumping in too early, or moving my stop loss',
         scores: { training: 1, mentorship: 3, signals: 0, investment: 0 },
       },
       {
-        label: 'Missing London/NY liquidity windows while running another career',
+        label: 'Missing good trades while I am at my job or with family',
         scores: { training: 0, mentorship: 0, signals: 3, investment: 1 },
       },
       {
-        label: 'Deploying significant capital under disciplined drawdown limits',
+        label: 'Growing larger savings carefully with strict safety rules',
         scores: { training: 0, mentorship: 0, signals: 0, investment: 3 },
       },
     ],
   },
   {
-    prompt: 'Which command environment sharpens your execution fastest?',
-    context: 'Preferred Formation Mode',
+    prompt: 'How do you learn or grow best?',
+    context: 'Preferred Style',
     options: [
       {
-        label: 'Structured field modules with repeatable tactical checklists',
+        label: 'Clear, self-paced video lessons with simple checklists',
         scores: { training: 3, mentorship: 1, signals: 0, investment: 0 },
       },
       {
-        label: 'Direct 1-on-1 Strategos critique of my live charts and ledger',
+        label: 'Having a personal coach check my trades every week',
         scores: { training: 0, mentorship: 3, signals: 0, investment: 0 },
       },
       {
-        label: 'Vetted trade briefs with clear invalidation and exit zones',
+        label: 'Ready-to-read trade alerts with exact Stop Loss & Target prices',
         scores: { training: 0, mentorship: 0, signals: 3, investment: 0 },
       },
       {
-        label: 'Governed mandate structures with strict stewardship rules',
+        label: 'A managed account where my money stays in my own broker',
         scores: { training: 0, mentorship: 0, signals: 0, investment: 3 },
       },
     ],
@@ -141,52 +141,52 @@ const RECOMMENDATIONS: Record<
   }
 > = {
   training: {
-    title: 'The Forge · Training Academy',
-    label: '01 · Foundation Rank',
+    title: 'Step-by-Step Trading Courses',
+    label: '01 · Best Match: Training Courses',
     accentColor: '#F0D58A',
     summary:
-      'Enter The Forge to master market structure, session liquidity, and fixed-fractional risk governance at your own disciplined pace.',
-    deliverable: '3 Rank Divisions · 86 Field Lessons · Risk Shield Calculators',
-    cta: 'Enter The Forge',
+      'Start with our friendly video lessons to understand charts, timing, and money safety at your own comfortable pace.',
+    deliverable: '3 Clear Levels · 86 Video Lessons · Free Lot Size Calculator',
+    cta: 'View Trading Courses',
     to: '/training',
   },
   mentorship: {
-    title: '12-Week Strategos Mentorship',
-    label: '02 · Strategos Mastery',
+    title: '12-Week 1-on-1 Coaching',
+    label: '02 · Best Match: Personal Coaching',
     accentColor: '#22C58B',
     summary:
-      'You already grasp chart mechanics—what locks in edge now is direct Strategos critique, weekly ledger audits, and uncompromising accountability.',
-    deliverable: '12 Weeks · Live Desk Critiques · 1-on-1 Ledger Audits',
-    cta: 'Inspect Strategos Desk',
+      'You already know the basics—what helps most now is a real coach checking your trades every week so you stay calm and consistent.',
+    deliverable: '12 Weeks · Live Chart Classes · Weekly 1-on-1 Reviews',
+    cta: 'Meet Your Coaches',
     to: '/mentorship',
   },
   signals: {
-    title: 'Vanguard Intelligence Desk',
-    label: '03 · Vanguard Dispatch',
+    title: 'Daily Trade Signals',
+    label: '03 · Best Match: Live Signals',
     accentColor: '#22C58B',
     summary:
-      'Forged for decisive operators short on screen hours: receive vetted Forex and Synthetic Indices dispatches with exact invalidation and position sizing.',
-    deliverable: 'FX Majors · XAUUSD · V75 / Boom / Crash Dispatches',
-    cta: 'Access Vanguard Desk',
+      'Made for busy people: get checked Forex, Gold, and Synthetic trade ideas with exact entry, stop-loss, and target prices sent to your phone.',
+    deliverable: 'Forex Majors · Gold · V75 / Boom / Crash Alerts',
+    cta: 'View Signal Plans',
     to: '/signals',
   },
   investment: {
-    title: 'Sovereign Capital Mandates',
-    label: '04 · Stewardship Division',
+    title: 'Managed Accounts',
+    label: '04 · Best Match: Managed Accounts',
     accentColor: '#E08A3C',
     summary:
-      'Step into our structured stewardship progression from Agoge Mandate ($900) through Vanguard, Strategos, and Sovereign Archon tier allocation.',
-    deliverable: 'Agoge to Archon Ranks · 50/50 Split · Hard Drawdown Shield',
-    cta: 'Inspect Capital Mandates',
+      'Let our senior traders manage trades inside your own regulated broker account—starting from the $900 Starter Plan up to Private VIP.',
+    deliverable: 'Starter to VIP Plans · 50/50 Profit Split · Strict Loss Limits',
+    cta: 'See Managed Accounts',
     to: '/investment',
   },
 };
 
 const TRACK_LABELS: Record<TrackKey, string> = {
-  training: 'The Forge',
-  mentorship: 'Strategos',
-  signals: 'Vanguard',
-  investment: 'Mandates',
+  training: 'Trading Courses',
+  mentorship: '1-on-1 Coaching',
+  signals: 'Daily Signals',
+  investment: 'Managed Accounts',
 };
 
 const TRACK_BAR_STYLE: Record<TrackKey, string> = {
@@ -318,9 +318,9 @@ export const FindYourPathQuiz: React.FC = () => {
     <Section
       id="quiz"
       romanIndex="05"
-      kicker="Placement Diagnostic"
-      title="Rank & Division Placement"
-      subtitle="Answer five tactical assessment questions to align your command readiness, weekly bandwidth, and market theatre to the right Bullish Titan division."
+      kicker="Quick Path Finder"
+      title="Find Your Best Starting Point"
+      subtitle="Answer five quick questions and we will point you straight to the program that fits your time, skill level, and goals."
     >
       <div className="grid gap-10 lg:grid-cols-12 items-start">
         {/* Left Editorial Brief + Live Spring-Animated Track Affinity Bars */}
@@ -331,22 +331,22 @@ export const FindYourPathQuiz: React.FC = () => {
             </ShieldCrestBadge>
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A24B]">
-                Live Division Calibration
+                Live Match Finder
               </p>
               <p className="font-display text-xl font-bold text-[#EDE6D6]">
-                {isDone ? 'Placement Locked' : `Assessment 0${step + 1} of 0${QUESTIONS.length}`}
+                {isDone ? 'Your Best Match Is Ready' : `Question 0${step + 1} of 0${QUESTIONS.length}`}
               </p>
             </div>
           </div>
 
           <p className="text-sm text-[#9A968C] leading-relaxed">
-            Each selection recalculates your real-time alignment across our four institutional divisions—protecting both your study bandwidth and trading capital.
+            Every answer updates your match scores in real time so you never waste time or money on the wrong program.
           </p>
 
           {/* Animated Liquid Gold Completion Meter */}
           <div className="pt-1">
             <div className="flex justify-between font-mono text-[11px] text-[#9A968C] mb-2 tabular-nums">
-              <span>DIAGNOSTIC PROGRESS</span>
+              <span>QUIZ PROGRESS</span>
               <span className="text-gold-gradient font-semibold">{progressPct}%</span>
             </div>
             <div className="h-[3px] w-full rounded-full bg-[#141414] overflow-hidden">
@@ -362,7 +362,7 @@ export const FindYourPathQuiz: React.FC = () => {
           {/* Live Compatibility Bars */}
           <div className="rounded-xl hairline-sapphire p-5 space-y-3.5">
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#93C5FD]">
-              Division Alignment Telemetry
+              Live Program Match
             </p>
             {(Object.keys(TRACK_LABELS) as TrackKey[]).map((track) => {
               const rawShare =
@@ -479,7 +479,7 @@ export const FindYourPathQuiz: React.FC = () => {
                     )}
                   >
                     <span className="block font-mono text-[10px] uppercase tracking-wider text-[#9A968C]">
-                      Division Fit
+                      Match Score
                     </span>
                     <span className="font-display text-2xl font-bold">
                       {topMatchPct}%
@@ -502,7 +502,7 @@ export const FindYourPathQuiz: React.FC = () => {
                   </Button>
                   <Button variant="outline" size="lg" onClick={reset}>
                     <RotateCcw className="h-4 w-4" />
-                    Retake Diagnostic
+                    Start Over
                   </Button>
                 </div>
               </motion.div>

@@ -62,7 +62,7 @@ export const SignalAnatomyIllustration: React.FC<{ className?: string }> = ({ cl
       ENTRY ZONE
     </text>
     <text x="305" y="180" fill="#EF4444" fontSize="10" fontFamily="JetBrains Mono, monospace">
-      INVALIDATION (SL)
+      STOP LOSS (SAFETY)
     </text>
   </svg>
 );

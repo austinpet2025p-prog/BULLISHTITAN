@@ -22,34 +22,34 @@ interface SpatialStage {
 const SPATIAL_STAGES: SpatialStage[] = [
   {
     index: '01',
-    label: 'Structure',
-    title: 'Precision Architecture Before Every Entry.',
-    body: 'Instead of chasing reactive candles, map institutional liquidity shelves and multi-timeframe order blocks across Forex Majors and Synthetic Indices.',
+    label: 'Clarity',
+    title: 'Always Have a Clear Plan Before You Trade.',
+    body: 'Instead of chasing fast candles, learn to spot clean turning zones on Forex Majors and Synthetic Indices before clicking a button.',
     metric: '86 Core Lessons',
     href: '/training',
   },
   {
     index: '02',
-    label: 'Equilibrium',
-    title: 'Balanced 1.0% Risk Calibration.',
-    body: 'Every position is pre-sized to fixed invalidation bounds—eliminating emotional over-leveraging so edge compounds cleanly across drawdowns.',
-    metric: '1.0% Hard Risk Cap',
+    label: 'Safety',
+    title: 'Keep Every Loss Small (1.0% Max Risk).',
+    body: 'Size every trade safely before entering so no single loss ever causes stress—allowing good habits to grow your account steadily.',
+    metric: '1.0% Max Risk Cap',
     href: '/results',
   },
   {
     index: '03',
-    label: 'Velocity',
-    title: 'Session Timing Across London & New York.',
-    body: 'Execute alongside real volatility expansions and 24/7 synthetic cycles with structured pre-session desk markups and live radar confirmations.',
-    metric: 'FX · Gold · V75',
+    label: 'Timing',
+    title: 'Trade Only During Active Market Hours.',
+    body: 'Focus on the cleanest London and New York moves or steady 24/7 synthetic cycles with clear pre-market notes and live signal alerts.',
+    metric: 'Forex · Gold · V75',
     href: '/signals',
   },
   {
     index: '04',
-    label: 'Sovereignty',
-    title: 'Governed Capital & Strategos Counsel.',
-    body: 'Ascend from independent drills into 1-on-1 weekly ledger audits and governed Sovereign Mandates engineered for long-horizon endurance.',
-    metric: 'Strategos & Mandate Tiers',
+    label: 'Support',
+    title: 'Grow With Personal Coaching & Managed Plans.',
+    body: 'Move forward with weekly 1-on-1 trade checks or explore our Managed Account plans built for calm, long-term consistency.',
+    metric: 'Coaching & Managed Plans',
     href: '/mentorship',
   },
 ];
@@ -104,14 +104,14 @@ export const SpatialFlowSection: React.FC = () => {
             <span className="font-display italic text-sm text-[#C9A24B]">02</span>
             <span className="h-px w-8 bg-gold-gradient opacity-80" aria-hidden="true" />
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-gradient">
-              Kinetic Command Model
+              Interactive Trading Guide
             </p>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#EDE6D6] leading-[1.06] tracking-tight">
-            Engineered to Move With Your Focus.
+            Built to Move With Your Pace.
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#9A968C] leading-relaxed">
-            Four disciplined operating phases—drag, hover, click to pulse, or scroll smoothly to watch the astrolabe reconfigure in real time.
+            Four simple steps—drag, click, or scroll down to watch our 3D market model shift through each stage of calm trading.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export const SpatialFlowSection: React.FC = () => {
                 fallback={
                   <div className="h-[340px] sm:h-[420px] lg:h-[520px] flex items-center justify-center">
                     <span className="font-mono text-xs text-[#C9A24B]">
-                      Initializing 3D Astrolabe...
+                      Loading 3D Market Model...
                     </span>
                   </div>
                 }
@@ -232,7 +232,7 @@ export const SpatialFlowSection: React.FC = () => {
                         to={stage.href}
                         className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#F0D58A] hover:underline"
                       >
-                        Explore {stage.label} Division
+                        Explore {stage.label}
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </Link>
                     </div>

@@ -51,9 +51,9 @@ export const ResultsPage: React.FC = () => {
     <div className="pt-20 bg-[#000000]">
       <Section
         romanIndex="01"
-        kicker="The Phalanx · Operational Proof"
-        title="Risk-Normalized Metrics &amp; Desk Transparency"
-        subtitle="We record disciplined execution journals, drawdown shields, and verified member progress ledgers rather than unsubstantiated profit claims."
+        kicker="Track Record &amp; Safety Rules"
+        title="Honest Numbers &amp; Clear Safety Habits"
+        subtitle="We focus on calm trade journals, strict loss limits, and real student progress rather than flashy promises."
       >
         {/* Ruled Telemetry Ledger Strip (Counts up when visible) */}
         <GoldHairlineDivider />
@@ -62,39 +62,39 @@ export const ResultsPage: React.FC = () => {
             <div className="flex items-center gap-2 text-[#C9A24B] mb-2">
               <Users className="h-4 w-4" />
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9A968C]">
-                Active Members
+                Active Students
               </span>
             </div>
             <p className="font-display text-3xl font-bold text-[#EDE6D6] tabular-nums">
               <CountUpValue end={14800} duration={1850} suffix="+" />
             </p>
-            <p className="mt-1 text-xs text-[#9A968C]">Across all 4 divisions</p>
+            <p className="mt-1 text-xs text-[#9A968C]">Across all 4 programs</p>
           </div>
 
           <div className="lg:pl-6 lg:border-l lg:border-[#C9A24B]/18">
             <div className="flex items-center gap-2 text-[#C9A24B] mb-2">
               <Globe className="h-4 w-4" />
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9A968C]">
-                Nations Represented
+                Countries Reached
               </span>
             </div>
             <p className="font-display text-3xl font-bold text-[#EDE6D6] tabular-nums">
               <CountUpValue end={64} duration={1550} suffix="+" />
             </p>
-            <p className="mt-1 text-xs text-[#9A968C]">Global Phalanx network</p>
+            <p className="mt-1 text-xs text-[#9A968C]">Worldwide student community</p>
           </div>
 
           <div className="lg:pl-6 lg:border-l lg:border-[#C9A24B]/18">
             <div className="flex items-center gap-2 text-[#C9A24B] mb-2">
               <ShieldCheck className="h-4 w-4" />
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9A968C]">
-                Risk Shield Standard
+                Strict Safety Limit
               </span>
             </div>
             <p className="font-display text-3xl font-bold text-[#EDE6D6] tabular-nums">
               <CountUpValue end={1} decimals={1} duration={1350} suffix="% Max" />
             </p>
-            <p className="mt-1 text-xs text-[#9A968C]">Enforced per position</p>
+            <p className="mt-1 text-xs text-[#9A968C]">Risk limit per single trade</p>
           </div>
 
           <div className="lg:pl-6 lg:border-l lg:border-[#C9A24B]/18">
@@ -177,11 +177,11 @@ export const ResultsPage: React.FC = () => {
           </Card>
 
           <div className="lg:col-span-5 space-y-5">
-            <ShieldFrame variant="crest" bright caption="PLATE I — MULTI-AXIS DRAWDOWN SHIELD">
+            <ShieldFrame variant="crest" bright caption="PLATE I — MULTI-LAYER SAFETY SHIELD">
               <Suspense
                 fallback={
                   <div className="h-[260px] flex items-center justify-center text-xs font-mono text-[#9A968C]">
-                    Loading 3D Risk Vault...
+                    Loading 3D Safety Model...
                   </div>
                 }
               >
@@ -190,23 +190,23 @@ export const ResultsPage: React.FC = () => {
             </ShieldFrame>
             <div className="border-t border-[#C9A24B]/22 pt-4">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-gradient">
-                Risk Vault Model
+                Safety Rules Model
               </p>
               <h3 className="mt-1 font-display text-xl font-bold text-[#EDE6D6]">
-                Multi-Axis Drawdown Control
+                Protecting Your Account First
               </h3>
               <p className="mt-1.5 text-xs text-[#9A968C] leading-relaxed">
-                Every logged setup enforces fixed-fractional sizing, hard stop invalidation, and correlation ceilings.
+                Every trade example uses fixed small trade sizes, a firm stop-loss, and smart limits on total exposure.
               </p>
             </div>
           </div>
         </div>
 
-        <ShieldSectionDivider label="Verified Ledger Archive" className="mb-12" />
+        <ShieldSectionDivider label="Sample Trade Records" className="mb-12" />
 
         {/* Verified Results Wall Template — Editorial List */}
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6] mb-6">
-          Verified Ledger Wall (Template Slots)
+          Sample Trade Journals (Templates)
         </h3>
         <div className="border-y border-[#C9A24B]/22 divide-y divide-[#C9A24B]/16 mb-8">
           {VERIFIED_WALL_TEMPLATES.map((item) => (

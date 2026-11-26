@@ -16,50 +16,50 @@ export interface MandateClause {
 export const ACCOUNT_MANAGEMENT_CLAUSES: MandateClause[] = [
   {
     number: 1,
-    title: 'Account Access',
-    body: 'You provide Bullish Titan Academy with trade-execution access to your designated brokerage account. This access is used strictly for market analysis and order execution. Your account remains permanently in your legal name and under your sole ownership.',
+    title: 'Account Access (Stays in Your Name)',
+    body: 'You give Bullish Titan Academy trade-only access to your personal broker account. This access is used strictly to read the market and place trades. Your account stays permanently in your legal name under your sole ownership.',
   },
   {
     number: 2,
-    title: 'Capital Requirement',
-    body: 'You fund your trading account with the stipulated equity required for your selected mandate rank. All capital remains inside your own brokerage custody, and Bullish Titan Academy holds zero authorization or technical ability to withdraw funds.',
+    title: 'You Keep Control of Your Money',
+    body: 'You fund your broker account with the starting balance for your chosen plan. All money stays safely inside your own regulated broker account, and Bullish Titan Academy has zero permission or ability to withdraw your funds.',
   },
   {
     number: 3,
-    title: 'Profit Sharing',
-    body: 'Account management operates on a 50% / 50% performance-sharing structure: 50% to you (the Client), and 50% to Bullish Titan Academy. Profits are calculated and shared once the cycle profit target is reached and/or surpassed.',
+    title: 'Fair 50/50 Profit Split',
+    body: 'Account management uses a 50% / 50% profit-sharing rule: 50% goes to you, and 50% goes to Bullish Titan Academy. Profits are calculated and shared only after your cycle profit goal is reached or surpassed.',
     emphasis: 'We only earn when you earn.',
   },
   {
     number: 4,
-    title: 'Withdrawals',
-    body: 'Client withdrawals are processed cleanly once initiated per schedule upon reaching and/or surpassing the agreed profit target, following transparent profit calculation and 50/50 distribution.',
+    title: 'Coordinated Withdrawals',
+    body: 'Your profit withdrawals are processed smoothly on schedule as soon as the profit target is reached, following clear accounting and the 50/50 profit split.',
   },
   {
     number: 5,
-    title: 'Trading Strategy & Client Non-Interference',
-    body: 'Execution is governed strictly by structured market analysis—never gambling—across Synthetic Indices and Forex instruments. To keep automated position sizing and risk caps intact, clients agree not to place manual trades inside the linked managed sub-account.',
+    title: 'Calm Strategy & Please Do Not Self-Trade',
+    body: 'Trades are guided strictly by careful market analysis—never guesswork or gambling—across Forex and Synthetic Indices. To keep trade sizes and safety limits accurate, please do not place manual trades inside your managed sub-account.',
   },
   {
     number: 6,
-    title: 'Risk Disclaimer',
-    body: 'Foreign exchange and Synthetic Indices trading involves substantial risk of loss, and past performance never guarantees future results. While accounts are managed with institutional discipline and strict risk limits, losses may occur due to market volatility, and Bullish Titan Academy is not liable for trading losses incurred during active management.',
+    title: 'Honest Risk Notice',
+    body: 'Trading Forex and Synthetic Indices carries real risk of loss, and past results never guarantee future returns. While every account is traded with strict care and safety limits, losses can still happen when markets move sharply, and Bullish Titan Academy is not liable for trading losses during active management.',
   },
   {
     number: 7,
-    title: 'Termination',
-    body: 'This agreement may be terminated at any time by either party upon prior notice. Once notice is executed, all active positions are closed in orderly fashion and any outstanding realized profits are calculated and shared per Clause 3.',
+    title: 'Stop Anytime With Notice',
+    body: 'Either side can end this agreement at any time with advance notice. Once notice is given, all open trades are closed safely and any realized profits are shared under Rule 3.',
   },
   {
     number: 8,
-    title: 'Confidentiality',
-    body: 'All identity documents, credentials, and financial telemetry shared between both parties remain strictly confidential. Bullish Titan Academy never discloses client account details or trading history to unauthorized third parties.',
+    title: 'Strict Privacy & ID Check',
+    body: 'All identity records, logins, and account reports shared between us stay strictly private. Bullish Titan Academy never shares your account details or trading history with outsiders.',
   },
   {
     number: 9,
-    title: 'Loss Coverage Policy ($5,000+ Equity)',
-    body: 'While every discipline is applied to preserve capital and trade responsibly, market conditions can be unpredictable. In the unlikely event an account suffers a complete loss, Bullish Titan Academy extends a discretionary goodwill loss-coverage provision of 10% of the initial deposit strictly to accounts funded with starting equity above $5,000. Accounts funded with less than $5,000 are not eligible for this provision.',
-    emphasis: 'Discretionary goodwill gesture—not an insurance policy—subject to formal written mandate.',
+    title: '10% Goodwill Buffer (Accounts Above $5,000 Only)',
+    body: 'While we apply strict care to protect your balance, markets can still be unpredictable. In the unlikely case an account suffers a complete loss, Bullish Titan Academy offers a voluntary 10% goodwill refund of your initial deposit strictly for accounts funded above $5,000. Accounts funded with less than $5,000 are not eligible for this offer.',
+    emphasis: 'Voluntary goodwill gesture—not an insurance policy—subject to a signed written agreement.',
   },
 ];
 
@@ -86,6 +86,7 @@ export const MandateAgreementDocument: React.FC<MandateAgreementDocumentProps> =
         <img
           src="/assets/aistudio/WhatsApp_Image_2026-11-15_at_11.43.04_PM_dff4afd1.jpeg"
           alt=""
+          referrerPolicy="no-referrer"
           className="h-80 w-80 object-contain grayscale"
         />
       </div>
@@ -105,6 +106,7 @@ export const MandateAgreementDocument: React.FC<MandateAgreementDocumentProps> =
               alt="Bullish Titan Academy Crest"
               width={48}
               height={48}
+              referrerPolicy="no-referrer"
               className="h-12 w-12 object-contain mix-blend-lighten shrink-0"
             />
             <div>
@@ -112,24 +114,24 @@ export const MandateAgreementDocument: React.FC<MandateAgreementDocumentProps> =
                 Bullish Titan Academy
               </p>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-gradient">
-                Sovereign Mandate &amp; Stewardship Desk
+                Managed Accounts Support
               </p>
             </div>
           </div>
 
           <div className="font-mono text-[11px] text-[#9A968C] sm:text-right space-y-0.5">
-            <p className="text-[#F0D58A]">Mandate Ref · BTA-AM-09</p>
-            <p>Forex &amp; Synthetic Indices · Segregated Custody</p>
+            <p className="text-[#F0D58A]">Agreement Ref · BTA-AM-09</p>
+            <p>Forex &amp; Synthetic Indices · Kept in Your Name</p>
           </div>
         </header>
 
         {/* Document Heading & Intro */}
         <div className="py-7 text-center max-w-2xl mx-auto space-y-3 border-b border-[#C9A24B]/16">
           <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6] tracking-tight text-balance">
-            Sovereign Mandate Terms &amp; Covenant
+            9-Rule Managed Account Agreement
           </h3>
           <p className="text-xs sm:text-sm text-[#9A968C] leading-relaxed">
-            Thank you for entrusting Bullish Titan Academy with execution stewardship over your trading account. This covenant outlines the exact rules, rank protections, and boundaries under which your mandate operates—ensuring complete clarity and institutional discipline throughout our partnership.
+            Thank you for trusting Bullish Titan Academy to manage trades on your broker account. These 9 plain rules explain how your money stays safe in your name, how profits are split, and how both sides work together smoothly.
           </p>
         </div>
 
@@ -175,10 +177,10 @@ export const MandateAgreementDocument: React.FC<MandateAgreementDocumentProps> =
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1">
               <p className="text-xs text-[#9A968C]">
-                If you agree to the nine clauses above, confirm below to apply these terms to your KYC eligibility request.
+                If you agree to the nine rules above, click confirm below to include them with your application.
               </p>
               <p className="font-display italic text-sm text-[#EDE6D6]">
-                Issued by Bullish Titan Academy · Portfolio &amp; Account Management Desk
+                Issued by Bullish Titan Academy · Managed Accounts Team
               </p>
             </div>
 
@@ -192,12 +194,12 @@ export const MandateAgreementDocument: React.FC<MandateAgreementDocumentProps> =
               {accepted ? (
                 <>
                   <CheckCircle2 className="h-4 w-4 text-[#1F9D6B]" />
-                  Terms Accepted · Proceed to KYC
+                  Rules Accepted · Continue
                 </>
               ) : (
                 <>
                   <FileCheck2 className="h-4 w-4" />
-                  Accept Mandate Terms
+                  Accept 9 Rules &amp; Continue
                   <ArrowRight className="h-4 w-4" />
                 </>
               )}
@@ -207,11 +209,11 @@ export const MandateAgreementDocument: React.FC<MandateAgreementDocumentProps> =
           <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#C9A24B]/14 font-mono text-[11px] text-[#9A968C]">
             <span className="inline-flex items-center gap-1.5">
               <Lock className="h-3.5 w-3.5 text-[#C9A24B]" />
-              Client-Owned Custody · Zero Withdrawal Access
+              Money Stays in Your Name · Zero Withdrawal Access
             </span>
             <span className="inline-flex items-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5 text-[#C9A24B]" />
-              50% / 50% Profit Share · $5,000+ Goodwill Loss Coverage
+              50% / 50% Profit Split · 10% Goodwill Buffer ($5,000+ Accounts)
             </span>
           </div>
 

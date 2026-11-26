@@ -54,18 +54,18 @@ import {
 } from '../data/extendedData';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { cn } from '../lib/utils';
-import investmentSpartanBg from '../assets/images/investment_spartan_clean_1795625786726.jpg';
+import investmentSpartanBg from '../assets/images/investment_spartan_widescreen_1795709291681.jpg';
 
 const InvestmentScene3D = lazy(() => import('../components/three/InvestmentScene3D'));
 
 const SECTION_ANCHORS = [
-  { id: 'home', label: 'Origin' },
-  { id: 'about', label: 'Stewardship' },
-  { id: 'plans', label: 'Mandate Ranks' },
-  { id: 'audits', label: 'Audits' },
-  { id: 'terms', label: 'Mandate Rules' },
-  { id: 'steps', label: 'Protocol' },
-  { id: 'eligibility', label: 'Vetting' },
+  { id: 'home', label: 'Overview' },
+  { id: 'about', label: 'How It Works' },
+  { id: 'plans', label: 'Plans' },
+  { id: 'audits', label: 'Sample Results' },
+  { id: 'terms', label: 'Simple Rules' },
+  { id: 'steps', label: '3 Steps' },
+  { id: 'eligibility', label: 'Apply' },
 ];
 
 type TermsViewMode = 'agreement' | 'carousel' | 'ownership' | 'governance' | 'reporting';
@@ -75,16 +75,16 @@ const ACCOUNT_TERMS_SLIDES = [
     id: 'term-1',
     blocks: [
       {
-        heading: '1. Account Access',
-        copy: 'You grant trade-execution access strictly for market analysis and order execution. Your account remains permanently in your legal name and under your sole ownership.',
+        heading: '1. Your Account Stays in Your Name',
+        copy: 'You only give our traders permission to place trades for you. Your broker account stays in your own legal name and you always stay the owner.',
       },
       {
-        heading: '2. Capital Requirement',
-        copy: 'You fund your brokerage account with the stipulated equity for your chosen phase. Capital stays inside your own regulated account—Bullish Titan Academy never holds withdrawal access.',
+        heading: '2. You Keep Full Control of Your Money',
+        copy: 'You deposit funds directly into your own regulated broker account. Bullish Titan Academy can never withdraw your money.',
       },
       {
-        heading: '8. Confidentiality & KYC Vetting',
-        copy: 'All KYC documentation, identity verification calls, and trading history remain strictly confidential and are never disclosed to unauthorized third parties.',
+        heading: '8. Strict Privacy & ID Check',
+        copy: 'All ID verification details, phone calls, and account history are kept completely private and never shared with outsiders.',
       },
     ],
   },
@@ -92,16 +92,16 @@ const ACCOUNT_TERMS_SLIDES = [
     id: 'term-2',
     blocks: [
       {
-        heading: '3. Profit Sharing (50% / 50%)',
-        copy: 'Profits are split 50% to you (the Client) and 50% to Bullish Titan Academy once the cycle profit target is reached and/or surpassed. We only earn when you earn.',
+        heading: '3. Fair 50/50 Profit Split',
+        copy: 'Profits are shared 50% to you (the Client) and 50% to Bullish Titan Academy once your cycle profit target is reached. We only earn when you earn.',
       },
       {
-        heading: '4. Coordinated Withdrawals',
-        copy: 'Withdrawals are coordinated once scheduled upon reaching and/or surpassing the cycle profit target, following transparent profit calculation and settlement.',
+        heading: '4. Easy Coordinated Withdrawals',
+        copy: 'Once your cycle target is reached, we review the profit numbers together clearly so you can withdraw your share right from your broker.',
       },
       {
-        heading: '5. Trading Strategy & Client Role',
-        copy: 'We trade strictly using disciplined analysis across Synthetic Indices and Forex—never gambling. Clients agree not to place manual trades inside the linked managed sub-account.',
+        heading: '5. Calm Strategy — Please Do Not Self-Trade',
+        copy: 'We trade carefully using tested Forex and Synthetic Indices rules—never gambling. To keep risk safe, clients agree not to place manual trades in the linked managed account.',
       },
     ],
   },
@@ -109,16 +109,16 @@ const ACCOUNT_TERMS_SLIDES = [
     id: 'term-3',
     blocks: [
       {
-        heading: '6. Risk Disclaimer',
-        copy: 'Forex and Synthetic Indices carry substantial risk and past results never guarantee future performance. Losses may occur from volatility and Bullish Titan Academy is not liable for market losses.',
+        heading: '6. Honest Market Risk Notice',
+        copy: 'Trading Forex and Synthetic Indices carries real risk, and past results never guarantee future profits. Market losses can happen, and Bullish Titan Academy is not liable for market losses.',
       },
       {
-        heading: '7. Pre-Notice Termination',
-        copy: 'Either party may terminate the agreement at any time upon prior notice. Once terminated, all active trades are closed and any outstanding realized profits are settled per the 50/50 split.',
+        heading: '7. Stop Anytime With Notice',
+        copy: 'Either side can end the agreement at any time with advance notice. Open trades are closed cleanly and any realized profits are shared 50/50.',
       },
       {
-        heading: '9. Loss Coverage Policy ($5,000+ Equity)',
-        copy: 'If an account suffers a complete loss, accounts funded with starting equity above $5,000 qualify for a 10% initial-deposit goodwill buffer (not insurance). Accounts below $5,000 are excluded.',
+        heading: '9. 10% Goodwill Buffer ($5,000+ Accounts)',
+        copy: 'If an account suffers a full loss, accounts funded above $5,000 receive a 10% initial-deposit goodwill buffer (not insurance). Accounts below $5,000 are not covered.',
       },
     ],
   },
@@ -261,7 +261,7 @@ export const InvestmentPage: React.FC = () => {
       return;
     }
     if (!form.ackRisk || !form.ackTerms) {
-      setFormError('You must confirm both the Risk Disclosure and Mandate Terms acknowledgements.');
+      setFormError('Please check both boxes to confirm you understand the risk notice and the 9 simple rules.');
       return;
     }
     setFormError('');
@@ -270,7 +270,7 @@ export const InvestmentPage: React.FC = () => {
 
   return (
     <div className="relative isolate bg-[#000000] overflow-x-clip">
-      {/* Spartan Battle Background Layer (watermark removed, 100% image preserved, 22% opacity) */}
+      {/* Spartan Battle Full-Width Background Layer (watermark removed, 100% scene preserved, 22% opacity) */}
       <div
         aria-hidden="true"
         className="pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen w-full overflow-hidden"
@@ -279,30 +279,21 @@ export const InvestmentPage: React.FC = () => {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 72% 78% at 50% 45%, rgba(201, 162, 75, 0.09), rgba(30, 58, 138, 0.1) 52%, rgba(0, 0, 0, 0.94) 92%)',
+              'radial-gradient(ellipse 72% 78% at 50% 46%, rgba(201, 162, 75, 0.08), rgba(30, 58, 138, 0.09) 56%, rgba(0, 0, 0, 0.92) 92%)',
           }}
         />
-        <div className="relative flex h-full w-full items-center justify-center">
-          <img
-            src={investmentSpartanBg}
-            alt=""
-            referrerPolicy="no-referrer"
-            className="h-full w-full object-contain object-center opacity-[0.22] mix-blend-lighten select-none"
-            style={{
-              maskImage:
-                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%)',
-              maskComposite: 'intersect',
-              WebkitMaskImage:
-                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 4%, black 10%, black 90%, rgba(0,0,0,0.45) 96%, transparent 100%)',
-            }}
-          />
-        </div>
+        <img
+          src={investmentSpartanBg}
+          alt=""
+          referrerPolicy="no-referrer"
+          className="relative h-full w-full object-cover object-center opacity-[0.22] mix-blend-lighten select-none"
+        />
         {/* Seamless obsidian & sapphire perimeter blend */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 68% 82% at 50% 48%, transparent 32%, rgba(2, 5, 13, 0.48) 70%, #000000 96%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
+              'radial-gradient(ellipse 78% 84% at 50% 48%, transparent 38%, rgba(2, 5, 13, 0.44) 74%, #000000 98%), linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, transparent 14%, transparent 82%, #000000 100%)',
           }}
         />
       </div>
@@ -327,25 +318,25 @@ export const InvestmentPage: React.FC = () => {
               <div className="flex items-center gap-3 mb-4">
                 <span className="h-px w-8 bg-gold-gradient" aria-hidden="true" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold text-gold-gradient">
-                  Sovereign Mandates · Bullish Titan Academy
+                  Managed Accounts · Bullish Titan Academy
                 </p>
               </div>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[60px] font-bold text-[#EDE6D6] leading-[1.06] tracking-tight text-balance">
-                Your Custody, Our Discipline,{' '}
+                Your Money, Your Broker,{' '}
                 <span className="italic font-semibold text-gold-gradient">
-                  Forged Through Command
+                  Guided With Care
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-base sm:text-lg text-[#9A968C] leading-relaxed">
-                Disciplined Forex and Synthetic Indices capital stewardship where equity remains locked inside your own regulated broker custody—governed by hard drawdown shields, clear rank progression, and real-time Command Console tracking.
+                Calm, rules-based Forex and Synthetic Indices account management where your money stays safely inside your own regulated broker account—backed by strict safety limits, clear plans, and live progress tracking.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Button variant="primary" size="lg" onClick={() => scrollToSection('plans')}>
-                  Explore Mandate Ranks &amp; Simulator
+                  See Plans &amp; Profit Split Tool
                   <ArrowRight className="h-4 w-4" />
                 </Button>
                 <Button variant="secondary" size="lg" onClick={() => scrollToSection('audits')}>
-                  Inspect Audited Ledgers
+                  View Sample Results
                 </Button>
               </div>
             </motion.div>
@@ -356,11 +347,11 @@ export const InvestmentPage: React.FC = () => {
               animate={reducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
               transition={{ duration: 0.65, delay: reducedMotion ? 0 : 0.1, ease: [0.16, 1, 0.36, 1] }}
             >
-              <ShieldFrame variant="crest" bright caption="PLATE I — MULTI-NODE ALLOCATION CORE">
+              <ShieldFrame variant="crest" bright caption="PLATE I — SAFE ACCOUNT STRUCTURE">
                 <Suspense
                   fallback={
                     <div className="h-[340px] flex items-center justify-center text-xs font-mono text-[#9A968C]">
-                      Loading 3D Capital Network...
+                      Loading 3D Overview...
                     </div>
                   }
                 >
@@ -417,32 +408,32 @@ export const InvestmentPage: React.FC = () => {
       <Section
         id="about"
         romanIndex="01"
-        kicker="Sovereign Capital Governance"
-        title="Capital Stewardship &amp; Mandate Architecture"
-        subtitle="Structured, transparent rank stewardship calibrated to diverse equity brackets across Forex and Synthetic Indices."
+        kicker="How Managed Accounts Work"
+        title="Simple Account Management Built Around Trust"
+        subtitle="Clear rules and safety limits matched to every account size across Forex and Synthetic Indices."
       >
         <div className="grid gap-12 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6 space-y-6">
             <p className="text-sm sm:text-base text-[#9A968C] leading-relaxed">
-              Our ranked progression matches each custody bracket with proportional oversight, strict risk shields, and live ledger visibility—without ever surrendering ownership or withdrawal authority.
+              Every plan pairs your broker account with dedicated trading oversight, strict loss limits, and easy-to-read monthly summaries—while you keep 100% ownership and withdrawal control.
             </p>
 
             <div className="border-y border-[#C9A24B]/22 divide-y divide-[#C9A24B]/16">
               {[
                 {
                   icon: ShieldCheck,
-                  title: 'Governed Mandate Execution',
-                  desc: 'Disciplined models aligned with your equity tier, drawdown ceiling, and capital horizon.',
+                  title: 'Safety Limits Come First',
+                  desc: 'Every plan follows clear risk caps matched to your starting balance and comfort level.',
                 },
                 {
                   icon: FileText,
-                  title: 'Unbroken Transparency',
-                  desc: 'Direct clarity from KYC vetting through Clause 9 protections and monthly PDF audit ledgers.',
+                  title: 'Clear, Honest Rules',
+                  desc: 'Simple transparency from your ID check and 9-rule agreement to monthly PDF account reports.',
                 },
                 {
                   icon: SlidersHorizontal,
-                  title: 'Four Earned Stewardship Ranks',
-                  desc: 'Progress deliberately from Agoge ($900) through Vanguard, Strategos, and Sovereign Archon ($10,000+).',
+                  title: 'Four Easy-to-Understand Plans',
+                  desc: 'Start at Starter ($900) and grow into Growth ($1,500), Pro ($6,000), or Private VIP ($10,000+).',
                 },
               ].map((item, idx) => {
                 const Icon = item.icon;
@@ -473,7 +464,7 @@ export const InvestmentPage: React.FC = () => {
 
             <div className="pt-1 flex items-center gap-3 font-mono text-[11px] uppercase tracking-wider text-[#9A968C]">
               <Layers className="h-4 w-4 text-[#C9A24B]" />
-              <span>Bullish Titan Academy · Sovereign Mandate Desk Authorization</span>
+              <span>Bullish Titan Academy · Managed Accounts Team</span>
             </div>
           </div>
 
@@ -482,11 +473,11 @@ export const InvestmentPage: React.FC = () => {
               variant="landscape"
               bright
               innerClassName="aspect-[16/10] w-full"
-              caption="PLATE II — CUSTODY & DESK EXECUTION OVERVIEW"
+              caption="PLATE II — YOUR BROKER ACCOUNT &amp; TRADE SUPPORT OVERVIEW"
             >
               <SafeImage
                 src={ACADEMY_ASSETS.mentorshipRoom}
-                alt="Bullish Titan Academy Sovereign Mandate Desk"
+                alt="Bullish Titan Academy Managed Accounts Desk"
                 width={1280}
                 height={800}
                 className="h-full w-full object-cover"
@@ -498,14 +489,14 @@ export const InvestmentPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIntroOpen(true)}
-                aria-label="Open Sovereign Mandate architecture overview"
+                aria-label="Open Managed Accounts overview"
                 className="absolute inset-0 flex flex-col items-center justify-center gap-3 group"
               >
                 <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#F0D58A]/70 bg-[#000000]/85 text-[#F0D58A] transition-transform duration-200 group-hover:scale-110">
                   <Play className="h-6 w-6 fill-[#C9A24B] ml-0.5" />
                 </span>
                 <span className="rounded-md border border-[#C9A24B]/35 bg-[#000000]/85 backdrop-blur-md px-4 py-1.5 font-mono text-xs font-semibold text-[#EDE6D6]">
-                  Inspect Stewardship Overview
+                  See How Custody Works
                 </span>
               </button>
             </ShieldFrame>
@@ -523,23 +514,23 @@ export const InvestmentPage: React.FC = () => {
             <div className="lg:col-span-4 space-y-5">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold text-sapphire-gold mb-2">
-                  Capital Stewardship Ranks
+                  Managed Account Plans
                 </p>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#EDE6D6] leading-tight text-balance">
-                  Ascend the Ranks <br />
-                  Select Your Mandate
+                  Pick a Size <br />
+                  Choose Your Plan
                 </h2>
               </div>
 
               <p className="text-sm text-[#A39E93] leading-relaxed">
-                Each Mandate Rank corresponds to the capital committed inside your regulated brokerage custody. One-time onboarding fees activate Command Console telemetry, audited reporting, and dedicated Strategist oversight.
+                Each plan matches the balance sitting inside your own broker account. A one-time setup fee unlocks live dashboard tracking, monthly reports, and a dedicated lead trader.
               </p>
 
               <div className="pt-2 flex items-center gap-3">
                 <button
                   type="button"
                   onClick={() => goPlan(planIndex - 1, -1)}
-                  aria-label="Previous mandate rank"
+                  aria-label="Previous plan"
                   className="flex h-10 w-10 items-center justify-center rounded-md border border-[#60A5FA]/35 bg-[#09101E] text-[#EDE6D6] hover:border-[#F0D58A] hover:text-[#F0D58A] transition-colors"
                 >
                   <ChevronLeft className="h-4 w-4" />
@@ -547,7 +538,7 @@ export const InvestmentPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => goPlan(planIndex + 1, 1)}
-                  aria-label="Next mandate rank"
+                  aria-label="Next plan"
                   className="flex h-10 w-10 items-center justify-center rounded-md border border-[#60A5FA]/35 bg-[#09101E] text-[#EDE6D6] hover:border-[#F0D58A] hover:text-[#F0D58A] transition-colors"
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -570,7 +561,7 @@ export const InvestmentPage: React.FC = () => {
 
               <div className="pt-4 border-t border-[#C9A24B]/18">
                 <span className="block font-mono text-[10px] uppercase tracking-wider text-[#9A968C] mb-2">
-                  Inspect Any Stewardship Rank
+                  Compare Any Plan
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {INVESTMENT_PROGRAMS.map((p, idx) => (
@@ -662,7 +653,7 @@ export const InvestmentPage: React.FC = () => {
                             </div>
                             {plan.popular && (
                               <span className="font-mono text-[10px] uppercase tracking-wider font-semibold text-[#34D399]">
-                                Vanguard Core
+                                Most Popular
                               </span>
                             )}
                           </div>
@@ -673,10 +664,10 @@ export const InvestmentPage: React.FC = () => {
 
                           <div className="mb-4 rounded-md border border-[#C9A24B]/18 bg-[#000000]/65 px-3 py-2.5 text-[11px] text-[#9A968C] space-y-1">
                             <p>
-                              <strong className="text-[#EDE6D6]">Profile:</strong> {plan.whoItIsFor}
+                              <strong className="text-[#EDE6D6]">Best For:</strong> {plan.whoItIsFor}
                             </p>
                             <p>
-                              <strong className="text-[#F0D58A]">Progression:</strong> {plan.progressionMeaning}
+                              <strong className="text-[#F0D58A]">Next Step:</strong> {plan.progressionMeaning}
                             </p>
                           </div>
 
@@ -690,7 +681,7 @@ export const InvestmentPage: React.FC = () => {
                             <li className="flex items-start gap-2.5 leading-relaxed">
                               <Check className="h-4 w-4 shrink-0 text-[#F0D58A] mt-0.5" />
                               <span>
-                                <strong className="text-[#EDE6D6]">Governance:</strong>{' '}
+                                <strong className="text-[#EDE6D6]">Safety Rule:</strong>{' '}
                                 {plan.drawdownGuardrail}
                               </span>
                             </li>
@@ -719,13 +710,13 @@ export const InvestmentPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Signature Blended Showcase: Managed Mandate Case Audits (#audits) */}
+      {/* 4. Signature Blended Showcase: Sample Managed Accounts (#audits) */}
       <Section
         id="audits"
         romanIndex="02"
-        kicker="Mandate Records · Demo Showcase"
-        title="Audited Mandate Records &amp; Governance Cases"
-        subtitle="Inspect illustrative Forex and Synthetic Indices custody cycles—complete with risk shields, broker custody rules, and drawdown verification."
+        kicker="Sample Results · Demo Showcase"
+        title="Sample Managed Account Results"
+        subtitle="See sample Forex and Synthetic Indices account journeys—showing safety limits, broker custody rules, and monthly summaries."
       >
         <MandateAuditShowcase onSelectPhaseForKyc={handleSelectPlan} />
       </Section>
@@ -736,26 +727,26 @@ export const InvestmentPage: React.FC = () => {
       <Section
         id="terms"
         romanIndex="03"
-        kicker="Official 9-Clause Charter"
-        title="Mandate Terms &amp; Custody Covenant"
-        subtitle="Inspect all nine governing clauses covering execution access, sole capital ownership, 50/50 profit sharing, settlement, termination, confidentiality, and the $5,000+ goodwill loss-coverage policy."
+        kicker="9 Simple Rules"
+        title="Managed Account Rules &amp; Safety Agreement"
+        subtitle="Read all nine plain-English rules covering account ownership, 50/50 profit sharing, withdrawals, stopping anytime, privacy, and our $5,000+ goodwill buffer."
       >
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <Tabs<TermsViewMode>
             value={termsView}
             onChange={setTermsView}
             options={[
-              { value: 'agreement', label: 'Official 9-Clause Mandate' },
-              { value: 'carousel', label: 'Guided Slide Deck' },
-              { value: 'ownership', label: '1. Custody & Vetting' },
-              { value: 'governance', label: '2. Profit Share & Risk Shield' },
-              { value: 'reporting', label: '3. Settlement & Exit' },
+              { value: 'agreement', label: 'Official 9-Rule Agreement' },
+              { value: 'carousel', label: 'Easy Slide Summary' },
+              { value: 'ownership', label: '1. Your Account & ID' },
+              { value: 'governance', label: '2. Profit Share & Safety' },
+              { value: 'reporting', label: '3. Withdrawals & Exit' },
             ]}
           />
 
           <Button variant="secondary" size="sm" onClick={() => setTermsDocOpen(true)}>
             <FileText className="h-4 w-4" />
-            Open Full Mandate Modal
+            Read Full Agreement
           </Button>
         </div>
 
@@ -890,15 +881,15 @@ export const InvestmentPage: React.FC = () => {
                 <CountUpValue end={10} duration={1450} suffix="+" />
               </p>
               <p className="mt-2 font-mono text-xs uppercase tracking-wider text-[#A39E93]">
-                Strategos &amp; Desk Command Leads
+                Senior Coaches &amp; Lead Traders
               </p>
             </div>
             <div className="py-4 md:border-x md:border-[#60A5FA]/22">
               <p className="font-display text-4xl sm:text-5xl font-bold text-sapphire-gold tabular-nums">
-                <CountUpValue end={4} duration={1250} suffix=" Ranks" />
+                <CountUpValue end={4} duration={1250} suffix=" Plans" />
               </p>
               <p className="mt-2 font-mono text-xs uppercase tracking-wider text-[#A39E93]">
-                Stewardship Ranks (Agoge – Archon)
+                Simple Plans (Starter to Private VIP)
               </p>
             </div>
             <div className="py-4">
@@ -906,7 +897,7 @@ export const InvestmentPage: React.FC = () => {
                 <CountUpValue end={300} duration={1750} suffix="+" />
               </p>
               <p className="mt-2 font-mono text-xs uppercase tracking-wider text-[#A39E93]">
-                Mandate &amp; Fellow Demo Audits
+                Student Reviews &amp; Account Audits
               </p>
             </div>
           </div>
@@ -919,9 +910,9 @@ export const InvestmentPage: React.FC = () => {
       <Section
         id="steps"
         romanIndex="04"
-        kicker="Ascension Protocol"
-        title="Three Steps to Command Readiness"
-        subtitle="Move from initial KYC vetting to your live Command Console link in three disciplined stages."
+        kicker="How to Start"
+        title="Three Simple Steps to Begin"
+        subtitle="Go from your quick ID check to watching your account grow calmly in three easy steps."
       >
         <div className="grid gap-8 md:grid-cols-3 border-t border-[#C9A24B]/25 pt-8">
           {INVESTMENT_ONBOARDING_STEPS.map((item, idx) => (
@@ -940,7 +931,7 @@ export const InvestmentPage: React.FC = () => {
               <p className="font-display italic text-3xl font-bold text-gold-gradient tabular-nums">
                 {item.step}{' '}
                 <span className="font-mono not-italic text-xs uppercase tracking-widest text-[#9A968C]">
-                  Stage
+                  Step
                 </span>
               </p>
               <h3 className="font-display text-xl font-bold text-[#EDE6D6]">{item.title}</h3>
@@ -950,15 +941,15 @@ export const InvestmentPage: React.FC = () => {
         </div>
       </Section>
 
-      <ShieldSectionDivider label="Vetting & Command Console" />
+      <ShieldSectionDivider label="Apply & Preview Tracking" />
 
       {/* 8. Client Dashboard Reporting Preview + Eligibility KYC Form (#eligibility) */}
       <Section
         id="eligibility"
         romanIndex="05"
-        kicker="Stage 01 · Vetting & Telemetry Preview"
-        title="Submit Mandate Vetting &amp; Inspect Telemetry"
-        subtitle="Examine how Command Console equity and drawdown ledgers render (Demo Data), then submit your KYC eligibility brief below."
+        kicker="Step 01 · Apply &amp; Preview"
+        title="Apply &amp; Preview Your Account Tracker"
+        subtitle="See how your monthly balance and safety limits look in your student portal (Demo Data), then fill out the quick form below."
       >
         <div className="grid gap-8 lg:grid-cols-12 items-start">
           {/* Left: Reporting Preview (Emerald strictly for profit index, red for drawdown) */}
@@ -966,10 +957,10 @@ export const InvestmentPage: React.FC = () => {
             <div className="flex items-center justify-between gap-3 pb-4 border-b border-[#C9A24B]/18">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-                  Command Console Preview · Demo Data
+                  Account Tracker Preview · Demo Data
                 </p>
                 <h3 className="mt-1 font-display text-xl font-bold text-[#EDE6D6]">
-                  Live Equity &amp; Drawdown Telemetry
+                  Sample Balance &amp; Safety Limit Chart
                 </h3>
               </div>
               <span className="font-mono text-xs text-[#9A968C]">Demo Only</span>
@@ -1038,26 +1029,26 @@ export const InvestmentPage: React.FC = () => {
                 <SuccessConfetti active={submitted} />
                 <CheckCircle2 className="mx-auto h-10 w-10 text-[#C9A24B]" />
                 <h3 className="font-display text-2xl font-bold text-[#EDE6D6]">
-                  Vetting &amp; Mandate Dossier Logged
+                  Application Received
                 </h3>
                 <p className="text-sm text-[#9A968C] leading-relaxed">
-                  Confirmed, <strong className="text-[#EDE6D6]">{form.fullName}</strong>. Our Desk Admissions team will dispatch KYC verification steps and mandate documents for{' '}
-                  <strong className="text-[#F0D58A]">{form.mandate}</strong> (Indicative Equity: ${Number(form.indicativeEquity || 0).toLocaleString()} · Preferred Strategist:{' '}
+                  Thank you, <strong className="text-[#EDE6D6]">{form.fullName}</strong>. Our friendly onboarding team will send your ID check steps and agreement for{' '}
+                  <strong className="text-[#F0D58A]">{form.mandate}</strong> (Starting Balance: ${Number(form.indicativeEquity || 0).toLocaleString()} · Preferred Lead Trader:{' '}
                   <strong className="text-[#EDE6D6]">{form.preferredManager}</strong>) to{' '}
                   <strong className="text-[#EDE6D6]">{form.email}</strong>.
                 </p>
                 <Button size="sm" onClick={() => setSubmitted(false)}>
-                  Submit Another Dossier
+                  Send Another Request
                 </Button>
               </div>
             ) : (
               <form onSubmit={handleEligibilitySubmit} className="space-y-4" noValidate>
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-                    KYC Vetting Request
+                    Quick Application
                   </p>
                   <h3 className="mt-1 font-display text-2xl font-bold text-[#EDE6D6]">
-                    Apply for Sovereign Mandate Access
+                    Apply for a Managed Account
                   </h3>
                 </div>
 
@@ -1123,7 +1114,7 @@ export const InvestmentPage: React.FC = () => {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="inv-mandate" className="block text-xs font-medium text-[#EDE6D6] mb-1.5">
-                      Selected Mandate Rank
+                      Chosen Plan
                     </label>
                     <select
                       id="inv-mandate"
@@ -1144,7 +1135,7 @@ export const InvestmentPage: React.FC = () => {
 
                   <div>
                     <label htmlFor="inv-manager" className="block text-xs font-medium text-[#EDE6D6] mb-1.5">
-                      Preferred Desk Strategist
+                      Preferred Lead Trader
                     </label>
                     <select
                       id="inv-manager"
@@ -1157,7 +1148,7 @@ export const InvestmentPage: React.FC = () => {
                           {m.name}
                         </option>
                       ))}
-                      <option value="Assign Desk Strategist">Assign Desk Strategist</option>
+                      <option value="Assign Best Lead Trader">Assign Best Lead Trader</option>
                     </select>
                   </div>
                 </div>
@@ -1171,7 +1162,7 @@ export const InvestmentPage: React.FC = () => {
                       className="mt-0.5 h-4 w-4 rounded accent-[#C9A24B]"
                     />
                     <span>
-                      I acknowledge that capital allocated to Forex and Synthetic Indices is at risk, returns are never guaranteed, and past performance does not predict future results.
+                      I understand that Forex and Synthetic Indices carry real risk, returns are never guaranteed, and past results do not promise future profits.
                     </span>
                   </label>
 
@@ -1183,7 +1174,7 @@ export const InvestmentPage: React.FC = () => {
                       className="mt-0.5 h-4 w-4 rounded accent-[#C9A24B]"
                     />
                     <span>
-                      I understand all indicative mandate deposits, targets, and fee terms are marked &ldquo;To be confirmed&rdquo; subject to formal KYC verification and written charter approval.
+                      I understand all deposit amounts, targets, and fees are confirmed during my quick ID check and written agreement sign-off.
                     </span>
                   </label>
                 </div>
@@ -1195,7 +1186,7 @@ export const InvestmentPage: React.FC = () => {
                 )}
 
                 <Button type="submit" variant="primary" size="lg" fullWidth>
-                  Submit Vetting &amp; Mandate Request
+                  Send Managed Account Application
                 </Button>
               </form>
             )}
@@ -1211,26 +1202,26 @@ export const InvestmentPage: React.FC = () => {
       <Modal
         isOpen={introOpen}
         onClose={() => setIntroOpen(false)}
-        title="Bullish Titan Academy · Sovereign Mandate Overview"
-        subtitle="How ranked capital stewardship keeps custody strictly in your hands."
+        title="Bullish Titan Academy · Managed Accounts Overview"
+        subtitle="How your money always stays safely in your own broker account."
         size="lg"
       >
         <div className="grid gap-4 sm:grid-cols-3">
           {[
             {
               icon: UserCheck,
-              title: '01. KYC & Briefing Verification',
-              desc: 'Complete eligibility vetting and ratify terms directly with our Desk Admissions officers.',
+              title: '01. Quick ID Check',
+              desc: 'Complete a simple ID check and review the 9 rules directly with our team.',
             },
             {
               icon: Lock,
-              title: '02. Sovereign Custody',
-              desc: 'Fund your regulated broker account directly—Bullish Titan never holds withdrawal rights.',
+              title: '02. Your Own Broker',
+              desc: 'Deposit funds into your own regulated broker account—only you can ever withdraw money.',
             },
             {
               icon: FileText,
-              title: '03. Command Console Telemetry',
-              desc: 'Track positions live, message your strategist, and download monthly audit ledgers.',
+              title: '03. Easy Live Tracking',
+              desc: 'Watch trades live, message your lead trader, and download clear monthly reports.',
             },
           ].map((step) => {
             const Icon = step.icon;
@@ -1252,8 +1243,8 @@ export const InvestmentPage: React.FC = () => {
       <Modal
         isOpen={termsDocOpen}
         onClose={() => setTermsDocOpen(false)}
-        title="Bullish Titan Academy · Sovereign Mandate Terms & Covenant"
-        subtitle="Complete 9-clause charter governing execution access, 50/50 profit sharing, settlement, and $5,000+ goodwill loss coverage."
+        title="Bullish Titan Academy · 9-Rule Managed Account Agreement"
+        subtitle="Plain-English agreement covering account ownership, 50/50 profit sharing, withdrawals, and the $5,000+ goodwill buffer."
         size="xl"
       >
         <MandateAgreementDocument

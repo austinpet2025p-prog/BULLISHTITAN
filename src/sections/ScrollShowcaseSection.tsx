@@ -27,60 +27,60 @@ const CHAPTERS: ShowcaseChapter[] = [
   {
     step: '01',
     roman: 'I',
-    title: 'Market Structure Precision',
-    tag: 'The Forge · Forex & Synthetic Architecture',
+    title: 'Read Charts Clearly',
+    tag: 'Trading Courses · Forex & Synthetics',
     description:
-      'Replace subjective guesswork with multi-timeframe liquidity mapping, London and New York session discipline, and 24/7 synthetic volatility cycle literacy.',
-    metricLabel: 'The Forge Syllabus',
-    metricValue: '86 Field Modules',
+      'Stop guessing when to click buy or sell. Learn simple rules for London and New York hours plus 24/7 synthetic volatility charts.',
+    metricLabel: 'Course Library',
+    metricValue: '86 Video Lessons',
     accentHex: '#60A5FA',
     image: ACADEMY_ASSETS.courseFoundations,
-    imageAlt: 'Institutional trading workstation displaying structured candlestick architecture',
+    imageAlt: 'Clean trading workstation displaying price charts',
     href: '/training',
     icon: Layers,
   },
   {
     step: '02',
     roman: 'II',
-    title: 'Capital Shield Engine',
-    tag: 'Drawdown & Variance Governance',
+    title: 'Protect Your Money First',
+    tag: 'Safe Sizing & Loss Limits',
     description:
-      'Every position begins with pre-defined invalidation and fixed-fractional sizing (0.5% to 1.0% max exposure). Defend capital first so statistical edge endures and compounds.',
-    metricLabel: 'Shield Standard',
+      'Every trade starts with a clear safety stop and risks only 0.5% to 1.0% of your account—so a bad day never hurts your future.',
+    metricLabel: 'Safety Rule',
     metricValue: '1.0% Max / Trade',
     accentHex: '#34D399',
     image: ACADEMY_ASSETS.courseLiquidity,
-    imageAlt: 'Dark financial terminal rendering liquidity curves and depth bars',
+    imageAlt: 'Trading screen showing clean risk levels and price trends',
     href: '/results',
     icon: ShieldCheck,
   },
   {
     step: '03',
     roman: 'III',
-    title: 'Direct Strategos Command',
-    tag: '12-Week Live Desk Audits',
+    title: 'Learn With a Real Coach',
+    tag: '12-Week Live Help',
     description:
-      'Cut months of solitary trial and error through weekly 1-on-1 journal reviews, live chart critiques, and behavioral mastery alongside strategists bound by the same rules.',
-    metricLabel: 'Strategos Format',
-    metricValue: '1-on-1 & Phalanx',
+      'Skip months of lonely trial and error with weekly 1-on-1 trade checks, live chart classes, and calm guidance from experienced coaches.',
+    metricLabel: 'Coaching Style',
+    metricValue: '1-on-1 & Group',
     accentHex: '#C084FC',
     image: ACADEMY_ASSETS.mentorshipRoom,
-    imageAlt: 'Private institutional trading mentorship boardroom at dusk',
+    imageAlt: 'Private trading coaching and review room',
     href: '/mentorship',
     icon: Compass,
   },
   {
     step: '04',
     roman: 'IV',
-    title: 'Vanguard Intelligence',
-    tag: 'Forex, Gold & Synthetic Indices Dispatch',
+    title: 'Daily Checked Trade Alerts',
+    tag: 'Forex, Gold & Synthetic Indices',
     description:
-      'Receive vetted setups with entry zones, hard invalidation levels, staged exit targets, and full structural rationale dispatched cleanly across desk channels.',
-    metricLabel: 'Theatre Coverage',
-    metricValue: 'FX · Gold · V75',
+      'Get clear trade ideas with exact entry prices, safety stops, and target levels explained in plain words on Telegram and WhatsApp.',
+    metricLabel: 'Markets Covered',
+    metricValue: 'Forex · Gold · V75',
     accentHex: '#FBBF24',
     image: ACADEMY_ASSETS.signalsHub,
-    imageAlt: 'Multi-screen quantitative volatility radar analytics studio',
+    imageAlt: 'Trading desk tracking live Forex and Gold signals',
     href: '/signals',
     icon: Radio,
   },
@@ -121,14 +121,14 @@ export const ScrollShowcaseSection: React.FC = () => {
               <div className="flex items-center gap-3 mb-3">
                 <span className="h-px w-8 bg-gold-gradient" aria-hidden="true" />
                 <p className="font-mono text-[11px] uppercase font-semibold tracking-[0.22em] text-sapphire-gold">
-                  Execution Architecture
+                  How Everything Fits Together
                 </p>
               </div>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#EDE6D6] leading-[1.08]">
-                Forged for Disciplined Currency &amp; Index Strategists
+                Built for Calm, Steady Currency &amp; Index Traders
               </h2>
               <p className="mt-4 text-sm sm:text-base text-[#9A968C] leading-relaxed">
-                Inspect the four institutional divisions guiding every Bullish Titan member from foundational training to sovereign capital command.
+                See the four simple pillars that guide every Bullish Titan student from lesson one to confident, rule-based trading.
               </p>
             </div>
 
@@ -189,7 +189,7 @@ export const ScrollShowcaseSection: React.FC = () => {
                 to={activeChapter.href}
                 className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#F0D58A] hover:underline"
               >
-                Inspect Division
+                Inspect Program
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
@@ -258,7 +258,7 @@ export const ScrollShowcaseSection: React.FC = () => {
                       to={chapter.href}
                       className="inline-flex items-center gap-1.5 shrink-0 font-mono text-xs font-semibold text-[#EDE6D6] hover:text-[#F0D58A] transition-colors pb-1 border-b border-[#C9A24B]/40"
                     >
-                      Enter Division
+                      See Details
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>

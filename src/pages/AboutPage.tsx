@@ -16,18 +16,18 @@ import { MILESTONES } from '../data/extendedData';
 const VALUES = [
   {
     icon: ShieldCheck,
-    title: 'Capital Survival First',
-    desc: 'Every lesson begins with invalidation placement and fixed-fractional risk before entry triggers.',
+    title: 'Protect Your Money First',
+    desc: 'Every lesson starts with where to place your safety stop-loss and how much to risk before you ever enter a trade.',
   },
   {
     icon: Compass,
-    title: 'Radical Transparency',
-    desc: 'Demo metrics are clearly labeled, expectations are realistic, and no exaggerated claims are published.',
+    title: 'Complete Honesty',
+    desc: 'Sample results are clearly labeled, expectations stay realistic, and we never make fake or exaggerated promises.',
   },
   {
     icon: Target,
-    title: 'Process Over Outcome',
-    desc: 'Judge every trading week by rule adherence and journal precision rather than random short-term variance.',
+    title: 'Good Habits Every Week',
+    desc: 'Judge your week by how well you followed your plan and wrote in your journal—not by one lucky or unlucky trade.',
   },
 ];
 
@@ -36,9 +36,9 @@ export const AboutPage: React.FC = () => {
     <div className="pt-20 bg-[#000000]">
       <Section
         romanIndex="01"
-        kicker="The House · Bullish Titan"
-        title="Built to Replace Market Noise With Disciplined Command"
-        subtitle="Our founding doctrine, capital-shield principles, senior commanders, and seven-year institutional chronicle."
+        kicker="About Bullish Titan"
+        title="Built to Replace Market Confusion With Calm Clarity"
+        subtitle="Our simple founding rules, money-safety habits, dedicated coaches, and seven-year story."
       >
         {/* Asymmetric Founder Story & Shield-Framed Desk Photo */}
         <div className="grid gap-12 lg:grid-cols-12 items-center mb-20">
@@ -47,11 +47,11 @@ export const AboutPage: React.FC = () => {
               variant="landscape"
               bright
               innerClassName="aspect-[16/10] w-full"
-              caption="PLATE I — BULLISH TITAN DESK LOUNGE"
+              caption="PLATE I — BULLISH TITAN LEARNING SPACE"
             >
               <SafeImage
                 src={ACADEMY_ASSETS.deskHero}
-                alt="Bullish Titan Academy institutional briefing lounge"
+                alt="Bullish Titan Academy learning lounge"
                 className="h-full w-full object-cover"
               />
             </ShieldFrame>
@@ -59,24 +59,24 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6 border-t border-[#C9A24B]/30 pt-6 space-y-5">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-                Founder Story &amp; Mission
+                Our Story &amp; Mission
               </p>
               <h3 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-[#EDE6D6]">
-                Why We Built Bullish Titan
+                Why We Started Bullish Titan
               </h3>
             </div>
             <p className="text-sm sm:text-base text-[#9A968C] leading-relaxed">
-              After years executing institutional FX flows and advising active synthetic-indices traders, Marcus Vance and the founding strategists recognized a glaring gap: retail learners were drowning in indicator clutter while lacking structured risk governance.
+              After years of trading major Forex markets and guiding Synthetic Indices traders, Mr Odinaka and our lead coaches noticed a big problem: beginners were overwhelmed by messy indicators and had nobody teaching them how to protect their money first.
             </p>
             <p className="text-sm sm:text-base text-[#9A968C] leading-relaxed">
-              Our mission is straightforward—equip dedicated students worldwide with clean liquidity mechanics, honest statistical journaling, and direct mentor accountability.
+              Our goal is simple—teach dedicated students everywhere how to read charts clearly, track their trades honestly, and grow with patient coaching support.
             </p>
             <div className="pt-2 flex flex-wrap gap-3.5">
               <Button to="/training" variant="primary">
-                Enter The Forge
+                Explore Courses
               </Button>
               <Button to="/contact" variant="outline">
-                Speak With Desk Admissions
+                Contact Support
               </Button>
             </div>
           </div>
@@ -103,7 +103,7 @@ export const AboutPage: React.FC = () => {
 
         {/* Team Grid */}
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6] mb-8">
-          House Leadership &amp; Strategos Commanders
+          Meet Our Team &amp; Coaches
         </h3>
         <div className="grid gap-6 md:grid-cols-3 mb-20">
           {MENTORS.map((m) => (
@@ -111,11 +111,11 @@ export const AboutPage: React.FC = () => {
           ))}
         </div>
 
-        <ShieldSectionDivider label="Chronicle" className="mb-14" />
+        <ShieldSectionDivider label="Our Story" className="mb-14" />
 
         {/* Milestones Timeline — Stepped Ruled Ledger */}
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6] mb-8">
-          House Chronicle (2019–2026)
+          Our Story So Far (2019–2026)
         </h3>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 border-t border-[#C9A24B]/25 pt-8">
           {MILESTONES.map((ms) => (

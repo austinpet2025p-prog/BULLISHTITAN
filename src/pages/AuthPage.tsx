@@ -67,11 +67,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
           <Link to="/" className="inline-flex items-center gap-3">
             <BrandMark />
             <span className="font-display text-2xl font-bold text-[#EDE6D6]">
-              Command Console
+              Student Portal
             </span>
           </Link>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-wider text-[#9A968C]">
-            Bullish Titan Access · Demo Auth Layer
+            Bullish Titan Access · Demo Sign-In
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
             {(
               [
                 { id: 'login', label: 'Sign In' },
-                { id: 'signup', label: 'Initiate' },
+                { id: 'signup', label: 'Sign Up' },
                 { id: 'forgot', label: 'Reset' },
               ] as const
             ).map((tab) => (
@@ -182,7 +182,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
                   {mode === 'signup' && (
                     <div>
                       <label htmlFor="auth-plan-tier" className="block text-xs font-medium text-[#EDE6D6] mb-1.5">
-                        Starting Rank Order (Switchable in Settings)
+                        Choose a Plan (Switchable Anytime in Settings)
                       </label>
                       <select
                         id="auth-plan-tier"
@@ -190,12 +190,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
                         onChange={(e) => setPlan(e.target.value as PlanTier)}
                         className="h-11 w-full rounded-md border border-[#C9A24B]/24 bg-[#000000] px-3.5 text-sm text-[#EDE6D6] focus:border-[#F0D58A] focus:outline-none"
                       >
-                        <option value="free">Observer Preview</option>
-                        <option value="academy">Forge Initiate</option>
-                        <option value="signals">Vanguard Intelligence</option>
-                        <option value="mentorship">Strategos Desk</option>
-                        <option value="full-access">Sovereign Titan Order</option>
-                        <option value="investor">Sovereign Mandate</option>
+                        <option value="free">Free Preview</option>
+                        <option value="academy">Trading Courses</option>
+                        <option value="signals">Daily Trade Signals</option>
+                        <option value="mentorship">1-on-1 Coaching</option>
+                        <option value="full-access">All-Access VIP</option>
+                        <option value="investor">Managed Account</option>
                       </select>
                     </div>
                   )}
@@ -208,9 +208,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
 
                   <Button type="submit" fullWidth variant="primary" size="lg">
                     {mode === 'login'
-                      ? 'Enter Command Console'
+                      ? 'Sign In'
                       : mode === 'signup'
-                      ? 'Confirm Initiation'
+                      ? 'Create Account'
                       : 'Send Reset Link'}
                     <ArrowRight className="h-4 w-4" />
                   </Button>
@@ -226,7 +226,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode }) => {
           </div>
 
           <Button type="button" variant="secondary" fullWidth onClick={handleGoogle}>
-            Continue With Google (Sovereign Titan Demo)
+            Continue With Google (Demo)
           </Button>
         </Card>
       </div>

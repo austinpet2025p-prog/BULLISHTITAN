@@ -527,7 +527,7 @@ const StaticAstrolabeFallback: React.FC<{ activeStage: number }> = ({ activeStag
       <rect x="140" y="98" width="8" height="20" rx="1.5" fill="#D9534F" />
     </svg>
     <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#9A968C]">
-      Stage 0{activeStage + 1} · Sovereign Calibration
+      Step 0{activeStage + 1} · Market Guide
     </p>
   </div>
 );

@@ -28,8 +28,8 @@ const FOREX_SYNTHETIC_PAIRS: Array<[string, number]> = [
   ['USD/JPY', 153.42],
 ];
 
-const HEADLINE_LEAD_WORDS = ['Disciplined', 'Capital.'];
-const HEADLINE_ACCENT_WORDS = ['Spartan', 'Precision.'];
+const HEADLINE_LEAD_WORDS = ['Simple,', 'Calm'];
+const HEADLINE_ACCENT_WORDS = ['Smart', 'Trading.'];
 
 interface Candle {
   open: number;
@@ -1631,6 +1631,7 @@ export const HeroSection: React.FC = () => {
                   height={280}
                   loading="eager"
                   decoding="async"
+                  referrerPolicy="no-referrer"
                   onError={() => setLogoFailed(true)}
                   className="relative z-10 h-36 w-auto select-none object-contain sm:h-44 md:h-48"
                 />
@@ -1697,7 +1698,7 @@ export const HeroSection: React.FC = () => {
             className="mt-5 max-w-xl text-sm leading-relaxed text-[#C8C2B6] sm:mt-6 sm:text-base lg:text-lg"
             style={{ textShadow: '0 2px 14px rgba(0, 0, 0, 0.85)' }}
           >
-            Disciplined Forex and synthetic indices command—forged for operators who execute without emotion.
+            Learn Forex and Synthetic Indices step by step—built for everyday people who want clear rules, steady habits, and peace of mind.
           </p>
 
           <div
@@ -1712,7 +1713,7 @@ export const HeroSection: React.FC = () => {
                 onClick={() => scrollToSection('pricing-enrollment')}
                 className="min-h-[48px] w-full px-9 sm:w-auto"
               >
-                Enter the Ranks
+                Start Learning Today
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -1723,7 +1724,7 @@ export const HeroSection: React.FC = () => {
               onClick={() => scrollToSection('programs')}
               className="min-h-[48px] border border-[#60A5FA]/45 bg-[#091326]/65 px-9 hover:border-[#34D399]/75 hover:bg-[#0D1A33]/80"
             >
-              Inspect Divisions
+              See All Programs
             </Button>
           </div>
         </div>

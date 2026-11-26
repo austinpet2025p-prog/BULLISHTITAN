@@ -1420,7 +1420,7 @@ const LocationIntelligenceWorkspace: React.FC<InnerProps> = ({
               <div className="rounded-xl border border-[#34D399]/35 bg-[#091612] p-4 space-y-2.5">
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#34D399]">
-                    Live Route Telemetry
+                    Live Route Details
                   </span>
                   <span className="font-mono text-[10px] text-[#9A968C]">
                     {routeSummary.originLabel} → {branch.shortName}
@@ -1516,7 +1516,7 @@ const LocationIntelligenceWorkspace: React.FC<InnerProps> = ({
                 Abuja Branch Status
               </p>
               <p className="text-xs leading-relaxed text-[#9A968C]">
-                Our Abuja FCT office address has not yet been publicly specified. In the meantime, Abuja members can use our admissions inquiry form or book 1-on-1 Strategos consultations directly online, or visit our flagship Ogun State location at Timeline Bazaar, Camp, Abeokuta.
+                Our Abuja FCT office address has not yet been publicly specified. In the meantime, Abuja members can use our contact form or book 1-on-1 coaching sessions online, or visit our flagship Ogun State location at Timeline Bazaar, Camp, Abeokuta.
               </p>
             </div>
           )}

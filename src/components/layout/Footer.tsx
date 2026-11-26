@@ -34,14 +34,14 @@ export const Footer: React.FC = () => {
         <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold-gradient font-semibold">
-              The Phalanx · 15 Cohort Ledgers
+              Student Stories · 15 Member Reviews
             </p>
             <h2 className="mt-1.5 font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6]">
-              Ledgers From Inside the Phalanx
+              Real Stories From Our Students
             </h2>
           </div>
           <p className="font-mono text-[11px] uppercase tracking-wider text-[#9A968C]">
-            Continuous Auto-Scroll · Hover or Touch to Pause
+            Auto-Scrolling · Hover or Tap to Pause
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
         />
       </div>
 
-      <ShieldSectionDivider label="Bullish Titan Command" className="mb-12" />
+      <ShieldSectionDivider label="Bullish Titan Academy" className="mb-12" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top Row: Brand & Newsletter */}
         <div className="grid gap-10 lg:grid-cols-12 pb-12 border-b border-[#C9A24B]/18">
@@ -65,11 +65,11 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-[#9A968C] leading-relaxed">
-              Structured Forex and Synthetic Indices market formation, Strategos mentorship, and risk-first intelligence forged for disciplined operators.
+              Clear Forex and Synthetic Indices courses, personal 1-on-1 coaching, and safety-first trade alerts built for everyday learners.
             </p>
             <SocialLinks className="mt-5" />
             <p className="mt-3 text-xs text-[#9A968C]">
-              Direct Desk Email:{' '}
+              Support Email:{' '}
               <a
                 href="mailto:bullishtitan@gmail.com"
                 className="font-mono text-[#F0D58A] hover:underline"
@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
                 </span>
               </p>
               <p className="pl-5 text-[11px] text-[#9A968C]/85">
-                <strong className="text-[#EDE6D6]">Abuja Branch:</strong> Address not yet specified (Coming Soon).
+                <strong className="text-[#EDE6D6]">Abuja Branch:</strong> Address coming soon.
               </p>
             </div>
           </div>
@@ -96,10 +96,10 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-7 lg:pl-8">
             <div className="rounded-2xl hairline-gold p-6">
               <h3 className="text-base font-semibold text-[#EDE6D6]">
-                Weekly Strategic Desk Briefing
+                Free Sunday Market Notes
               </h3>
               <p className="mt-1 text-xs sm:text-sm text-[#9A968C]">
-                Receive Sunday FX &amp; Synthetic Indices liquidity coordinates, drawdown notes, and curriculum dispatches. Zero noise.
+                Get simple weekly notes on Forex and Synthetic Indices charts, money safety tips, and new lessons—zero spam.
               </p>
 
               <form onSubmit={handleSubscribe} className="mt-4 flex flex-col sm:flex-row gap-3" noValidate>
@@ -114,11 +114,11 @@ export const Footer: React.FC = () => {
                     setEmail(e.target.value);
                     if (status !== 'idle') setStatus('idle');
                   }}
-                  placeholder="initiate@domain.com"
+                  placeholder="you@example.com"
                   className="h-11 flex-1 rounded-xl border border-[#C9A24B]/24 bg-[#141414] px-4 text-sm text-[#EDE6D6] placeholder:text-[#9A968C]/60 focus:border-[#F0D58A] focus:outline-none"
                 />
                 <Button type="submit" variant="primary" size="md">
-                  Join Briefing
+                  Subscribe Free
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </form>
@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
               {status === 'success' && (
                 <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-[#F0D58A]">
                   <CheckCircle2 className="h-3.5 w-3.5 text-[#C9A24B]" />
-                  Confirmed. Watch your inbox for Sunday briefing coordinates.
+                  Subscribed! Watch your inbox for Sunday’s simple market notes.
                 </p>
               )}
             </div>
@@ -142,14 +142,14 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-12 border-b border-[#C9A24B]/18">
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-gold-gradient mb-4">
-              Programs &amp; Investment
+              Programs &amp; Accounts
             </h4>
             <ul className="space-y-2.5 text-sm text-[#9A968C]">
-              <li><Link to="/investment" className="hover:text-[#F0D58A] transition-colors">Investment (Sovereign Mandates)</Link></li>
-              <li><Link to="/investment#plans" className="hover:text-[#F0D58A] transition-colors">Investment Plans &amp; Tiers</Link></li>
-              <li><Link to="/training" className="hover:text-[#F0D58A] transition-colors">Training Courses (The Forge)</Link></li>
-              <li><Link to="/mentorship" className="hover:text-[#F0D58A] transition-colors">Mentorship (Strategos)</Link></li>
-              <li><Link to="/signals" className="hover:text-[#F0D58A] transition-colors">Trading Signals (Vanguard)</Link></li>
+              <li><Link to="/investment" className="hover:text-[#F0D58A] transition-colors">Managed Accounts</Link></li>
+              <li><Link to="/investment#plans" className="hover:text-[#F0D58A] transition-colors">Account Plans &amp; Tiers</Link></li>
+              <li><Link to="/training" className="hover:text-[#F0D58A] transition-colors">Training Courses</Link></li>
+              <li><Link to="/mentorship" className="hover:text-[#F0D58A] transition-colors">1-on-1 Coaching</Link></li>
+              <li><Link to="/signals" className="hover:text-[#F0D58A] transition-colors">Daily Trade Signals</Link></li>
             </ul>
           </div>
 
@@ -159,9 +159,9 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm text-[#9A968C]">
               <li><Link to="/pricing" className="hover:text-[#F0D58A] transition-colors">Membership Pricing &amp; Plans</Link></li>
-              <li><Link to="/results" className="hover:text-[#F0D58A] transition-colors">Results &amp; Track Record</Link></li>
-              <li><Link to="/about" className="hover:text-[#F0D58A] transition-colors">About Us (The House)</Link></li>
-              <li><Link to="/investment#eligibility" className="hover:text-[#F0D58A] transition-colors">Apply for Investment</Link></li>
+              <li><Link to="/results" className="hover:text-[#F0D58A] transition-colors">Student Results &amp; Proof</Link></li>
+              <li><Link to="/about" className="hover:text-[#F0D58A] transition-colors">About Us</Link></li>
+              <li><Link to="/investment#eligibility" className="hover:text-[#F0D58A] transition-colors">Apply for Managed Account</Link></li>
             </ul>
           </div>
 
@@ -180,10 +180,10 @@ export const Footer: React.FC = () => {
 
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-gold-gradient mb-4">
-              Legal &amp; Governance
+              Legal &amp; Safety
             </h4>
             <ul className="space-y-2.5 text-sm text-[#9A968C]">
-              <li><Link to="/investment#terms" className="hover:text-[#F0D58A] transition-colors">Investment Rules &amp; 50/50 Split</Link></li>
+              <li><Link to="/investment#terms" className="hover:text-[#F0D58A] transition-colors">Account Rules &amp; 50/50 Split</Link></li>
               <li><Link to="/legal/risk-disclosure" className="hover:text-[#F0D58A] transition-colors">Risk Disclosure</Link></li>
               <li><Link to="/legal/terms" className="hover:text-[#F0D58A] transition-colors">Terms of Service</Link></li>
               <li><Link to="/legal/privacy" className="hover:text-[#F0D58A] transition-colors">Privacy Policy</Link></li>

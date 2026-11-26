@@ -24,6 +24,7 @@ export const BrandMark: React.FC<{ className?: string }> = ({ className }) => (
     width={44}
     height={44}
     decoding="async"
+    referrerPolicy="no-referrer"
     className={cn(
       'h-10 w-10 sm:h-11 sm:w-11 shrink-0 object-contain mix-blend-lighten select-none',
       className
@@ -204,12 +205,12 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              aria-label="Search modules, plans, or signals (Ctrl+K)"
+              aria-label="Search courses, plans, or signals (Ctrl+K)"
               className="flex h-[42px] items-center gap-2.5 rounded-xl border border-[#C9A24B]/30 bg-[#0B0C10]/90 px-3 sm:px-3.5 text-xs text-[#9A968C] hover:border-[#F0D58A]/65 hover:text-[#EDE6D6] transition-colors"
             >
               <Search className="h-4 w-4 text-[#C9A24B] shrink-0" />
               <span className="hidden md:inline whitespace-nowrap">
-                Search modules, plans, signals...
+                Search courses, plans, signals...
               </span>
               <span className="hidden sm:inline md:hidden">Search</span>
               <kbd className="hidden lg:inline-block rounded border border-[#C9A24B]/25 bg-[#050608] px-1.5 py-0.5 font-mono text-[10px] text-[#C9A24B]">
@@ -224,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               onClick={handleEnrollClick}
               className="min-h-[42px] px-4 sm:px-6"
             >
-              Enter Ranks
+              Get Started
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

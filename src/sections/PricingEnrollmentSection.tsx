@@ -59,9 +59,9 @@ export const PricingEnrollmentSection: React.FC = () => {
     <Section
       id="pricing-enrollment"
       romanIndex="07"
-      kicker="Rank Tuition & Initiation"
-      title="Select Your Rank & Initiate Access"
-      subtitle="Transparent monthly or annual commitment across every Bullish Titan order. Select your rank below to prepare your initiation dossier."
+      kicker="Simple Pricing"
+      title="Pick a Plan & Get Started"
+      subtitle="Clear monthly or yearly pricing with zero hidden fees. Choose your plan below to start learning today."
     >
       <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-10 border-b border-[#C9A24B]/18">
         <Tabs
@@ -69,14 +69,14 @@ export const PricingEnrollmentSection: React.FC = () => {
           onChange={setBilling}
           options={[
             { value: 'monthly', label: 'Monthly Billing' },
-            { value: 'yearly', label: 'Annual (Save ~25%)' },
+            { value: 'yearly', label: 'Yearly (Save ~25%)' },
           ]}
         />
         <Link
           to="/pricing"
           className="font-mono text-xs uppercase tracking-wider text-[#C9A24B] hover:text-[#F0D58A] transition-colors"
         >
-          View Full Matrix Comparison →
+          Compare All Plans →
         </Link>
       </div>
 
@@ -113,7 +113,7 @@ export const PricingEnrollmentSection: React.FC = () => {
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A24B]">
-                        0{idx + 1} · {plan.popular ? 'Highest Demand' : 'Rank Order'}
+                        0{idx + 1} · {plan.popular ? 'Most Popular' : 'Membership Plan'}
                       </span>
                       {active && <Check className="h-4 w-4 text-[#F0D58A]" />}
                     </div>
@@ -156,7 +156,7 @@ export const PricingEnrollmentSection: React.FC = () => {
                         });
                       }}
                     >
-                      {active ? 'Selected Rank' : 'Claim This Rank'}
+                      {active ? 'Selected Plan' : 'Choose This Plan'}
                     </Button>
                   </div>
                 </div>
@@ -175,15 +175,15 @@ export const PricingEnrollmentSection: React.FC = () => {
               <div className="py-6 text-center space-y-4">
                 <CheckCircle2 className="h-12 w-12 text-[#F0D58A] mx-auto" />
                   <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#C9A24B]">
-                    Rank Reserved · Demo Initiation
+                    Plan Reserved · Demo Signup
                   </p>
                   <h3 className="font-display text-2xl font-bold text-[#EDE6D6]">
-                    Initiation Dossier Received
+                    Welcome Request Received
                   </h3>
                   <p className="text-sm text-[#9A968C] leading-relaxed">
-                    Initiate: <strong className="text-[#EDE6D6]">{fullName}</strong> · Rank Order:{' '}
+                    Student: <strong className="text-[#EDE6D6]">{fullName}</strong> · Plan:{' '}
                     <strong className="text-[#F0D58A]">{selectedPlan.name}</strong> (
-                    {formatCurrency(getUnitPrice(selectedPlan))}/mo · {billing}). Command onboarding instructions have been queued for {email}.
+                    {formatCurrency(getUnitPrice(selectedPlan))}/mo · {billing}). Your welcome steps have been prepared for {email}.
                   </p>
                   <Button
                     type="button"
@@ -192,20 +192,20 @@ export const PricingEnrollmentSection: React.FC = () => {
                     fullWidth
                     onClick={() => setSubmitted(false)}
                   >
-                    Revise Dossier
+                    Edit Details
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleEnrollSubmit} className="space-y-4" noValidate>
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-                      Direct Initiation
+                      Quick Sign Up
                     </p>
                     <h3 className="mt-1 font-display text-2xl font-bold text-[#EDE6D6]">
-                      Initiate {selectedPlan.name}
+                      Join {selectedPlan.name}
                     </h3>
                     <p className="mt-1 text-xs text-[#9A968C]">
-                      Enter your credentials below to receive rank onboarding syllabus access and tuition confirmation.
+                      Enter your name and email below to get your welcome steps and course access details.
                     </p>
                   </div>
 
@@ -249,7 +249,7 @@ export const PricingEnrollmentSection: React.FC = () => {
                       htmlFor="enroll-tier"
                       className="block text-xs font-medium text-[#EDE6D6] mb-1.5"
                     >
-                      Rank Order
+                      Selected Plan
                     </label>
                     <select
                       id="enroll-tier"
@@ -304,13 +304,13 @@ export const PricingEnrollmentSection: React.FC = () => {
                 )}
 
                 <Button type="submit" variant="primary" size="lg" fullWidth className="min-h-[48px]">
-                  Confirm Rank Initiation
+                  Join This Plan
                   <ArrowRight className="h-4 w-4" />
                 </Button>
 
                 <p className="flex items-center justify-center gap-1.5 text-[11px] font-mono text-[#9A968C]">
                   <Lock className="h-3.5 w-3.5 text-[#C9A24B]" />
-                  Encrypted admissions · No broker lock-in
+                  Safe signup · Cancel anytime
                 </p>
               </form>
             )}

@@ -31,28 +31,28 @@ const iconMap = {
 };
 
 const PANEL_NUMBERS = ['01', '02', '03', '04'];
-const PANEL_LABELS = ['The Forge', 'Strategos', 'Vanguard', 'Mandates'];
+const PANEL_LABELS = ['Courses', 'Coaching', 'Signals', 'Managed'];
 
 const STRATEGIC_PILLARS: Record<ProgramPillar['id'], string[]> = {
   training: [
-    'Foundation Rank to Strategos Mastery path',
-    '86 lessons across G10 Forex & Synthetics',
-    'Quantitative risk math & journal templates',
+    'Beginner, Intermediate & Advanced paths',
+    '86 short lessons on Forex & Synthetics',
+    'Easy risk calculator & trade journal sheets',
   ],
   mentorship: [
-    '12-week Phalanx & 1-on-1 desk audits',
-    'Live London/NY war-room execution reviews',
-    'Behavioral guardrails & playbook backtesting',
+    '12-week group & 1-on-1 trade reviews',
+    'Live London & New York chart classes',
+    'Step-by-step help to stop emotional trades',
   ],
   signals: [
-    'Vetted FX, XAU/USD & V75 setups',
-    'Exact Entry, hard Stop-Loss & TP1–TP3 levels',
-    'Telegram, WhatsApp & Lot-Size shield sync',
+    'Checked Forex, Gold & V75 trade alerts',
+    'Clear Buy/Sell price, Stop Loss & 3 Targets',
+    'Sent to Telegram, WhatsApp & Lot Calculator',
   ],
   investment: [
-    '100% client-owned regulated broker custody',
-    'Agoge ($900) through Sovereign Archon ($10k+)',
-    '50/50 high-watermark split & drawdown caps',
+    'Money stays safely in your own broker account',
+    'Starter ($900) up to Private VIP ($10,000+)',
+    'Fair 50/50 profit split & strict loss limits',
   ],
 };
 
@@ -123,58 +123,58 @@ interface StudioArtifactItem {
 const STUDIO_ARTIFACTS: StudioArtifactItem[] = [
   {
     key: 'training',
-    tabLabel: 'The Forge Vault',
-    code: '01 · Curriculum Artifact',
-    title: 'Institutional Manuscript & Candlestick Structure',
+    tabLabel: 'Video Courses',
+    code: '01 · Step-by-Step Lessons',
+    title: 'Clear Chart Playbooks & Price Patterns',
     subtitle:
-      'Open-desk playbook pairing ruled structural schematics with color-coded bullish emerald and pullback crimson candlesticks.',
-    spec: '86 Video Modules · 3 Core Ranks',
+      'Watch short, easy video lessons that show green buy candles, red pullbacks, and simple rules you can follow right away.',
+    spec: '86 Video Lessons · 3 Skill Levels',
     href: '/training',
-    cta: 'Enter The Forge',
+    cta: 'Explore Courses',
   },
   {
     key: 'mentorship',
-    tabLabel: 'Strategos Hub',
-    code: '02 · Command Architecture',
-    title: 'Two-Way Live Desk & Terminal Telemetry',
+    tabLabel: '1-on-1 Coaching',
+    code: '02 · Personal Guidance',
+    title: 'Live Chart Help & Weekly Reviews',
     subtitle:
-      'Direct bi-directional insight flow between senior Strategos leads and active operator terminal stations.',
-    spec: '12 Weeks · Weekly Ledger Audits',
+      'Sit directly with a senior coach who checks your trades each week and helps you fix mistakes fast.',
+    spec: '12 Weeks · Weekly 1-on-1 Check-Ins',
     href: '/mentorship',
-    cta: 'Open Strategos Desk',
+    cta: 'Meet Your Coaches',
   },
   {
     key: 'signals',
-    tabLabel: 'Vanguard Radar',
-    code: '03 · Multi-Asset Scanner',
-    title: 'Calibrated Azimuth Trade Target Radar',
+    tabLabel: 'Daily Signals',
+    code: '03 · Live Trade Alerts',
+    title: 'Real-Time Market Scanner & Trade Ideas',
     subtitle:
-      'Continuous sweep radar distinguishing Long Emerald, Short Crimson, and XAU Gold setups across London & New York.',
-    spec: 'FX Majors · Gold · Synthetic Indices',
+      'Spot clear Buy (green), Sell (red), and Gold opportunities during London and New York hours—sent straight to your phone.',
+    spec: 'Forex · Gold · Synthetic Indices',
     href: '/signals',
-    cta: 'Open Vanguard Intelligence',
+    cta: 'See Live Signals',
   },
   {
     key: 'investment',
-    tabLabel: 'Mandate Globe',
-    code: '04 · Sovereign Custody',
-    title: 'Global Session Allocation & Flow Arcs',
+    tabLabel: 'Managed Accounts',
+    code: '04 · Safe Custody',
+    title: 'Hands-Free Account Trading Worldwide',
     subtitle:
-      'Real-time cross-session capital trajectories linking London, New York, Dubai, and Tokyo liquidity hubs under Agoge-to-Archon governance.',
-    spec: '4 Stewardship Ranks · Governed Custody',
+      'Our experienced team trades carefully during London, New York, Dubai, and Tokyo sessions while your money stays in your own broker account.',
+    spec: '4 Clear Plans · You Keep Control',
     href: '/investment',
-    cta: 'Open Sovereign Mandates',
+    cta: 'View Investment Plans',
   },
   {
     key: 'vault',
-    tabLabel: 'Risk Shield Core',
-    code: '05 · Governance Shield',
-    title: '1.0% Drawdown Lock & Equilibrium Shield',
+    tabLabel: 'Safety Shield',
+    code: '05 · Account Protection',
+    title: '1.0% Risk Limit & Money Safety Rule',
     subtitle:
-      'Multi-gimbal titanium and rose-copper housing safeguarding account equity under fixed-fractional invalidation.',
-    spec: '1.0% Hard Risk Shield · Audited Ledger',
+      'Every single trade has a strict safety stop so one bad move can never wipe out your hard-earned savings.',
+    spec: '1.0% Max Risk Per Trade · Clear Rules',
     href: '/results',
-    cta: 'Inspect Operational Ledger',
+    cta: 'See Track Record',
   },
 ];
 
@@ -303,7 +303,7 @@ const EliteCommandCard: React.FC<EliteCommandCardProps> = ({
               <div className="flex items-center gap-3">
                 <div className="text-right">
                   <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[#F0D58A]">
-                    Elite Command
+                    Academy Path
                   </span>
                   <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[#9A968C]">
                     {shortTitle}
@@ -325,7 +325,7 @@ const EliteCommandCard: React.FC<EliteCommandCardProps> = ({
               {program.benefit}
             </p>
 
-            {/* Fixed-footprint Stage that reveals Strategic Description & Pillars on Hover */}
+            {/* Fixed-footprint Stage that reveals Details on Hover */}
             <div
               className="relative mt-5 min-h-[146px] flex flex-col justify-center"
               style={reducedMotion ? undefined : { transform: 'translateZ(14px)' }}
@@ -344,7 +344,7 @@ const EliteCommandCard: React.FC<EliteCommandCardProps> = ({
                     )}
                   >
                     <p className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-                      Strategic Command Brief
+                      Quick Overview
                     </p>
                     <p className="text-xs sm:text-sm text-[#EDE6D6]/90 leading-relaxed">
                       {program.description}
@@ -372,10 +372,10 @@ const EliteCommandCard: React.FC<EliteCommandCardProps> = ({
                   >
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A24B]">
-                        Command Protocol
+                        Inside This Program
                       </p>
                       <p className="mt-1 text-xs text-[#9A968C]">
-                        Hover or focus card to tilt &amp; inspect strategic brief
+                        Move your mouse here to see what is included
                       </p>
                     </div>
                     <button
@@ -387,7 +387,7 @@ const EliteCommandCard: React.FC<EliteCommandCardProps> = ({
                       }}
                       className="lg:hidden shrink-0 rounded-md border border-[#C9A24B]/35 px-2.5 py-1 font-mono text-[10px] uppercase text-[#F0D58A]"
                     >
-                      Brief
+                      Details
                     </button>
                   </motion.div>
                 )}
@@ -400,7 +400,7 @@ const EliteCommandCard: React.FC<EliteCommandCardProps> = ({
             style={reducedMotion ? undefined : { transform: 'translateZ(18px)' }}
           >
             <span className={cn('font-mono text-xs font-semibold', jewel.metricClass)}>
-              {strategicRevealed ? `Launch ${shortTitle} Command` : `Enter ${shortTitle} Division`}
+              {strategicRevealed ? `Open ${shortTitle}` : `Explore ${shortTitle}`}
             </span>
             <span
               className={cn(
@@ -453,9 +453,9 @@ export const FourWaysSection: React.FC = () => {
     <Section
       id="programs"
       romanIndex="03"
-      kicker="Elite Command Architecture"
-      title="Four Elite Command Divisions"
-      subtitle="Tilt any Elite Command card to reveal its strategic operational brief—designed to move operators from foundational structure to disciplined execution."
+      kicker="Four Ways We Help You"
+      title="Pick the Right Path for You"
+      subtitle="Move your mouse over any card to see how each program helps you learn, trade safely, or grow your account."
     >
       <div ref={gridRef} className="grid gap-6 md:grid-cols-2">
         {CORE_PROGRAMS.map((program, idx) => (
@@ -477,7 +477,7 @@ export const FourWaysSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Apple-Style Interactive 3D Hardware Studio Switcher with Dynamic Jewel Aura */}
+      {/* Interactive 3D Hardware Studio Switcher */}
       <EditorialReveal delay={0.12} className="mt-14 sm:mt-16">
         <div
           className="relative overflow-hidden hairline-gold-bright rounded-2xl p-6 sm:p-8 lg:p-10"
@@ -486,10 +486,10 @@ export const FourWaysSection: React.FC = () => {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-6 border-b border-[#C9A24B]/18">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold-gradient font-semibold">
-                Interactive Division Gallery · Real-Time 3D
+                Interactive 3D Preview
               </p>
               <h3 className="mt-1.5 font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6]">
-                Inspect Every Institutional Artifact
+                Explore Every Tool in 3D
               </h3>
             </div>
 

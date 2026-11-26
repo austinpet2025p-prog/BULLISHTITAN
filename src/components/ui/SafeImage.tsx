@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImageOff } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
@@ -14,6 +14,10 @@ export const SafeImage: React.FC<SafeImageProps> = ({
   ...props
 }) => {
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src]);
 
   if (!src || failed) {
     return (

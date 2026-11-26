@@ -28,28 +28,28 @@ interface MandateTierInfo {
 function getMandateTier(percent: number): MandateTierInfo {
   if (percent >= 90) {
     return {
-      rank: 'Sovereign Archon',
-      subtitle: 'Full Mandate Readiness · Mastery Certified',
+      rank: 'Step 4 · Top Graduate',
+      subtitle: 'All Core Lessons Complete · Certified',
       accentClass: 'text-[#34D399]',
     };
   }
   if (percent >= 60) {
     return {
-      rank: 'Strategos Commander',
-      subtitle: 'Senior Execution & Risk Governance',
+      rank: 'Step 3 · Skilled Trader',
+      subtitle: 'Advanced Strategy & Safety Rules',
       accentClass: 'text-[#F0D58A]',
     };
   }
   if (percent >= 25) {
     return {
-      rank: 'Vanguard Builder',
-      subtitle: 'Active Liquidity & Precision Phase',
+      rank: 'Step 2 · Growing Trader',
+      subtitle: 'Building Consistency & Clean Setups',
       accentClass: 'text-[#F0D58A]',
     };
   }
   return {
-    rank: 'Agoge Initiate',
-    subtitle: 'Foundational Structure Formation',
+    rank: 'Step 1 · Beginner',
+    subtitle: 'Learning Market Basics & Risk Control',
     accentClass: 'text-[#C9A24B]',
   };
 }
@@ -174,10 +174,10 @@ export const SovereignRadialProgress: React.FC<SovereignRadialProgressProps> = (
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-stone-200 dark:border-[#C9A24B]/18 pb-4">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-            Sovereign Mandate Completion
+            Course Progress
           </p>
           <h3 className="mt-1 font-display text-lg sm:text-xl font-bold text-stone-900 dark:text-[#EDE6D6]">
-            {course ? course.title : 'Forge Training Ascension'}
+            {course ? course.title : 'Your Course Journey'}
           </h3>
         </div>
 
@@ -209,7 +209,7 @@ export const SovereignRadialProgress: React.FC<SovereignRadialProgressProps> = (
               height={size}
               viewBox={`0 0 ${size} ${size}`}
               role="img"
-              aria-label={`Sovereign Mandate completion at ${percent} percent, rank ${tier.rank}`}
+              aria-label={`Course progress at ${percent} percent, ${tier.rank}`}
               className="overflow-visible"
             >
               <defs>
@@ -317,16 +317,16 @@ export const SovereignRadialProgress: React.FC<SovereignRadialProgressProps> = (
               />
             </svg>
 
-            {/* Center Telemetry */}
+            {/* Center Label */}
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center px-3">
               <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-stone-500 dark:text-[#9A968C]">
-                Mandate
+                Complete
               </span>
               <span className="font-display text-3xl sm:text-4xl font-bold text-emerald-gold tabular-nums leading-none mt-0.5">
                 {percent}%
               </span>
               <span className="mt-1 font-mono text-[10px] text-stone-600 dark:text-[#A39E93] tabular-nums">
-                {completedCount}/{totalLessons} Drills
+                {completedCount}/{totalLessons} Lessons
               </span>
             </div>
           </div>
@@ -433,7 +433,7 @@ export const SovereignRadialProgress: React.FC<SovereignRadialProgressProps> = (
                         )}
                       >
                         <CheckCircle2 className="h-3 w-3" />
-                        {isMastered ? 'Mastered' : '+1 Drill'}
+                        {isMastered ? 'Completed' : '+1 Lesson'}
                       </button>
                     )}
                     {!onToggleLesson && isMastered && (

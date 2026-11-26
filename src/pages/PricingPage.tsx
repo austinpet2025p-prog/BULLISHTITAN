@@ -68,9 +68,9 @@ export const PricingPage: React.FC = () => {
     <div className="pt-20 bg-[#000000]">
       <Section
         romanIndex="01"
-        kicker="Rank Orders &amp; Access"
-        title="Transparent Commitment Across Every Order"
-        subtitle="Compare individual division orders or unlock full-house Sovereign Titan status. Switch to annual billing for sustained commitment savings."
+        kicker="All Plans &amp; Pricing"
+        title="Simple, Clear Pricing for Every Step"
+        subtitle="Compare individual programs or unlock everything with our All-Access VIP plan. Switch to yearly billing to save."
       >
         {/* Billing Toggle + Coupon Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-6 border-b border-[#C9A24B]/18">
@@ -127,7 +127,7 @@ export const PricingPage: React.FC = () => {
                 <div>
                   {col.popular && (
                     <p className="font-mono text-[10px] uppercase tracking-wider font-semibold text-gold-gradient mb-1.5">
-                      Highest Demand Order
+                      Most Popular
                     </p>
                   )}
                   <h3 className="font-display text-xl font-bold text-[#EDE6D6]">{col.name}</h3>
@@ -171,19 +171,19 @@ export const PricingPage: React.FC = () => {
           })}
         </div>
 
-        <ShieldSectionDivider label="Capability Ledger" className="mb-14" />
+        <ShieldSectionDivider label="What Is Included" className="mb-14" />
 
         {/* Feature Comparison Matrix */}
         <div className="mb-16">
           <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6] mb-6">
-            Side-by-Side Feature Comparison
+            Side-by-Side Plan Comparison
           </h3>
           <div className="overflow-x-auto rounded-lg hairline-gold">
             <table className="w-full min-w-[780px] text-left border-collapse">
               <thead className="sticky top-0 z-10 bg-[#0B0B0C] border-b border-[#C9A24B]/22">
                 <tr>
                   <th className="py-4 px-5 font-mono text-[11px] uppercase tracking-wider font-semibold text-[#9A968C]">
-                    Order Capability
+                    What Is Included
                   </th>
                   {PRICING_COLUMNS.map((col) => (
                     <th
@@ -258,13 +258,13 @@ export const PricingPage: React.FC = () => {
         <RiskDisclaimer compact className="mb-12" />
 
         <div className="max-w-3xl">
-          <h3 className="font-display text-2xl font-bold text-[#EDE6D6] mb-5">Order &amp; Rank FAQ</h3>
+          <h3 className="font-display text-2xl font-bold text-[#EDE6D6] mb-5">Plan &amp; Billing Questions</h3>
           <Accordion
             items={[
               {
-                title: 'Can I ascend from Phalanx Dual Order to Strategos Mentorship later?',
+                title: 'Can I upgrade from Courses + Signals to 1-on-1 Coaching later?',
                 content:
-                  'Yes. Active members can ascend or adjust ranks anytime from Command Console Settings with prorated adjustments.',
+                  'Yes. Active members can upgrade or change plans anytime from Student Dashboard Settings with fair credit for unused days.',
               },
               {
                 title: 'Are taxes or gateway fees included?',

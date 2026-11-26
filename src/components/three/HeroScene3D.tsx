@@ -374,6 +374,7 @@ const StaticHeroFallback: React.FC = () => (
     <img
       src="/assets/aistudio/WhatsApp_Image_2026-11-15_at_11.43.04_PM_dff4afd1.jpeg"
       alt="Bullish Titan golden Spartan crest"
+      referrerPolicy="no-referrer"
       className="relative z-10 h-60 w-60 object-contain mix-blend-lighten select-none"
     />
   </div>

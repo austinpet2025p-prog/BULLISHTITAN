@@ -20,26 +20,26 @@ export const TestimonialsSection: React.FC = () => {
     <Section
       id="testimonials"
       romanIndex="06"
-      kicker="The Phalanx · Field Ledgers"
-      title="Field Ledgers From Across the Phalanx"
-      subtitle="Verified execution discipline and quantitative risk logs from fellows across Forex Majors, Gold, and Synthetic Indices cohorts."
+      kicker="Student Stories"
+      title="Real Feedback From Our Students"
+      subtitle="See how everyday traders built calm habits and clear risk rules across Forex, Gold, and Synthetic Indices."
     >
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-sapphire-gold font-semibold">
           {viewMode === 'grid'
-            ? 'Featured Victory Ledgers · Complements Desk Marquee'
-            : 'Interactive Ledger Slider & Continuous Stream'}
+            ? 'Featured Student Reviews'
+            : 'Interactive Review Slider'}
         </p>
 
         <div
           role="tablist"
-          aria-label="Field ledger display format"
+          aria-label="Student review layout"
           className="inline-flex items-center gap-1 rounded-xl border border-[#C9A24B]/24 bg-[#000000] p-1"
         >
           {(
             [
-              { key: 'grid', label: 'Ledger Grid', Icon: LayoutGrid },
-              { key: 'carousel', label: 'Carousel View', Icon: GalleryHorizontalEnd },
+              { key: 'grid', label: 'Grid View', Icon: LayoutGrid },
+              { key: 'carousel', label: 'Slider View', Icon: GalleryHorizontalEnd },
             ] as const
           ).map(({ key, label, Icon }) => {
             const active = viewMode === key;

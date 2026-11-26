@@ -12,8 +12,8 @@ const STATS = [
     end: 14800,
     suffix: '+',
     decimals: 0,
-    label: 'Enrolled Fellows',
-    note: 'In formation across global desks',
+    label: 'Active Students',
+    note: 'Learning & practicing worldwide',
     duration: 1850,
     gold: false,
   },
@@ -21,17 +21,17 @@ const STATS = [
     end: 64,
     suffix: '+',
     decimals: 0,
-    label: 'Countries in Formation',
+    label: 'Countries Reached',
     note: 'London · NY · Dubai · Lagos · SG',
     duration: 1550,
     gold: true,
   },
   {
     end: 1.0,
-    suffix: '% Cap',
+    suffix: '% Max',
     decimals: 1,
-    label: 'Drawdown Shield',
-    note: 'Hard per-position invalidation rule',
+    label: 'Risk Per Trade',
+    note: 'Strict safety stop on every order',
     duration: 1350,
     gold: false,
   },
@@ -39,8 +39,8 @@ const STATS = [
     end: 7,
     suffix: ' Yrs',
     decimals: 0,
-    label: 'Desk Pedigree',
-    note: 'Structured FX & Synthetic command',
+    label: 'Teaching Experience',
+    note: 'Forex & Synthetic Indices team',
     duration: 1250,
     gold: true,
   },
@@ -62,8 +62,8 @@ export const AboutStatsSection: React.FC = () => {
     <Section
       id="about"
       romanIndex="01"
-      kicker="The House Ethos"
-      title="Forged Around Sovereign Discipline, Not Market Noise"
+      kicker="Who We Are"
+      title="Built Around Calm Habits, Not Guesswork"
       className="bg-[#000000]"
     >
       <div ref={gridRef} className="grid gap-12 lg:grid-cols-12 items-start">
@@ -73,17 +73,17 @@ export const AboutStatsSection: React.FC = () => {
         >
           <EditorialReveal className="space-y-5">
             <p className="font-display italic text-2xl sm:text-3xl text-[#EDE6D6] leading-snug">
-              &ldquo;Command over capital begins before an order is placed—with unyielding drawdown shields and clean liquidity structure.&rdquo;
+              &ldquo;Good trading starts before you press a button—with clear rules, small risks, and a calm mind.&rdquo;
             </p>
             <p className="text-sm sm:text-base text-[#9A968C] leading-relaxed">
-              Bullish Titan Academy trains currency and synthetic-indices operators to strip away indicator clutter and impulsive leverage in favor of repeatable multi-timeframe architecture, iron position sizing, and audited execution ledgers.
+              Bullish Titan Academy helps everyday people learn Forex and Synthetic Indices without confusing clutter or wild bets—replacing stress with simple charts, safe trade sizes, and honest weekly tracking.
             </p>
             <div className="pt-2">
               <Link
                 to="/about"
                 className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-[#F0D58A] hover:underline"
               >
-                Read House Charter
+                Read Our Story
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>

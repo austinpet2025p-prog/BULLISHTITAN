@@ -130,17 +130,17 @@ export const MentorshipPage: React.FC = () => {
               <div className="flex items-center gap-3 mb-4">
                 <span className="h-px w-8 bg-gold-gradient" aria-hidden="true" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold text-gold-gradient">
-                  02 · Strategos Mentorship
+                  02 · 1-on-1 Coaching &amp; Mentorship
                 </p>
               </div>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#EDE6D6] leading-[1.06]">
-                Command Execution Beside{' '}
+                Learn Directly Beside{' '}
                 <span className="italic font-semibold text-gold-gradient">
-                  Senior Strategos Desks
+                  Senior Trading Coaches
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-base text-[#9A968C] leading-relaxed">
-                Train directly alongside seasoned FX and Synthetic Indices commanders over a disciplined 12-week transformation—auditing chart markups, risk sizing, and execution psychology in real time.
+                Work directly with experienced Forex and Synthetic Indices coaches over a clear 12-week program—reviewing your charts, trade sizes, and calm decision-making every single week.
               </p>
               <div className="mt-8 flex flex-wrap gap-3.5">
                 <Button
@@ -148,20 +148,20 @@ export const MentorshipPage: React.FC = () => {
                   size="lg"
                   onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Apply to Strategos Desk
+                  Apply for Coaching
                 </Button>
                 <Button
                   variant="secondary"
                   size="lg"
                   onClick={() => document.getElementById('tiers')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Compare Ranks
+                  Compare Plans
                 </Button>
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <ShieldFrame variant="crest" bright caption="PLATE I — DIRECT MENTORSHIP CONSTELLATION">
+              <ShieldFrame variant="crest" bright caption="PLATE I — DIRECT COACHING NETWORK">
                 <Suspense
                   fallback={
                     <div className="h-[340px] flex items-center justify-center text-xs font-mono text-[#9A968C]">
@@ -183,9 +183,9 @@ export const MentorshipPage: React.FC = () => {
       <Section
         id="tiers"
         romanIndex="01"
-        kicker="Strategos Orders"
-        title="Three Ranks of Direct Desk Command"
-        subtitle="Select Phalanx Cohort workshops, private 1-on-1 Strategos reviews, or sovereign inner-council access."
+        kicker="Coaching Options"
+        title="Three Simple Coaching Plans"
+        subtitle="Choose small-group classes, private 1-on-1 coaching calls, or VIP full-access mentorship."
       >
         <div className="grid gap-6 md:grid-cols-3">
           {MENTORSHIP_TIERS.map((tier) => (
@@ -197,22 +197,22 @@ export const MentorshipPage: React.FC = () => {
               periodLabel="/ month"
               features={tier.features}
               featured={tier.featured}
-              metaTag={tier.featured ? 'Highest Demand' : undefined}
-              ctaLabel={`Request ${tier.name}`}
+              metaTag={tier.featured ? 'Most Popular' : undefined}
+              ctaLabel={`Choose ${tier.name}`}
               onSelect={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
             />
           ))}
         </div>
       </Section>
 
-      <ShieldSectionDivider label="House Commanders" />
+      <ShieldSectionDivider label="Meet Your Coaches" />
 
       {/* Mentor Profile Cards + Desk Environment Showcase */}
       <Section
         romanIndex="02"
-        kicker="Command Faculty"
-        title="Meet Your Senior Strategos Commanders"
-        subtitle="Flip any dossier to inspect institutional background, market theatre focus, and command specialty."
+        kicker="Your Coaching Team"
+        title="Meet Your Senior Trading Coaches"
+        subtitle="Flip any card to see each coach's experience, favorite markets, and teaching style."
       >
         <div className="mb-12 grid gap-10 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7">
@@ -220,12 +220,12 @@ export const MentorshipPage: React.FC = () => {
               variant="landscape"
               bright
               innerClassName="aspect-[16/9] w-full"
-              caption="PLATE II — PRIVATE COHORT BRIEFING ROOM · LIVE SESSION CLIP"
+              caption="PLATE II — LIVE COACHING CLASSROOM · SESSION PREVIEW"
             >
               {reducedMotion ? (
                 <SafeImage
                   src={ACADEMY_ASSETS.mentorshipRoom}
-                  alt="Bullish Titan private institutional mentorship room"
+                  alt="Bullish Titan live coaching classroom"
                   width={1280}
                   height={720}
                   className="h-full w-full object-cover"
@@ -238,7 +238,7 @@ export const MentorshipPage: React.FC = () => {
                   muted
                   loop
                   playsInline
-                  aria-label="Private mentorship briefing room desk session loop"
+                  aria-label="Live coaching classroom session preview"
                   className="h-full w-full object-cover"
                 />
               )}
@@ -246,13 +246,13 @@ export const MentorshipPage: React.FC = () => {
           </div>
           <div className="lg:col-span-5 border-t border-[#C9A24B]/28 pt-6 space-y-4">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] font-semibold text-gold-gradient">
-              Private Cohort Architecture
+              Small-Group &amp; Private Support
             </p>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6]">
-              Direct Desk Reviews &amp; Live Chart Audits
+              Live Chart Reviews &amp; Honest Feedback
             </h3>
             <p className="text-sm text-[#9A968C] leading-relaxed">
-              Every cohort receives structured session breakdowns covering EUR/USD, GBP/USD, Gold, Volatility 75, and Boom/Crash regimes—replacing guesswork with repeatable pre-market execution checklists.
+              Every student gets clear weekly chart reviews covering EUR/USD, GBP/USD, Gold, Volatility 75, and Boom/Crash—replacing guesswork with simple checklists you can follow calmly.
             </p>
           </div>
         </div>
@@ -268,9 +268,9 @@ export const MentorshipPage: React.FC = () => {
       <Section
         id="roadmap"
         romanIndex="03"
-        kicker="Structured Progression"
-        title="Your 12-Week Mentorship Roadmap"
-        subtitle="A disciplined four-phase sequence replacing random screen time with measurable weekly milestones."
+        kicker="12-Week Plan"
+        title="Your 12-Week Learning Path"
+        subtitle="Four simple steps that replace random screen time with clear weekly milestones."
       >
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-start pt-4">
           {TWELVE_WEEK_ROADMAP.map((item, idx) => (
@@ -301,15 +301,15 @@ export const MentorshipPage: React.FC = () => {
         </div>
       </Section>
 
-      <ShieldSectionDivider label="Desk Commissioning" />
+      <ShieldSectionDivider label="Book a Call" />
 
       {/* Session Booking UI + Application Form */}
       <Section
         id="booking"
         romanIndex="04"
-        kicker="Vetting &amp; Commissioning"
-        title="Command Briefing Booking &amp; Cohort Application"
-        subtitle="Reserve an admissions briefing slot (front-end demo) or submit your Strategos intake dossier."
+        kicker="Get Started"
+        title="Book a Quick Call &amp; Apply"
+        subtitle="Pick a free intro call time or send your short coaching application below."
       >
         <div className="grid gap-8 lg:grid-cols-12 items-start">
           <Card className="lg:col-span-5 space-y-5">
@@ -534,7 +534,7 @@ export const MentorshipPage: React.FC = () => {
                 </div>
 
                 <Button type="submit" variant="primary" size="lg" fullWidth>
-                  Submit Strategos Dossier
+                  Send Coaching Application
                 </Button>
               </form>
             )}

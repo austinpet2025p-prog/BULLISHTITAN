@@ -28,21 +28,21 @@ interface GlobalSearchModalProps {
 }
 
 const CATEGORY_TABS: { id: SearchCategory; label: string }[] = [
-  { id: 'all', label: 'All Modules' },
-  { id: 'training', label: 'Training (The Forge)' },
-  { id: 'mentorship', label: 'Mentorship (Strategos)' },
-  { id: 'signals', label: 'Signals (Vanguard)' },
-  { id: 'plans', label: 'Plans & Mandates' },
+  { id: 'all', label: 'Everything' },
+  { id: 'training', label: 'Trading Courses' },
+  { id: 'mentorship', label: '1-on-1 Coaching' },
+  { id: 'signals', label: 'Daily Signals' },
+  { id: 'plans', label: 'Plans & Accounts' },
   { id: 'guides', label: 'FAQ & Guides' },
 ];
 
 const QUICK_QUERIES = [
-  'beginner training modules',
-  '1-on-1 Strategos mentorship',
-  'V75 synthetic signal',
-  'The Forge Foundation Rank',
-  'lot size calculator',
-  'investment plans $1500',
+  'beginner trading course',
+  '1-on-1 coaching',
+  'V75 trade signal',
+  'free lot size calculator',
+  'managed account $1500',
+  '50/50 profit split rules',
 ];
 
 function CategoryIcon({ category }: { category: SearchableItem['category'] }) {
@@ -172,7 +172,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ open, onCl
             <div className="flex items-center gap-3 border-b border-[#C9A24B]/24 bg-[#080A0F] px-4 py-3.5">
               <Search className="h-5 w-5 shrink-0 text-[#F0D58A]" />
               <label htmlFor="global-search-input" className="sr-only">
-                Search training, mentorship, and signal modules in plain or Spartan terminology
+                Search courses, coaching, trade signals, and managed account plans
               </label>
               <input
                 id="global-search-input"
@@ -180,7 +180,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ open, onCl
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search naturally (e.g. 'beginner courses', 'Strategos coach', 'V75 signal', '$1500 invest')..."
+                placeholder="Search in plain words (e.g. 'beginner course', '1-on-1 coach', 'V75 signal', '$1500 plan')..."
                 className="flex-1 min-w-0 bg-transparent text-sm sm:text-base text-[#EDE6D6] placeholder:text-[#9A968C]/70 focus:outline-none"
               />
               {query && (
@@ -243,7 +243,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ open, onCl
             {!query.trim() && (
               <div className="border-b border-[#C9A24B]/14 bg-[#07090E] px-4 py-2.5">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-[#9A968C]">
-                  Try Natural Search Queries (Plain or Spartan)
+                  Popular Searches
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {QUICK_QUERIES.map((sample) => (
@@ -303,11 +303,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ open, onCl
                           </div>
                           <div className="mt-1 flex flex-wrap items-center gap-1.5 font-mono text-[10px]">
                             <span className="rounded border border-[#60A5FA]/25 bg-[#0A1324] px-1.5 py-0.5 text-[#93C5FD]">
-                              Standard: {item.plainLabel}
+                              {item.plainLabel}
                             </span>
                             {item.spartanTerm && (
                               <span className="rounded border border-[#C9A24B]/30 bg-[#141008] px-1.5 py-0.5 text-[#F0D58A]">
-                                Spartan: {item.spartanTerm}
+                                {item.spartanTerm}
                               </span>
                             )}
                           </div>
@@ -348,7 +348,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ open, onCl
                 <span>↵ Open</span>
                 <span>·</span>
                 <span>Esc Close</span>
-                <span className="hidden md:inline">· Spartan &amp; Plain Terms</span>
+                <span className="hidden md:inline">· Instant Answers</span>
               </div>
               <button
                 type="button"

@@ -3,12 +3,12 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 export type PlanTier = 'free' | 'academy' | 'signals' | 'mentorship' | 'full-access' | 'investor';
 
 export const PLAN_LABELS: Record<PlanTier, string> = {
-  free: 'Observer Preview',
-  academy: 'Forge Initiate',
-  signals: 'Vanguard Intelligence',
-  mentorship: 'Strategos Desk',
-  'full-access': 'Sovereign Titan Order',
-  investor: 'Sovereign Mandate',
+  free: 'Free Account',
+  academy: 'Courses Only',
+  signals: 'Daily Trade Signals',
+  mentorship: '1-on-1 Coaching',
+  'full-access': 'All-Access VIP',
+  investor: 'Managed Account',
 };
 
 export interface AuthUser {
@@ -94,7 +94,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const loginWithEmail = async (email: string, _password: string) => {
-    const nameFromEmail = email.split('@')[0]?.replace(/[._-]/g, ' ') || 'Phalanx Member';
+    const nameFromEmail = email.split('@')[0]?.replace(/[._-]/g, ' ') || 'Bullish Titan Member';
     const prettyName = nameFromEmail.replace(/\b\w/g, (c) => c.toUpperCase());
     persistUser({
       id: 'demo-uid-101',
@@ -113,7 +113,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   ) => {
     persistUser({
       id: `demo-uid-${Date.now()}`,
-      name: name.trim() || 'Academy Initiate',
+      name: name.trim() || 'New Student',
       email: email.trim(),
       plan,
       streakDays: 1,
