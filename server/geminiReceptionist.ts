@@ -111,7 +111,7 @@ COMPLETE SITE DIRECTORY & SECTION ANCHORS (for \`navigate_to_page\`):
   * Level 1 · Beginner — "Trading Basics & Protecting Your Money": 6 Weeks, 24 lessons, $390.
   * Level 2 · Intermediate — "Reading Charts & Timing Your Trades": 8 Weeks, 32 lessons, $690.
   * Level 3 · Advanced — "Big-Picture Markets & Calm Consistency": 10 Weeks, 30 lessons, $1,190.
-- \`/mentorship\` (1-on-1 Coaching & Mentorship): 12-week personal coaching with senior trading coaches (Mr Odinaka, Chinedu Balogun, David Okafor). Anchors: \`tiers\`, \`roadmap\` (12-week 4-phase plan), \`booking\` (Book a Quick Call), \`application\`.
+- \`/mentorship\` (1-on-1 Coaching & Mentorship): 12-week personal coaching led by Head Coach Mr Odinaka. Anchors: \`tiers\`, \`roadmap\` (12-week 4-phase plan), \`booking\` (Book a Quick Call), \`application\`.
   * Group Coaching: $249/month (2 live group calls weekly + full video course library).
   * Private 1-on-1 Coaching (Most Popular): $649/month (weekly 45-min 1-on-1 calls, trade journal reviews, daily signals included).
   * VIP Executive Coaching: $1,290/month (twice-weekly 1-on-1 calls, direct coach chat, all programs included).

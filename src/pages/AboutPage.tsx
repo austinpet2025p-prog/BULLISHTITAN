@@ -103,9 +103,9 @@ export const AboutPage: React.FC = () => {
 
         {/* Team Grid */}
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#EDE6D6] mb-8">
-          Meet Our Team &amp; Coaches
+          Meet Our Head Coach
         </h3>
-        <div className="grid gap-6 md:grid-cols-3 mb-20">
+        <div className="grid gap-6 max-w-md mb-20">
           {MENTORS.map((m) => (
             <MentorCard key={m.id} mentor={m} />
           ))}

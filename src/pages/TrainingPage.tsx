@@ -423,7 +423,7 @@ export const TrainingPage: React.FC = () => {
                 <SafeImage
                   src={MENTORS[0].image}
                   alt={MENTORS[0].name}
-                  className="h-full w-full object-cover object-top"
+                  className="h-full w-full object-cover object-[52%_32%]"
                 />
               </ShieldCrestBadge>
               <div>

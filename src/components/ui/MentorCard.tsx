@@ -15,7 +15,7 @@ export const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBook }) => {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="group relative h-[450px] [perspective:1200px]">
+    <div className="group relative h-[468px] [perspective:1200px]">
       <div
         className={cn(
           'relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d]',
@@ -24,13 +24,16 @@ export const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBook }) => {
       >
         {/* Front Face */}
         <div className="absolute inset-0 rounded-lg hairline-gold overflow-hidden flex flex-col p-4 [backface-visibility:hidden]">
-          <ShieldFrame variant="landscape" innerClassName="h-56 w-full">
+          <ShieldFrame variant="landscape" bright innerClassName="h-60 w-full">
             <SafeImage
               src={mentor.image}
               alt={`${mentor.name} — ${mentor.role}`}
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-full w-full object-cover object-[52%_35%] brightness-[0.97] contrast-[1.05] saturate-[0.94] transition-transform duration-500 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/70 via-transparent to-transparent" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/80 via-[#0B0B0C]/10 to-[#0B0B0C]/25"
+            />
           </ShieldFrame>
 
           <div className="flex flex-1 flex-col justify-between pt-4 px-1">

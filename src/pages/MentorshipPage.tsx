@@ -205,14 +205,14 @@ export const MentorshipPage: React.FC = () => {
         </div>
       </Section>
 
-      <ShieldSectionDivider label="Meet Your Coaches" />
+      <ShieldSectionDivider label="Meet Your Coach" />
 
-      {/* Mentor Profile Cards + Desk Environment Showcase */}
+      {/* Mentor Profile Card + Desk Environment Showcase */}
       <Section
         romanIndex="02"
-        kicker="Your Coaching Team"
-        title="Meet Your Senior Trading Coaches"
-        subtitle="Flip any card to see each coach's experience, favorite markets, and teaching style."
+        kicker="Your Head Coach"
+        title="Meet Your Head Trading Coach"
+        subtitle="Flip the card to see coaching experience, favorite markets, and teaching style."
       >
         <div className="mb-12 grid gap-10 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7">
@@ -257,7 +257,7 @@ export const MentorshipPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 max-w-md">
           {MENTORS.map((mentor) => (
             <MentorCard key={mentor.id} mentor={mentor} onBook={handleBookFromCard} />
           ))}

@@ -1,5 +1,3 @@
-import nigerianStrategistImg from '../assets/images/mentor_nigerian_strategist_1795612622463.jpg';
-import davidOkaforImg from '../assets/images/mentor_david_okafor_1794780446216.jpg';
 import academyDeskImg from '../assets/images/academy_trading_desk_1794780446372.jpg';
 import heroFloorImg from '../assets/images/hero_trading_floor_1794784711615.jpg';
 import courseFoundationsImg from '../assets/images/course_foundations_desk_1794784712124.jpg';
@@ -247,31 +245,9 @@ export const MENTORS: MentorProfile[] = [
     specialty: 'Major Currencies & Gold',
     experience: '11 Years Experience',
     markets: 'EUR/USD · GBP/USD · XAU/USD',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-25_at_1.52.55_PM_32d4934f.jpeg',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-25_at_8.12.58_PM_e8881ef2.jpeg',
     bio: 'Former London currency trader who helps students read market trends simply, stay patient during peak sessions, and trade with clear rules.',
     focusAreas: ['Economic Trends', 'Peak Trading Hours', 'Calm Discipline'],
-  },
-  {
-    id: 'elena-rostova',
-    name: 'Chinedu Balogun',
-    role: 'Lead Coach · Synthetic Indices',
-    specialty: 'Volatility & Spike Patterns',
-    experience: '8 Years Experience',
-    markets: 'V75 · V100 · Boom 500 · Crash 1000',
-    image: nigerianStrategistImg,
-    bio: 'Synthetic market specialist focused on steady sizing, Boom/Crash spike timing, and simple safety stops that protect your balance.',
-    focusAreas: ['Synthetic Charts', 'Volatility Control', 'Strategy Testing'],
-  },
-  {
-    id: 'david-okafor',
-    name: 'David Okafor',
-    role: 'Senior Coach · Risk & Money Safety',
-    specialty: 'Position Sizing & Account Protection',
-    experience: '10 Years Experience',
-    markets: 'FX Majors · Gold · Synthetic Indices',
-    image: davidOkaforImg,
-    bio: 'Focused on helping traders protect their accounts, stop emotional decisions, and stay consistent week after week.',
-    focusAreas: ['Safe Trade Sizing', 'Loss Protection', 'Trading Mindset'],
   },
 ];
 

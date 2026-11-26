@@ -385,7 +385,7 @@ function buildSearchIndex(): SearchableItem[] {
     title: 'Book a Free 1-on-1 Coaching Call',
     plainLabel: 'Schedule a Private Intro Call With a Coach',
     spartanTerm: 'Coaching Booking',
-    description: 'Pick a time for a private 1-on-1 chat or chart review with Mr Odinaka, Chinedu Balogun, or David Okafor.',
+    description: 'Pick a time for a private 1-on-1 chat or chart review with Mr Odinaka.',
     meta: 'Mentorship Booking',
     to: '/mentorship#booking',
     keywords: ['book', 'call', 'schedule', 'appointment', '1-on-1', 'coach', 'mentor', 'strategos'],

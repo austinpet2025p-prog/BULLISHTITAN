@@ -532,7 +532,7 @@ export const DashboardPage: React.FC = () => {
                           },
                           {
                             title: 'Safety Limit & Risk Check Call',
-                            mentor: 'David Okafor',
+                            mentor: 'Mr Odinaka',
                             when: 'Fri, Nov 13 · 14:00 EST',
                             status: 'Completed',
                             notes: 'Set 0.75% max risk per trade; reviewed 25 practice trades.',
